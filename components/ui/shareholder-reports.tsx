@@ -14,6 +14,7 @@ export interface Report {
 // Define the props for the main component
 interface ShareholderReportsProps {
   reports: Report[];
+  onReportClick?: (report: Report) => void;
   title?: string;
   subtitle?: string;
   className?: string;
@@ -22,7 +23,7 @@ interface ShareholderReportsProps {
 export const ShareholderReports = React.forwardRef<
   HTMLDivElement,
   ShareholderReportsProps
->(({ reports, title = "Shareholders' Letter and Results", subtitle = "Insights into our strategic growth", className, ...props }, ref) => {
+>(({ reports, onReportClick, title = "Shareholders' Letter and Results", subtitle = "Insights into our strategic growth", className, ...props }, ref) => {
   const scrollContainerRef = React.useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = React.useState(false);
   const [canScrollRight, setCanScrollRight] = React.useState(true);
@@ -110,6 +111,7 @@ export const ShareholderReports = React.forwardRef<
           <div
             key={report.id}
             className="flex-shrink-0 w-[260px] sm:w-[320px] snap-start"
+            onClick={() => onReportClick?.(report)}
           >
             {/* Report Card */}
             <div className="group cursor-pointer">

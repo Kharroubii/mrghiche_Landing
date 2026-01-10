@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence, useInView, animate } from 'framer-motion';
 import { Header } from './components/ui/header-2';
 import { DemoHeroGeometric } from './components/DemoHero';
 import { Logos3 } from './components/ui/logos3';
@@ -15,10 +15,27 @@ import {
   ShieldCheck, 
   TrendingUp, 
   Coins, 
+  Handshake, 
+  ChevronRight, 
   ChevronDown, 
   ChevronUp, 
+  Users, 
+  Target, 
   BarChart3, 
-  Instagram
+  Instagram,
+  Trophy,
+  Rocket,
+  ArrowLeft,
+  FileUp,
+  CheckCircle2,
+  FileText,
+  Download,
+  FileSearch,
+  PieChart,
+  LineChart,
+  Activity,
+  FileDown,
+  Calendar
 } from 'lucide-react';
 import Footer4Col from './components/ui/footer-4-col';
 import { VideoPlayer } from './components/ui/video-player';
@@ -31,31 +48,6 @@ import { ShareholderReports, Report } from './components/ui/shareholder-reports'
 import { AnimatedCounter } from './components/ui/animated-counter';
 import { Carousel, CarouselContent, CarouselItem } from './components/ui/carousel';
 import { cn } from './lib/utils';
-
-// --- Animation Variants ---
-
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.2,
-    },
-  },
-};
-
-const fadeInUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { 
-    opacity: 1, 
-    y: 0,
-    transition: {
-      duration: 0.8,
-      ease: [0.21, 1.02, 0.47, 0.98]
-    }
-  }
-};
 
 // --- Shared Data ---
 
@@ -248,7 +240,7 @@ const shareholderReportsData: Report[] = [
 
 // --- View Components ---
 
-const HomeView = ({ onNavigate }: { onNavigate: (page: string) => void }) => (
+const HomeView = ({ onNavigate, onSelectReport }: { onNavigate: (page: string) => void, onSelectReport: (report: Report) => void }) => (
   <motion.div
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
@@ -416,6 +408,32 @@ const HomeView = ({ onNavigate }: { onNavigate: (page: string) => void }) => (
       </div>
     </section>
 
+    {/* Detailed Statistics Section (Simplified) */}
+    <section className="bg-[#030303] py-24 px-6 relative z-10 border-t border-white/5 overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-indigo-500/[0.02] to-transparent pointer-events-none" />
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="p-8 rounded-[2rem] bg-white/[0.02] border border-white/5 flex flex-col justify-center text-center hover:bg-white/[0.04] transition-all">
+            <div className="text-white/30 mb-4 flex justify-center"><ShieldCheck className="size-6" /></div>
+            <div className="text-3xl font-bold text-white tracking-tighter uppercase mb-2">Institutional Grade</div>
+            <div className="text-white/40 text-sm leading-relaxed">Built on a framework of rigorous compliance, risk control, and operational excellence.</div>
+          </div>
+
+          <div className="p-8 rounded-[2rem] bg-white/[0.02] border border-white/5 flex flex-col justify-center text-center hover:bg-white/[0.04] transition-all">
+            <div className="text-white/30 mb-4 flex justify-center"><BarChart3 className="size-6" /></div>
+            <div className="text-3xl font-bold text-white tracking-tighter uppercase mb-2">Alpha Generation</div>
+            <div className="text-white/40 text-sm leading-relaxed">Proprietary strategies designed to deliver consistent, non-correlated market returns.</div>
+          </div>
+
+          <div className="p-8 rounded-[2rem] bg-white/[0.02] border border-white/5 flex flex-col justify-center text-center hover:bg-white/[0.04] transition-all">
+            <div className="text-white/30 mb-4 flex justify-center"><Globe className="size-6" /></div>
+            <div className="text-3xl font-bold text-white tracking-tighter uppercase mb-2">Global Network</div>
+            <div className="text-white/40 text-sm leading-relaxed">Strategically positioned in Dubai, London, USA, and Morocco to capture global alpha.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <FinancialHero 
         title={
             <>
@@ -436,7 +454,11 @@ const HomeView = ({ onNavigate }: { onNavigate: (page: string) => void }) => (
         className="border-y border-white/5"
     />
 
-    <ShareholderReports reports={shareholderReportsData} subtitle="Deep insights into our strategic market performance and institutional results." />
+    <ShareholderReports 
+      reports={shareholderReportsData} 
+      subtitle="Deep insights into our strategic market performance and institutional results." 
+      onReportClick={onSelectReport}
+    />
 
     <section className="bg-[#030303] py-16 md:py-32 px-6 relative z-10">
       <div className="mx-auto max-w-5xl border-t border-white/10 px-6 relative">
@@ -455,50 +477,123 @@ const HomeView = ({ onNavigate }: { onNavigate: (page: string) => void }) => (
           </div>
         </div>
 
-        <motion.div 
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto text-left"
-        >
-            <motion.div variants={fadeInUp}>
-              <LocationCard 
-                city="Dubai" 
-                address="Business Bay, UAE" 
-                imageUrl="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=800&auto=format&fit=crop" 
-                directionsUrl="#" 
-              />
-            </motion.div>
-            <motion.div variants={fadeInUp}>
-              <LocationCard 
-                city="London" 
-                address="15 Berkeley Square, Mayfair" 
-                imageUrl="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?q=80&w=800&auto=format&fit=crop" 
-                directionsUrl="#" 
-              />
-            </motion.div>
-            <motion.div variants={fadeInUp}>
-              <LocationCard 
-                city="New York" 
-                address="Wall Street, Manhattan" 
-                imageUrl="https://images.unsplash.com/photo-1496871455396-14e56815f1f4?q=80&w=800&auto=format&fit=crop" 
-                directionsUrl="#" 
-              />
-            </motion.div>
-            <motion.div variants={fadeInUp}>
-              <LocationCard 
-                city="Casablanca" 
-                address="Anfa, Morocco" 
-                imageUrl="https://images.unsplash.com/photo-1539020140153-e479b8c22e70?q=80&w=800&auto=format&fit=crop" 
-                directionsUrl="#" 
-              />
-            </motion.div>
-        </motion.div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto text-left">
+            <LocationCard 
+              city="Dubai" 
+              address="Business Bay, UAE" 
+              imageUrl="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=800&auto=format&fit=crop" 
+              directionsUrl="#" 
+            />
+            <LocationCard 
+              city="London" 
+              address="15 Berkeley Square, Mayfair" 
+              imageUrl="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?q=80&w=800&auto=format&fit=crop" 
+              directionsUrl="#" 
+            />
+            <LocationCard 
+              city="New York" 
+              address="Wall Street, Manhattan" 
+              imageUrl="https://images.unsplash.com/photo-1496871455396-14e56815f1f4?q=80&w=800&auto=format&fit=crop" 
+              directionsUrl="#" 
+            />
+            <LocationCard 
+              city="Casablanca" 
+              address="Anfa, Morocco" 
+              imageUrl="https://images.unsplash.com/photo-1539020140153-e479b8c22e70?q=80&w=800&auto=format&fit=crop" 
+              directionsUrl="#" 
+            />
+        </div>
       </div>
     </section>
   </motion.div>
 );
+
+const ReportDetailView = ({ report, onBack }: { report: Report | null, onBack: () => void }) => {
+  if (!report) return null;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+      className="pt-32 pb-32 px-6"
+    >
+      <div className="max-w-3xl mx-auto">
+        {/* Back Navigation */}
+        <button 
+          onClick={onBack}
+          className="flex items-center gap-2 text-white/40 hover:text-white mb-16 transition-colors uppercase tracking-widest text-[10px] font-bold group"
+        >
+          <ArrowLeft className="size-3 group-hover:-translate-x-1 transition-transform" /> Back
+        </button>
+
+        {/* Article Header */}
+        <header className="mb-16 border-b border-white/10 pb-12">
+          <div className="space-y-4">
+            {/* Date ABOVE Title */}
+            <p className="text-indigo-400 font-bold uppercase tracking-[0.25em] text-xs">
+              {report.period}
+            </p>
+            <h1 className="text-5xl md:text-7xl font-bold text-white tracking-tighter leading-tight">
+              {report.quarter}
+            </h1>
+            <p className="text-white/40 font-medium italic text-xl">
+              Institutional performance analysis and strategic market outcomes.
+            </p>
+          </div>
+        </header>
+
+        {/* Article Body */}
+        <article className="prose prose-invert max-w-none space-y-12">
+          <div className="space-y-8 text-white/70 leading-[1.7] font-light text-xl">
+            <h2 className="text-2xl font-bold text-white mb-6">Letter to Shareholders</h2>
+            <p className="italic font-medium text-white/90">Dear Institutional Partners and Shareholders,</p>
+            <p>
+              In the performance period ending {report.period}, Mrghiche Capital has demonstrated continued resilience and strategic clarity amidst shifting global macro-economic cycles. Our focus remains steadfast on the institutionalization of our processes and the consistent generation of alpha through data-driven precision.
+            </p>
+            <p>
+              During {report.quarter}, we achieved significant milestones in our alternative investment pods, particularly within our Liquid Markets and Digital Asset infrastructure strategies. Our risk management frameworks successfully navigated periods of heightened volatility, maintaining capital preservation as our primary directive.
+            </p>
+            <p>
+              We have also expanded our footprint in London and Dubai, attracting top-tier talent from global bulge-bracket firms to lead our new Strategic Advisory division. This expansion is not merely geographical but operational, strengthening our internal due diligence capabilities across cross-border private equity opportunities.
+            </p>
+            <p>
+              As we move into the next phase of our growth, we remain committed to transparency, discipline, and the pursuit of non-correlated returns for our stakeholders.
+            </p>
+
+            {/* Signature */}
+            <div className="pt-12 border-t border-white/5 mt-12">
+              <p className="text-white font-bold text-lg">Mohammed Kharroubi</p>
+              <p className="text-white/40 text-sm">Founder & CEO, Mrghiche Capital</p>
+            </div>
+          </div>
+
+          {/* Download CTA Section */}
+          <div className="mt-24 p-12 rounded-[2.5rem] bg-white/[0.03] border border-white/10 text-center relative overflow-hidden group">
+            <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+            <h3 className="text-2xl font-bold text-white mb-4 relative z-10">Institutional Disclosure Packet</h3>
+            <p className="text-white/40 mb-10 max-w-sm mx-auto relative z-10">
+              Download the complete financial disclosure, including full audit reports and regulatory statements.
+            </p>
+            <Button 
+              className="rounded-full px-10 py-8 bg-white text-black font-bold text-lg hover:scale-[1.05] transition-transform flex items-center gap-3 mx-auto relative z-10"
+            >
+              <FileDown className="size-6" /> Download PDF Version
+            </Button>
+          </div>
+        </article>
+
+        {/* Footer Disclosure */}
+        <div className="mt-32 pt-10 border-t border-white/10 text-center">
+          <p className="text-white/20 text-[10px] uppercase tracking-[0.4em] mb-4">Confidential Disclosure</p>
+          <p className="text-white/30 text-xs max-w-xl mx-auto leading-relaxed italic">
+            This letter is provided for institutional informational purposes only. Past performance is not indicative of future results. Detailed financial data available in the secure portal.
+          </p>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
 
 const WhoWeAreView = () => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -613,10 +708,11 @@ const WhoWeAreView = () => {
           </button>
           
           <a 
+            onClick={(e) => { e.preventDefault(); window.open('https://instagram.com/mrghiche', '_blank'); }}
             href="https://instagram.com/mrghiche" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="flex items-center gap-2 text-white/60 hover:text-white transition-colors font-bold uppercase tracking-widest text-xs py-3 px-6 rounded-full bg-indigo-500/10 border border-indigo-500/20"
+            className="flex items-center gap-2 text-white/60 hover:text-white transition-colors font-bold uppercase tracking-widest text-xs py-3 px-6 rounded-full bg-indigo-500/10 border border-indigo-500/20 cursor-pointer"
           >
             <Instagram className="size-4" /> Connect @mrghiche
           </a>
@@ -894,41 +990,179 @@ const NewsView = () => (
   </motion.div>
 );
 
-const CareersView = () => (
-  <motion.div
-    initial={{ opacity: 0, x: -20 }}
-    animate={{ opacity: 1, x: 0 }}
-    className="pt-40 pb-32 px-6"
-  >
-    <div className="max-w-5xl mx-auto">
-      <h1 className="text-6xl font-bold text-white mb-8 tracking-tighter">Join the Elite.</h1>
-      <p className="text-xl text-white/50 mb-20 max-w-2xl">We are always looking for exceptional talent to join our institutional investment teams across London, Dubai, and New York.</p>
-      
-      <div className="space-y-4">
-        {[
-          { role: "Senior Portfolio Manager", loc: "New York", type: "Equities" },
-          { role: "Quantitative Analyst", loc: "London", type: "Fixed Income" },
-          { role: "Investment Relations Associate", loc: "Dubai", type: "Client Services" },
-          { role: "Alternative Data Scientist", loc: "London", type: "Tech" }
-        ].map((job, idx) => (
-          <div key={job.role} className="group flex justify-between items-center p-8 rounded-2xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.06] hover:border-white/10 transition-all cursor-pointer">
-            <div>
-              <div className="text-2xl font-bold text-white group-hover:text-indigo-400 transition-colors">{job.role}</div>
-              <div className="flex gap-4 text-sm text-white/30 mt-2 uppercase tracking-widest">
-                <span>{job.loc}</span>
-                <span>•</span>
-                <span>{job.type}</span>
+const CareersView = () => {
+  const [selectedJob, setSelectedJob] = useState<null | {role: string, loc: string, type: string}>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
+  const jobs = [
+    { role: "Senior Portfolio Manager", loc: "New York", type: "Equities" },
+    { role: "Quantitative Analyst", loc: "London", type: "Fixed Income" },
+    { role: "Investment Relations Associate", loc: "Dubai", type: "Client Services" },
+    { role: "Alternative Data Scientist", loc: "London", type: "Tech" }
+  ];
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    // Simulate API call
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setSubmitted(true);
+    }, 2000);
+  };
+
+  if (submitted) {
+    return (
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        className="pt-40 pb-32 px-6 flex flex-col items-center justify-center text-center min-h-[70vh]"
+      >
+        <div className="size-24 rounded-full bg-indigo-500/20 flex items-center justify-center mb-8 border border-indigo-500/30">
+          <CheckCircle2 className="size-12 text-indigo-400" />
+        </div>
+        <h1 className="text-5xl font-bold text-white mb-6 tracking-tighter">Application Received</h1>
+        <p className="text-xl text-white/40 max-w-md mx-auto mb-10 leading-relaxed">
+          Thank you for applying for the <strong>{selectedJob?.role}</strong> position. Our talent acquisition team will review your credentials and contact you shortly.
+        </p>
+        <Button 
+          onClick={() => {
+            setSubmitted(false);
+            setSelectedJob(null);
+          }}
+          variant="outline"
+          className="rounded-full px-10 py-6"
+        >
+          Return to Careers
+        </Button>
+      </motion.div>
+    );
+  }
+
+  if (selectedJob) {
+    return (
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="pt-40 pb-32 px-6"
+      >
+        <div className="max-w-2xl mx-auto">
+          <button 
+            onClick={() => setSelectedJob(null)}
+            className="flex items-center gap-2 text-white/40 hover:text-white mb-10 transition-colors uppercase tracking-widest text-[10px] font-bold"
+          >
+            <ArrowLeft className="size-3" /> Back to listings
+          </button>
+          
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-2 tracking-tighter">{selectedJob.role}</h1>
+          <div className="flex gap-4 text-sm text-indigo-400/80 mb-12 uppercase tracking-widest font-bold">
+            <span>{selectedJob.loc}</span>
+            <span>•</span>
+            <span>{selectedJob.type}</span>
+          </div>
+
+          <form onSubmit={handleSubmit} className="space-y-8 bg-white/[0.02] border border-white/5 p-8 md:p-12 rounded-[2.5rem]">
+            <div className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label className="text-[10px] uppercase tracking-widest text-white/40 font-bold ml-1">Full Name</label>
+                  <input required placeholder="E.g. Alexander Sterling" className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white focus:outline-none focus:border-indigo-500 transition-colors" />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-[10px] uppercase tracking-widest text-white/40 font-bold ml-1">Email Address</label>
+                  <input required type="email" placeholder="E.g. alex@institutional.com" className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white focus:outline-none focus:border-indigo-500 transition-colors" />
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-[10px] uppercase tracking-widest text-white/40 font-bold ml-1">LinkedIn Profile or Portfolio</label>
+                <input required placeholder="https://linkedin.com/in/yourprofile" className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white focus:outline-none focus:border-indigo-500 transition-colors" />
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-[10px] uppercase tracking-widest text-white/40 font-bold ml-1">Resume / CV Attachment</label>
+                <div className="relative group/file">
+                  <input required type="file" className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" />
+                  <div className="w-full bg-white/5 border border-dashed border-white/20 rounded-xl px-6 py-8 text-center group-hover/file:border-indigo-500/50 group-hover/file:bg-indigo-500/5 transition-all">
+                    <FileUp className="size-8 text-white/20 mx-auto mb-3 group-hover/file:text-indigo-400 group-hover/file:scale-110 transition-all" />
+                    <p className="text-white/40 text-sm">Click or drag your CV here</p>
+                    <p className="text-[10px] text-white/20 mt-1 uppercase tracking-wider">PDF, DOCX up to 5MB</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-[10px] uppercase tracking-widest text-white/40 font-bold ml-1">Brief Pitch (Optional)</label>
+                <textarea rows={4} placeholder="Tell us why you're a fit for Mrghiche Capital..." className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white focus:outline-none focus:border-indigo-500 transition-colors" />
               </div>
             </div>
-            <Button variant="ghost" className="size-12 rounded-full border border-white/10 flex items-center justify-center p-0">
-              <ArrowUpRight className="size-6" />
+
+            <Button 
+              disabled={isSubmitting}
+              className="w-full py-8 rounded-2xl bg-white text-black font-bold text-lg hover:scale-[1.01] transition-transform shadow-2xl flex items-center justify-center gap-3"
+            >
+              {isSubmitting ? (
+                <>
+                  <div className="size-4 border-2 border-black/20 border-t-black rounded-full animate-spin" />
+                  Processing...
+                </>
+              ) : (
+                <>Apply for Position <ArrowRight className="size-5" /></>
+              )}
             </Button>
-          </div>
-        ))}
+            <p className="text-center text-[10px] text-white/20 uppercase tracking-widest">
+              By submitting, you agree to our data handling and recruitment policy.
+            </p>
+          </form>
+        </div>
+      </motion.div>
+    );
+  }
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: -20 }}
+      animate={{ opacity: 1, x: 0 }}
+      className="pt-40 pb-32 px-6"
+    >
+      <div className="max-w-5xl mx-auto">
+        <h1 className="text-6xl font-bold text-white mb-8 tracking-tighter">Join the Elite.</h1>
+        <p className="text-xl text-white/50 mb-20 max-w-2xl">We are always looking for exceptional talent to join our institutional investment teams across London, Dubai, and New York.</p>
+        
+        <div className="space-y-4">
+          {jobs.map((job, idx) => (
+            <div 
+              key={job.role} 
+              onClick={() => setSelectedJob(job)}
+              className="group flex justify-between items-center p-8 rounded-2xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.06] hover:border-white/10 transition-all cursor-pointer"
+            >
+              <div>
+                <div className="text-2xl font-bold text-white group-hover:text-indigo-400 transition-colors">{job.role}</div>
+                <div className="flex gap-4 text-sm text-white/30 mt-2 uppercase tracking-widest">
+                  <span>{job.loc}</span>
+                  <span>•</span>
+                  <span>{job.type}</span>
+                </div>
+              </div>
+              <Button variant="ghost" className="size-12 rounded-full border border-white/10 flex items-center justify-center p-0 group-hover:bg-indigo-500 group-hover:text-white group-hover:border-indigo-500 transition-all">
+                <ArrowUpRight className="size-6" />
+              </Button>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-24 p-12 rounded-[2.5rem] bg-indigo-500/5 border border-indigo-500/10 text-center">
+          <h2 className="text-2xl font-bold text-white mb-4">Can't find a fit?</h2>
+          <p className="text-white/40 mb-8 max-w-lg mx-auto leading-relaxed italic">
+            "If your profile doesn't match current openings but you possess exceptional market insight or technical skill, we still want to hear from you."
+          </p>
+          <Button variant="outline" className="rounded-full px-8 py-6">General Application</Button>
+        </div>
       </div>
-    </div>
-  </motion.div>
-);
+    </motion.div>
+  );
+};
 
 const ContactView = () => (
   <motion.div
@@ -985,6 +1219,13 @@ const ContactView = () => (
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
+  const [selectedReport, setSelectedReport] = useState<Report | null>(null);
+
+  const handleReportSelection = (report: Report) => {
+    setSelectedReport(report);
+    setCurrentPage('report-detail');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const renderView = () => {
     switch(currentPage) {
@@ -994,7 +1235,8 @@ function App() {
       case 'news': return <NewsView />;
       case 'careers': return <CareersView />;
       case 'contact': return <ContactView />;
-      default: return <HomeView onNavigate={setCurrentPage} />;
+      case 'report-detail': return <ReportDetailView report={selectedReport} onBack={() => setCurrentPage('home')} />;
+      default: return <HomeView onNavigate={setCurrentPage} onSelectReport={handleReportSelection} />;
     }
   };
 
