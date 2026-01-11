@@ -47,6 +47,7 @@ import { LocationCard } from './components/ui/location-card';
 import { ShareholderReports, Report } from './components/ui/shareholder-reports';
 import { AnimatedCounter } from './components/ui/animated-counter';
 import { Carousel, CarouselContent, CarouselItem } from './components/ui/carousel';
+import { Feature1 } from './components/ui/feature-1';
 import { cn } from './lib/utils';
 
 // --- Shared Data ---
@@ -242,12 +243,13 @@ const shareholderReportsData: Report[] = [
 
 const HomeView = ({ onNavigate, onSelectReport }: { onNavigate: (page: string) => void, onSelectReport: (report: Report) => void }) => (
   <motion.div
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    exit={{ opacity: 0 }}
+    initial={{ opacity: 0, x: 20 }}
+    animate={{ opacity: 1, x: 0 }}
+    exit={{ opacity: 0, x: -20 }}
+    transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
   >
     <DemoHeroGeometric />
-    <Logos3 heading="Strategic Partners and Institutional Collaborators" />
+    <Logos3 />
 
     {/* Integrated Services Carousel */}
     <section className="bg-[#030303] py-16 md:py-32 px-6 relative z-10 overflow-hidden">
@@ -505,6 +507,13 @@ const HomeView = ({ onNavigate, onSelectReport }: { onNavigate: (page: string) =
         </div>
       </div>
     </section>
+
+    <Feature1 
+      title="Prioritizing talent and career growth"
+      buttonPrimary={{ label: "Join Us !", href: "#", onClick: () => onNavigate('contact') }}
+      buttonSecondary={{ label: "Explore careers", href: "#", onClick: () => onNavigate('careers') }}
+      className="border-t border-white/5"
+    />
   </motion.div>
 );
 
@@ -513,9 +522,10 @@ const ReportDetailView = ({ report, onBack }: { report: Report | null, onBack: (
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
+      initial={{ opacity: 0, x: 20 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: -20 }}
+      transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
       className="pt-32 pb-32 px-6"
     >
       <div className="max-w-3xl mx-auto">
@@ -600,8 +610,10 @@ const WhoWeAreView = () => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, x: 20 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: -20 }}
+      transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
       className="pt-40 pb-32 px-6"
     >
       <div className="max-w-4xl mx-auto">
@@ -879,8 +891,10 @@ const PortfolioView = () => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.98 }}
-      animate={{ opacity: 1, scale: 1 }}
+      initial={{ opacity: 0, x: 20 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: -20 }}
+      transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
       className="pt-40 pb-32 px-6"
     >
       <div className="max-w-6xl mx-auto text-center mb-24">
@@ -920,8 +934,10 @@ const PortfolioView = () => {
 
 const ServicesView = ({ onNavigate }: { onNavigate: (page: string) => void }) => (
   <motion.div
-    initial={{ opacity: 0, scale: 0.95 }}
-    animate={{ opacity: 1, scale: 1 }}
+    initial={{ opacity: 0, x: 20 }}
+    animate={{ opacity: 1, x: 0 }}
+    exit={{ opacity: 0, x: -20 }}
+    transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
     className="pt-40 pb-32 px-6"
   >
     <div className="max-w-6xl mx-auto text-center mb-24">
@@ -947,8 +963,10 @@ const ServicesView = ({ onNavigate }: { onNavigate: (page: string) => void }) =>
 
 const NewsView = () => (
   <motion.div
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
+    initial={{ opacity: 0, x: 20 }}
+    animate={{ opacity: 1, x: 0 }}
+    exit={{ opacity: 0, x: -20 }}
+    transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
     className="pt-40 pb-32 px-6"
   >
     <div className="max-w-6xl mx-auto">
@@ -1043,8 +1061,10 @@ const CareersView = () => {
   if (selectedJob) {
     return (
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, x: 20 }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: -20 }}
+        transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
         className="pt-40 pb-32 px-6"
       >
         <div className="max-w-2xl mx-auto">
@@ -1122,8 +1142,10 @@ const CareersView = () => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, x: -20 }}
+      initial={{ opacity: 0, x: 20 }}
       animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: -20 }}
+      transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
       className="pt-40 pb-32 px-6"
     >
       <div className="max-w-5xl mx-auto">
@@ -1166,8 +1188,10 @@ const CareersView = () => {
 
 const ContactView = () => (
   <motion.div
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
+    initial={{ opacity: 0, x: 20 }}
+    animate={{ opacity: 1, x: 0 }}
+    exit={{ opacity: 0, x: -20 }}
+    transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
     className="pt-40 pb-32 px-6"
   >
     <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20">
@@ -1241,11 +1265,11 @@ function App() {
   };
 
   return (
-    <main className="min-h-screen bg-[#030303]">
+    <main className="min-h-screen bg-[#030303] overflow-x-hidden">
       <Header activePage={currentPage} onNavigate={setCurrentPage} />
       
       <AnimatePresence mode="wait">
-        <motion.div key={currentPage}>
+        <motion.div key={currentPage} className="w-full">
           {renderView()}
         </motion.div>
       </AnimatePresence>
