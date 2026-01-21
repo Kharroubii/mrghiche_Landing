@@ -1,12 +1,23 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { Button, buttonVariants } from './button';
 import { cn } from '@/lib/utils';
 import { MenuToggleIcon } from './menu-toggle-icon';
 import { useScroll } from './use-scroll';
+import { usePathname as useNextPathname } from 'next/navigation';
+
+// Fix for "Cannot find name 'require'" by using standard import and a safe wrapper
+/**
+ * Safe wrapper for usePathname that provides a fallback in case it's used outside a Next.js context.
+ */
+function usePathname() {
+  try {
+    return useNextPathname() || '';
+  } catch (e) {
+    return '';
+  }
+}
 
 interface HeaderProps {
   activePage?: string;
@@ -16,11 +27,15 @@ interface HeaderProps {
 export function Header({ activePage, onNavigate }: HeaderProps) {
 	const [open, setOpen] = useState(false);
 	const scrolled = useScroll(10);
-	const pathname = usePathname() || '';
+	
+  let pathname = '';
+  try {
+    pathname = usePathname() || '';
+  } catch (e) {}
 
 	const links = [
 		{ label: 'Who we are', href: '/about', id: 'who-we-are' },
-		{ label: 'Projects', href: '/projects', id: 'portfolio' },
+		{ label: 'Projects', href: '/projects', id: 'projects' },
 		{ label: 'Services', href: '/services', id: 'services' },
 		{ label: 'News', href: '/news', id: 'news' },
 		{ label: 'Careers', href: '/careers', id: 'careers' },
@@ -44,6 +59,7 @@ export function Header({ activePage, onNavigate }: HeaderProps) {
 		if (onNavigate) {
 			e.preventDefault();
 			onNavigate(id);
+			window.scrollTo({ top: 0, behavior: 'smooth' });
 		}
 		closeMenu();
 	};
@@ -65,33 +81,31 @@ export function Header({ activePage, onNavigate }: HeaderProps) {
 					{ 'px-4': scrolled }
 				)}
 			>
-				<Link 
+				<a 
 					href="/" 
 					className="flex items-center gap-2 cursor-pointer" 
 					onClick={(e) => handleLinkClick(e, '/', 'home')}
 				>
 					<WordmarkIcon className="h-8 w-auto" />
-				</Link>
+				</a>
 				
 				<div className="hidden items-center gap-1 md:flex">
 					<div className="flex items-center gap-1 mr-4">
 						{links.map((link, i) => {
 							const isActive = pathname === link.href || activePage === link.id;
 							return (
-								<Link 
+								<a 
 									key={i} 
 									href={link.href}
 									onClick={(e) => handleLinkClick(e, link.href, link.id)}
-									className={buttonVariants({ 
-										variant: 'ghost', 
-										className: cn(
-											'text-white/70 hover:text-white hover:bg-white/5 transition-all text-xs lg:text-sm px-3',
-											isActive && 'text-white bg-white/10'
-										) 
-									})} 
+									className={cn(
+                    buttonVariants({ variant: 'ghost' }),
+                    'text-white/70 hover:text-white hover:bg-white/5 transition-all text-xs lg:text-sm px-3 cursor-pointer',
+                    isActive && 'text-white bg-white/10'
+                  )}
 								>
 									{link.label}
-								</Link>
+								</a>
 							);
 						})}
 					</div>
@@ -99,13 +113,13 @@ export function Header({ activePage, onNavigate }: HeaderProps) {
 						<Button variant="ghost" className="text-white/70 hover:text-white text-xs lg:text-sm">
 							Sign In
 						</Button>
-						<Link 
+						<a 
 							href="/contact"
 							onClick={(e) => handleLinkClick(e, '/contact', 'contact')}
-							className="bg-white text-black hover:bg-white/90 shadow-lg text-xs lg:text-sm px-5 rounded-full font-semibold flex items-center justify-center h-10"
+							className="bg-white text-black hover:bg-white/90 shadow-lg text-xs lg:text-sm px-5 rounded-full font-semibold flex items-center justify-center h-10 cursor-pointer"
 						>
 							Get Started
-						</Link>
+						</a>
 					</div>
 				</div>
 
@@ -130,17 +144,17 @@ export function Header({ activePage, onNavigate }: HeaderProps) {
 						{links.map((link) => {
 							const isActive = pathname === link.href || activePage === link.id;
 							return (
-								<Link
+								<a
 									key={link.id}
 									href={link.href}
 									onClick={(e) => handleLinkClick(e, link.href, link.id)}
 									className={cn(
-										"text-3xl font-bold text-left text-white/90 hover:text-white transition-colors tracking-tight",
+										"text-3xl font-bold text-left text-white/90 hover:text-white transition-colors tracking-tight cursor-pointer",
 										isActive && "text-indigo-400"
 									)}
 								>
 									{link.label}
-								</Link>
+								</a>
 							);
 						})}
 					</div>
@@ -148,13 +162,13 @@ export function Header({ activePage, onNavigate }: HeaderProps) {
 						<Button variant="outline" className="w-full text-lg py-7 border-white/20 text-white rounded-xl">
 							Sign In
 						</Button>
-						<Link 
+						<a 
 							href="/contact"
 							onClick={(e) => handleLinkClick(e, '/contact', 'contact')}
-							className="w-full text-lg py-7 bg-white text-black rounded-xl font-bold flex items-center justify-center"
+							className="w-full text-lg py-7 bg-white text-black rounded-xl font-bold flex items-center justify-center cursor-pointer"
 						>
 							Get Started
-						</Link>
+						</a>
 					</div>
 				</div>
 			</div>

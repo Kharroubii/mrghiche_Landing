@@ -1,7 +1,6 @@
 "use client";
 
 import React from 'react';
-import Link from 'next/link';
 import {
   Facebook,
   Instagram,
@@ -49,7 +48,7 @@ const socialLinks = [
 const aboutLinks = [
   { text: 'Who we are', href: '/about', id: 'who-we-are' },
   { text: 'Meet the Team', href: '/about', id: 'who-we-are' },
-  { text: 'Projects', href: '/projects', id: 'portfolio' },
+  { text: 'Projects', href: '/projects', id: 'projects' },
   { text: 'Careers', href: '/careers', id: 'careers' },
 ];
 
@@ -69,6 +68,7 @@ export default function Footer4Col({ onNavigate }: FooterProps) {
     if (onNavigate) {
       e.preventDefault();
       onNavigate(id);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
@@ -77,13 +77,13 @@ export default function Footer4Col({ onNavigate }: FooterProps) {
       <div className="mx-auto max-w-screen-xl px-4 pt-16 pb-6 sm:px-6 lg:px-8 lg:pt-24">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div>
-            <Link 
+            <a 
               href="/"
               onClick={(e) => handleLinkClick(e, '/', 'home')}
               className="flex justify-center gap-2 sm:justify-start cursor-pointer group"
             >
               <FooterLogo className="h-10 w-auto text-white group-hover:text-indigo-400 transition-colors" />
-            </Link>
+            </a>
 
             <p className="text-white/40 mt-6 max-w-md text-center leading-relaxed sm:max-w-xs sm:text-left text-sm">
               {data.company.description}
@@ -112,13 +112,13 @@ export default function Footer4Col({ onNavigate }: FooterProps) {
               <ul className="mt-8 space-y-4 text-sm">
                 {aboutLinks.map(({ text, href, id }) => (
                   <li key={text}>
-                    <Link
+                    <a
                       className="text-white/40 hover:text-white transition-colors cursor-pointer"
                       href={href}
                       onClick={(e) => handleLinkClick(e, href, id)}
                     >
                       {text}
-                    </Link>
+                    </a>
                   </li>
                 ))}
               </ul>
@@ -129,13 +129,13 @@ export default function Footer4Col({ onNavigate }: FooterProps) {
               <ul className="mt-8 space-y-4 text-sm">
                 {serviceLinks.map(({ text, href, id }) => (
                   <li key={text}>
-                    <Link
-                      className="text-white/40 hover:text-white transition-colors"
+                    <a
+                      className="text-white/40 hover:text-white transition-colors cursor-pointer"
                       href={href}
                       onClick={(e) => handleLinkClick(e, href, id)}
                     >
                       {text}
-                    </Link>
+                    </a>
                   </li>
                 ))}
               </ul>
