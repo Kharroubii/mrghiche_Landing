@@ -110,6 +110,78 @@ const SERVICES_DATA = [
         </Button>
       </>
     )
+  },
+  { 
+    id: "am",
+    title: "Asset Management", 
+    description: "Legacy Preservation",
+    teaser: "Strategic portfolio construction for family offices and institutional endowments. We focus on multi-generational capital preservation through disciplined allocation models.",
+    src: "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&w=800&q=80",
+    content: (router: any) => (
+      <>
+        <article className="space-y-4 text-white/70">
+          <p className="font-semibold text-white text-xl">Beyond Wealth Management</p>
+          <p>Strategic portfolio construction for family offices and institutional endowments. We focus on multi-generational capital preservation.</p>
+        </article>
+        <div className="mt-8 grid grid-cols-2 gap-3 text-sm">
+          <div className="flex items-center gap-2 p-3 bg-white/5 rounded-xl border border-white/10"><Coins className="size-4 text-indigo-400" /> Strategic Allocation</div>
+          <div className="flex items-center gap-2 p-3 bg-white/5 rounded-xl border border-white/10"><ShieldCheck className="size-4 text-indigo-400" /> Due Diligence</div>
+        </div>
+        <Button 
+          onClick={() => router.push('/contact')}
+          className="mt-10 w-full rounded-full py-8 bg-white text-black font-bold text-lg hover:scale-[1.02] transition-transform flex items-center justify-center gap-2"
+        >
+          Join Us ! <ArrowRight className="size-5" />
+        </Button>
+      </>
+    )
+  },
+  { 
+    id: "da",
+    title: "Digital Assets", 
+    description: "Web3 Infrastructure",
+    teaser: "Navigating the institutional frontier of the decentralized economy through strategic investments. We focus on foundational blockchain protocols and secure infrastructure.",
+    src: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=800&q=80",
+    content: (router: any) => (
+      <>
+        <article className="space-y-4 text-white/70">
+          <p className="font-semibold text-white text-xl">The Institutional Frontier</p>
+          <p>Navigating the transition to a decentralized economy through strategic investments in foundational blockchain protocols.</p>
+        </article>
+        <div className="mt-8 flex flex-wrap gap-2">
+          {['Security', 'Scalability', 'Compliance'].map(tag => (
+            <span key={tag} className="px-4 py-1.5 bg-indigo-500/10 border border-indigo-500/20 rounded-full text-[10px] uppercase tracking-[0.15em] font-bold text-indigo-400">{tag}</span>
+          ))}
+        </div>
+        <Button 
+          onClick={() => router.push('/contact')}
+          className="mt-10 w-full rounded-full py-8 bg-white text-black font-bold text-lg hover:scale-[1.02] transition-transform flex items-center justify-center gap-2"
+        >
+          Join Us ! <ArrowRight className="size-5" />
+        </Button>
+      </>
+    )
+  },
+  { 
+    id: "adv",
+    title: "Advisory Services", 
+    description: "Global Strategy",
+    teaser: "Independent, high-conviction advice on capital structure and international market expansion. We specialize in complex cross-border transactions and strategic advisory.",
+    src: "https://images.unsplash.com/photo-1454165833767-13a6ad0a7a58?auto=format&fit=crop&w=800&q=80",
+    content: (router: any) => (
+      <>
+        <article className="space-y-4 text-white/70">
+          <p className="font-semibold text-white text-xl">Navigating Complexity</p>
+          <p>Providing independent, high-conviction advice on capital structure, international market expansion, and complex cross-border transactions.</p>
+        </article>
+        <Button 
+          onClick={() => router.push('/contact')}
+          className="mt-10 w-full rounded-full py-8 bg-white text-black font-bold text-lg hover:scale-[1.02] transition-transform flex items-center justify-center gap-2"
+        >
+          Join Us ! <ArrowRight className="size-5" />
+        </Button>
+      </>
+    )
   }
 ];
 
@@ -292,7 +364,7 @@ export default function Home() {
               </div>
 
               <div className="flex flex-col items-center min-w-[100px] flex-1">
-                <div className="text-3xl md:text-4xl font-bold text-white tracking-tighter mb-1 transition-colors">
+                <div className="text-3xl md:text-4 font-bold text-white tracking-tighter mb-1 transition-colors">
                   <AnimatedCounter value={2019} duration={1} />
                 </div>
                 <div className="text-white/30 text-[8px] font-bold uppercase tracking-[0.3em] text-center">Founded</div>

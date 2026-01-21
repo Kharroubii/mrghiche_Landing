@@ -16,27 +16,15 @@ interface HeaderProps {
 export function Header({ activePage, onNavigate }: HeaderProps) {
 	const [open, setOpen] = useState(false);
 	const scrolled = useScroll(10);
-	
-  // Safely attempt to get pathname from Next.js, fallback to prop-based path if context is null
-  let pathname = '/';
-  try {
-    const nextPathname = usePathname();
-    if (nextPathname) {
-      pathname = nextPathname;
-    } else {
-      pathname = activePage ? (activePage === 'home' ? '/' : `/${activePage}`) : '/';
-    }
-  } catch (e) {
-    pathname = activePage ? (activePage === 'home' ? '/' : `/${activePage}`) : '/';
-  }
+	const pathname = usePathname() || '';
 
 	const links = [
-		{ label: 'Who we are', id: 'who-we-are', href: '/about' },
-		{ label: 'Portfolio', id: 'portfolio', href: '/portfolio' },
-		{ label: 'Services', id: 'services', href: '/services' },
-		{ label: 'News', id: 'news', href: '/news' },
-		{ label: 'Careers', id: 'careers', href: '/careers' },
-		{ label: 'Contact Us', id: 'contact', href: '/contact' },
+		{ label: 'Who we are', href: '/about', id: 'who-we-are' },
+		{ label: 'Projects', href: '/projects', id: 'portfolio' },
+		{ label: 'Services', href: '/services', id: 'services' },
+		{ label: 'News', href: '/news', id: 'news' },
+		{ label: 'Careers', href: '/careers', id: 'careers' },
+		{ label: 'Contact Us', href: '/contact', id: 'contact' },
 	];
 
 	useEffect(() => {
@@ -52,13 +40,13 @@ export function Header({ activePage, onNavigate }: HeaderProps) {
 
 	const closeMenu = () => setOpen(false);
 
-  const handleLinkClick = (e: React.MouseEvent, id: string) => {
-    if (onNavigate) {
-      e.preventDefault();
-      onNavigate(id);
-      closeMenu();
-    }
-  };
+	const handleLinkClick = (e: React.MouseEvent, href: string, id: string) => {
+		if (onNavigate) {
+			e.preventDefault();
+			onNavigate(id);
+		}
+		closeMenu();
+	};
 
 	return (
 		<header
@@ -77,28 +65,35 @@ export function Header({ activePage, onNavigate }: HeaderProps) {
 					{ 'px-4': scrolled }
 				)}
 			>
-				<Link href="/" className="flex items-center gap-2 cursor-pointer" onClick={(e) => handleLinkClick(e, 'home')}>
+				<Link 
+					href="/" 
+					className="flex items-center gap-2 cursor-pointer" 
+					onClick={(e) => handleLinkClick(e, '/', 'home')}
+				>
 					<WordmarkIcon className="h-8 w-auto" />
 				</Link>
 				
 				<div className="hidden items-center gap-1 md:flex">
 					<div className="flex items-center gap-1 mr-4">
-						{links.map((link, i) => (
-							<Link 
-								key={i} 
-								href={link.href}
-								onClick={(e) => handleLinkClick(e, link.id)}
-								className={buttonVariants({ 
-									variant: 'ghost', 
-									className: cn(
-										'text-white/70 hover:text-white hover:bg-white/5 transition-all text-xs lg:text-sm px-3',
-										(pathname === link.href || activePage === link.id) && 'text-white bg-white/10'
-									) 
-								})} 
-							>
-								{link.label}
-							</Link>
-						))}
+						{links.map((link, i) => {
+							const isActive = pathname === link.href || activePage === link.id;
+							return (
+								<Link 
+									key={i} 
+									href={link.href}
+									onClick={(e) => handleLinkClick(e, link.href, link.id)}
+									className={buttonVariants({ 
+										variant: 'ghost', 
+										className: cn(
+											'text-white/70 hover:text-white hover:bg-white/5 transition-all text-xs lg:text-sm px-3',
+											isActive && 'text-white bg-white/10'
+										) 
+									})} 
+								>
+									{link.label}
+								</Link>
+							);
+						})}
 					</div>
 					<div className="flex items-center gap-4 border-l border-white/10 pl-4">
 						<Button variant="ghost" className="text-white/70 hover:text-white text-xs lg:text-sm">
@@ -106,7 +101,7 @@ export function Header({ activePage, onNavigate }: HeaderProps) {
 						</Button>
 						<Link 
 							href="/contact"
-              onClick={(e) => handleLinkClick(e, 'contact')}
+							onClick={(e) => handleLinkClick(e, '/contact', 'contact')}
 							className="bg-white text-black hover:bg-white/90 shadow-lg text-xs lg:text-sm px-5 rounded-full font-semibold flex items-center justify-center h-10"
 						>
 							Get Started
@@ -132,19 +127,22 @@ export function Header({ activePage, onNavigate }: HeaderProps) {
 			>
 				<div className="flex h-full w-full flex-col justify-between gap-y-8 p-8 overflow-y-auto">
 					<div className="grid gap-y-4 pt-4">
-						{links.map((link) => (
-							<Link
-								key={link.href}
-								href={link.href}
-								onClick={(e) => handleLinkClick(e, link.id)}
-								className={cn(
-									"text-3xl font-bold text-left text-white/90 hover:text-white transition-colors tracking-tight",
-									(pathname === link.href || activePage === link.id) && "text-indigo-400"
-								)}
-							>
-								{link.label}
-							</Link>
-						))}
+						{links.map((link) => {
+							const isActive = pathname === link.href || activePage === link.id;
+							return (
+								<Link
+									key={link.id}
+									href={link.href}
+									onClick={(e) => handleLinkClick(e, link.href, link.id)}
+									className={cn(
+										"text-3xl font-bold text-left text-white/90 hover:text-white transition-colors tracking-tight",
+										isActive && "text-indigo-400"
+									)}
+								>
+									{link.label}
+								</Link>
+							);
+						})}
 					</div>
 					<div className="flex flex-col gap-4 mb-20">
 						<Button variant="outline" className="w-full text-lg py-7 border-white/20 text-white rounded-xl">
@@ -152,7 +150,7 @@ export function Header({ activePage, onNavigate }: HeaderProps) {
 						</Button>
 						<Link 
 							href="/contact"
-              onClick={(e) => handleLinkClick(e, 'contact')}
+							onClick={(e) => handleLinkClick(e, '/contact', 'contact')}
 							className="w-full text-lg py-7 bg-white text-black rounded-xl font-bold flex items-center justify-center"
 						>
 							Get Started
