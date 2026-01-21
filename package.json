@@ -1,3 +1,4 @@
+
 {
   "name": "mrghiche-landing",
   "version": "0.1.0",
@@ -9,9 +10,9 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "react": "19.0.0",
-    "react-dom": "19.0.0",
-    "next": "15.1.7",
+    "react": "latest",
+    "react-dom": "latest",
+    "next": "latest",
     "framer-motion": "^11.18.2",
     "lucide-react": "^0.475.0",
     "clsx": "^2.1.1",
