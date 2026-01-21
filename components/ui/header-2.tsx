@@ -1,5 +1,4 @@
-'use client';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, buttonVariants } from './button';
 import { cn } from '../../lib/utils';
 import { MenuToggleIcon } from './menu-toggle-icon';
@@ -11,7 +10,7 @@ interface HeaderProps {
 }
 
 export function Header({ activePage = 'home', onNavigate }: HeaderProps) {
-	const [open, setOpen] = React.useState(false);
+	const [open, setOpen] = useState(false);
 	const scrolled = useScroll(10);
 
 	const links = [
@@ -23,7 +22,7 @@ export function Header({ activePage = 'home', onNavigate }: HeaderProps) {
 		{ label: 'Contact Us', id: 'contact' },
 	];
 
-	React.useEffect(() => {
+	useEffect(() => {
 		if (open) {
 			document.body.style.overflow = 'hidden';
 		} else {
@@ -101,7 +100,6 @@ export function Header({ activePage = 'home', onNavigate }: HeaderProps) {
 				</Button>
 			</nav>
 
-			{/* Mobile Menu */}
 			<div
 				className={cn(
 					'fixed inset-0 top-20 z-50 flex flex-col bg-black md:hidden transition-all duration-300 ease-in-out',

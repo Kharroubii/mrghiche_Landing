@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { forwardRef, useRef, useState, useCallback, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "../../lib/utils";
 
@@ -20,16 +20,16 @@ interface ShareholderReportsProps {
   className?: string;
 }
 
-export const ShareholderReports = React.forwardRef<
+export const ShareholderReports = forwardRef<
   HTMLDivElement,
   ShareholderReportsProps
 >(({ reports, onReportClick, title = "Shareholders' Letter and Results", subtitle = "Insights into our strategic growth", className, ...props }, ref) => {
-  const scrollContainerRef = React.useRef<HTMLDivElement>(null);
-  const [canScrollLeft, setCanScrollLeft] = React.useState(false);
-  const [canScrollRight, setCanScrollRight] = React.useState(true);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
 
   // Function to handle scrolling and update arrow visibility
-  const checkScrollability = React.useCallback(() => {
+  const checkScrollability = useCallback(() => {
     const container = scrollContainerRef.current;
     if (container) {
       const { scrollLeft, scrollWidth, clientWidth } = container;
@@ -38,7 +38,7 @@ export const ShareholderReports = React.forwardRef<
     }
   }, []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const container = scrollContainerRef.current;
     if (container) {
       checkScrollability();
@@ -78,7 +78,6 @@ export const ShareholderReports = React.forwardRef<
           <p className="text-white/40 text-sm">{subtitle}</p>
         </div>
         <div className="hidden sm:flex items-center gap-3">
-          {/* Left Arrow Button */}
           <button
             onClick={() => scroll("left")}
             disabled={!canScrollLeft}
@@ -89,7 +88,6 @@ export const ShareholderReports = React.forwardRef<
           >
             <ChevronLeft className="h-5 w-5" />
           </button>
-          {/* Right Arrow Button */}
           <button
             onClick={() => scroll("right")}
             disabled={!canScrollRight}
@@ -113,7 +111,6 @@ export const ShareholderReports = React.forwardRef<
             className="flex-shrink-0 w-[260px] sm:w-[320px] snap-start"
             onClick={() => onReportClick?.(report)}
           >
-            {/* Report Card */}
             <div className="group cursor-pointer">
               <div className="relative overflow-hidden rounded-[2rem] bg-white/5 border border-white/10 mb-4 transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:shadow-2xl group-hover:border-white/20 group-hover:-translate-y-2">
                 <img

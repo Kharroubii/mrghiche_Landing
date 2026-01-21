@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence, useInView, animate } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Header } from './components/ui/header-2';
 import { DemoHeroGeometric } from './components/DemoHero';
 import { Logos3 } from './components/ui/logos3';
@@ -15,27 +15,15 @@ import {
   ShieldCheck, 
   TrendingUp, 
   Coins, 
-  Handshake, 
   ChevronRight, 
   ChevronDown, 
   ChevronUp, 
-  Users, 
-  Target, 
   BarChart3, 
   Instagram,
-  Trophy,
-  Rocket,
   ArrowLeft,
   FileUp,
   CheckCircle2,
-  FileText,
-  Download,
-  FileSearch,
-  PieChart,
-  LineChart,
-  Activity,
-  FileDown,
-  Calendar
+  FileDown
 } from 'lucide-react';
 import Footer4Col from './components/ui/footer-4-col';
 import { VideoPlayer } from './components/ui/video-player';
@@ -54,6 +42,7 @@ import { cn } from './lib/utils';
 
 const SERVICES_DATA = [
   { 
+    id: "pe",
     title: "Private Equity", 
     description: "Growth Capital",
     teaser: "We identify companies at inflection points where our operational toolkit can unlock significant value. Our strategy is built on principles of partnership and active management.",
@@ -84,6 +73,7 @@ const SERVICES_DATA = [
     )
   },
   { 
+    id: "re",
     title: "Real Estate", 
     description: "Core-Plus Assets",
     teaser: "Active management of prime commercial, industrial, and logistics assets in major global gateway cities. We focus on acquisition and value creation in high-barrier markets.",
@@ -111,6 +101,7 @@ const SERVICES_DATA = [
     )
   },
   { 
+    id: "lm",
     title: "Liquid Markets", 
     description: "Alpha Strategies",
     teaser: "Sophisticated quant-driven strategies across global equities, fixed income, and cross-asset liquidity pools. We leverage proprietary engines and alternative data for precision.",
@@ -135,6 +126,7 @@ const SERVICES_DATA = [
     )
   },
   { 
+    id: "am",
     title: "Asset Management", 
     description: "Legacy Preservation",
     teaser: "Strategic portfolio construction for family offices and institutional endowments. We focus on multi-generational capital preservation through disciplined allocation models.",
@@ -159,6 +151,7 @@ const SERVICES_DATA = [
     )
   },
   { 
+    id: "da",
     title: "Digital Assets", 
     description: "Web3 Infrastructure",
     teaser: "Navigating the institutional frontier of the decentralized economy through strategic investments. We focus on foundational blockchain protocols and secure infrastructure.",
@@ -184,6 +177,7 @@ const SERVICES_DATA = [
     )
   },
   { 
+    id: "adv",
     title: "Advisory Services", 
     description: "Global Strategy",
     teaser: "Independent, high-conviction advice on capital structure and international market expansion. We specialize in complex cross-border transactions and strategic advisory.",
@@ -251,7 +245,6 @@ const HomeView = ({ onNavigate, onSelectReport }: { onNavigate: (page: string) =
     <DemoHeroGeometric />
     <Logos3 />
 
-    {/* Integrated Services Carousel */}
     <section className="bg-[#030303] py-16 md:py-32 px-6 relative z-10 overflow-hidden">
       <div className="mx-auto max-w-5xl border-t border-white/10 px-6 relative mb-16">
         <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-indigo-400 -ml-6 -mt-3.5 block w-max bg-[#030303] px-6">
@@ -342,7 +335,6 @@ const HomeView = ({ onNavigate, onSelectReport }: { onNavigate: (page: string) =
       </div>
     </section>
 
-    {/* Enhanced Established Excellence Card Section */}
     <section className="bg-[#030303] pb-32 px-6 relative z-10">
       <div className="max-w-7xl mx-auto">
         <motion.div 
@@ -358,7 +350,6 @@ const HomeView = ({ onNavigate, onSelectReport }: { onNavigate: (page: string) =
           </p>
           
           <div className="flex flex-wrap lg:flex-nowrap justify-center lg:justify-between items-start gap-y-12 gap-x-4 md:gap-x-8 relative z-10">
-            {/* AUM */}
             <div className="flex flex-col items-center min-w-[120px] flex-1">
               <div className="text-4xl md:text-5xl font-bold text-white tracking-tighter mb-2 transition-colors">
                 <AnimatedCounter value={1} prefix="$" suffix="M+" />
@@ -366,7 +357,6 @@ const HomeView = ({ onNavigate, onSelectReport }: { onNavigate: (page: string) =
               <div className="text-white/30 text-[9px] font-bold uppercase tracking-[0.3em] text-center">AUM</div>
             </div>
 
-            {/* Performance */}
             <div className="flex flex-col items-center min-w-[120px] flex-1">
               <div className="text-4xl md:text-5xl font-bold text-white tracking-tighter mb-2 transition-colors">
                 <AnimatedCounter value={35} suffix="%" />
@@ -374,7 +364,6 @@ const HomeView = ({ onNavigate, onSelectReport }: { onNavigate: (page: string) =
               <div className="text-white/30 text-[9px] font-bold uppercase tracking-[0.3em] text-center">Annual Target</div>
             </div>
 
-            {/* Investors */}
             <div className="flex flex-col items-center min-w-[120px] flex-1">
               <div className="text-4xl md:text-5xl font-bold text-white tracking-tighter mb-2 transition-colors">
                 <AnimatedCounter value={20} suffix="+" />
@@ -382,7 +371,6 @@ const HomeView = ({ onNavigate, onSelectReport }: { onNavigate: (page: string) =
               <div className="text-white/30 text-[9px] font-bold uppercase tracking-[0.3em] text-center">Investors</div>
             </div>
 
-            {/* Employees */}
             <div className="flex flex-col items-center min-w-[120px] flex-1">
               <div className="text-4xl md:text-5xl font-bold text-white tracking-tighter mb-2 transition-colors">
                 <AnimatedCounter value={30} suffix="+" />
@@ -390,7 +378,6 @@ const HomeView = ({ onNavigate, onSelectReport }: { onNavigate: (page: string) =
               <div className="text-white/30 text-[9px] font-bold uppercase tracking-[0.3em] text-center">Employees</div>
             </div>
 
-            {/* Strategic Hubs */}
             <div className="flex flex-col items-center min-w-[120px] flex-1">
               <div className="text-4xl md:text-5xl font-bold text-white tracking-tighter mb-2 transition-colors">
                 <AnimatedCounter value={4} />
@@ -398,7 +385,6 @@ const HomeView = ({ onNavigate, onSelectReport }: { onNavigate: (page: string) =
               <div className="text-white/30 text-[9px] font-bold uppercase tracking-[0.3em] text-center">Strategic Hubs</div>
             </div>
 
-            {/* Founded */}
             <div className="flex flex-col items-center min-w-[120px] flex-1">
               <div className="text-4xl md:text-5xl font-bold text-white tracking-tighter mb-2 transition-colors">
                 <AnimatedCounter value={2019} duration={1} />
@@ -410,7 +396,6 @@ const HomeView = ({ onNavigate, onSelectReport }: { onNavigate: (page: string) =
       </div>
     </section>
 
-    {/* Detailed Statistics Section (Simplified) */}
     <section className="bg-[#030303] py-24 px-6 relative z-10 border-t border-white/5 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-indigo-500/[0.02] to-transparent pointer-events-none" />
       <div className="max-w-7xl mx-auto">
@@ -529,7 +514,6 @@ const ReportDetailView = ({ report, onBack }: { report: Report | null, onBack: (
       className="pt-32 pb-32 px-6"
     >
       <div className="max-w-3xl mx-auto">
-        {/* Back Navigation */}
         <button 
           onClick={onBack}
           className="flex items-center gap-2 text-white/40 hover:text-white mb-16 transition-colors uppercase tracking-widest text-[10px] font-bold group"
@@ -537,10 +521,8 @@ const ReportDetailView = ({ report, onBack }: { report: Report | null, onBack: (
           <ArrowLeft className="size-3 group-hover:-translate-x-1 transition-transform" /> Back
         </button>
 
-        {/* Article Header */}
         <header className="mb-16 border-b border-white/10 pb-12">
           <div className="space-y-4">
-            {/* Date ABOVE Title */}
             <p className="text-indigo-400 font-bold uppercase tracking-[0.25em] text-xs">
               {report.period}
             </p>
@@ -553,7 +535,6 @@ const ReportDetailView = ({ report, onBack }: { report: Report | null, onBack: (
           </div>
         </header>
 
-        {/* Article Body */}
         <article className="prose prose-invert max-w-none space-y-12">
           <div className="space-y-8 text-white/70 leading-[1.7] font-light text-xl">
             <h2 className="text-2xl font-bold text-white mb-6">Letter to Shareholders</h2>
@@ -571,14 +552,12 @@ const ReportDetailView = ({ report, onBack }: { report: Report | null, onBack: (
               As we move into the next phase of our growth, we remain committed to transparency, discipline, and the pursuit of non-correlated returns for our stakeholders.
             </p>
 
-            {/* Signature */}
             <div className="pt-12 border-t border-white/5 mt-12">
               <p className="text-white font-bold text-lg">Mohammed Kharroubi</p>
               <p className="text-white/40 text-sm">Founder & CEO, Mrghiche Capital</p>
             </div>
           </div>
 
-          {/* Download CTA Section */}
           <div className="mt-24 p-12 rounded-[2.5rem] bg-white/[0.03] border border-white/10 text-center relative overflow-hidden group">
             <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
             <h3 className="text-2xl font-bold text-white mb-4 relative z-10">Institutional Disclosure Packet</h3>
@@ -593,7 +572,6 @@ const ReportDetailView = ({ report, onBack }: { report: Report | null, onBack: (
           </div>
         </article>
 
-        {/* Footer Disclosure */}
         <div className="mt-32 pt-10 border-t border-white/10 text-center">
           <p className="text-white/20 text-[10px] uppercase tracking-[0.4em] mb-4">Confidential Disclosure</p>
           <p className="text-white/30 text-xs max-w-xl mx-auto leading-relaxed italic">
@@ -730,7 +708,6 @@ const WhoWeAreView = () => {
           </a>
         </div>
 
-        {/* Narrative Image */}
         <div className="mt-20 mb-32 rounded-[2.5rem] overflow-hidden border border-white/10 h-[500px] shadow-2xl relative group">
           <img 
             src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop" 
@@ -770,7 +747,6 @@ const WhoWeAreView = () => {
         </div>
       </div>
       
-      {/* Team Section integrated into the Who We Are page */}
       <TeamSection />
     </motion.div>
   );
@@ -813,7 +789,7 @@ const PortfolioView = () => {
       location: "Stockholm, SE",
       flag: "🇸🇪",
       desc: "A portfolio of wind and hydro-electric assets supporting the transition to a carbon-neutral industrial base. This strategic play focuses on long-dated energy security.",
-      image: "https://images.unsplash.com/photo-1466611653911-954ff2131404?q=80&w=1000&auto=format&fit=crop"
+      image: "https://images.unsplash.com/photo-1466611653911-954ff21b6748?q=80&w=1000&auto=format&fit=crop"
     },
     {
       tag: "Digital Assets",
@@ -1023,7 +999,6 @@ const CareersView = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate API call
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmitted(true);

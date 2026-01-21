@@ -1,6 +1,6 @@
 "use client";
 
-import * as React from "react";
+import React, { useState, useEffect, useRef, useId } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "../../lib/utils";
 
@@ -25,11 +25,11 @@ export function ExpandableCard({
   classNameExpanded,
   ...props
 }: ExpandableCardProps) {
-  const [active, setActive] = React.useState(false);
-  const cardRef = React.useRef<HTMLDivElement>(null);
-  const id = React.useId();
+  const [active, setActive] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
+  const id = useId();
 
-  React.useEffect(() => {
+  useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         setActive(false);

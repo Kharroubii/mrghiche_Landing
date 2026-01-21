@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { MouseEvent } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { Button } from "./button";
 import { cn } from "../../lib/utils";
@@ -40,7 +40,7 @@ export const LocationCard = ({
   );
 
   // Handle mouse movement over the card
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+  const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const width = rect.width;
     const height = rect.height;
@@ -81,10 +81,8 @@ export const LocationCard = ({
         }}
         className="absolute inset-4 grid h-[calc(100%-2rem)] w-[calc(100%-2rem)] place-content-end rounded-xl bg-cover bg-center shadow-lg overflow-hidden"
       >
-        {/* Gradient overlay for text readability */}
         <div className="absolute inset-0 rounded-xl bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
         
-        {/* Content */}
         <div 
           style={{ transform: "translateZ(50px)" }}
           className="relative p-6 text-white flex justify-between items-end w-full"

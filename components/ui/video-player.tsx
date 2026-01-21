@@ -1,6 +1,6 @@
 "use client";
 
-import * as React from "react";
+import React, { forwardRef, useState, useEffect } from "react";
 import { cn } from "../../lib/utils";
 import { Play, X } from "lucide-react";
 
@@ -13,7 +13,7 @@ interface VideoPlayerProps extends React.HTMLAttributes<HTMLDivElement> {
   aspectRatio?: "16/9" | "4/3" | "1/1";
 }
 
-const VideoPlayer = React.forwardRef<HTMLDivElement, VideoPlayerProps>(
+const VideoPlayer = forwardRef<HTMLDivElement, VideoPlayerProps>(
   (
     {
       className,
@@ -27,10 +27,10 @@ const VideoPlayer = React.forwardRef<HTMLDivElement, VideoPlayerProps>(
     ref
   ) => {
     // State to manage the visibility of the video modal
-    const [isModalOpen, setIsModalOpen] = React.useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     // Effect to handle the 'Escape' key press for closing the modal
-    React.useEffect(() => {
+    useEffect(() => {
       const handleEsc = (event: KeyboardEvent) => {
         if (event.key === "Escape") {
           setIsModalOpen(false);
@@ -43,7 +43,7 @@ const VideoPlayer = React.forwardRef<HTMLDivElement, VideoPlayerProps>(
     }, []);
 
     // Prevent body scroll when modal is open
-    React.useEffect(() => {
+    useEffect(() => {
         if (isModalOpen) {
             document.body.style.overflow = 'hidden';
         } else {
@@ -68,23 +68,19 @@ const VideoPlayer = React.forwardRef<HTMLDivElement, VideoPlayerProps>(
           aria-label={`Play video: ${title}`}
           {...props}
         >
-          {/* Thumbnail Image */}
           <img
             src={thumbnailUrl}
             alt={`Thumbnail for ${title}`}
             className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
           />
-          {/* Overlay Gradient */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
-          {/* Play Button */}
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="flex h-20 w-20 items-center justify-center rounded-full bg-white/10 backdrop-blur-md border border-white/20 transition-all duration-500 group-hover:scale-110 group-hover:bg-white group-hover:border-white">
               <Play className="h-8 w-8 fill-white text-white transition-colors group-hover:fill-black group-hover:text-black" />
             </div>
           </div>
 
-          {/* Title and Description */}
           <div className="absolute bottom-0 left-0 p-8 w-full">
             <h3 className="text-3xl font-bold text-white tracking-tight">{title}</h3>
             {description && (
@@ -93,14 +89,12 @@ const VideoPlayer = React.forwardRef<HTMLDivElement, VideoPlayerProps>(
           </div>
         </div>
 
-        {/* Video Modal */}
         {isModalOpen && (
           <div
             className="fixed inset-0 z-[100] flex animate-in fade-in-0 items-center justify-center bg-black/95 backdrop-blur-xl"
             aria-modal="true"
             role="dialog"
           >
-            {/* Close Button */}
             <button
               onClick={() => setIsModalOpen(false)}
               className="absolute right-8 top-8 z-[110] rounded-full bg-white/5 p-3 text-white transition-all hover:bg-white hover:text-black hover:scale-110"
@@ -109,7 +103,6 @@ const VideoPlayer = React.forwardRef<HTMLDivElement, VideoPlayerProps>(
               <X className="h-6 w-6" />
             </button>
 
-            {/* Video Iframe */}
             <div className="w-full max-w-6xl aspect-video p-4">
                <iframe
                     src={`${videoUrl}?autoplay=1`}
