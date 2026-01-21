@@ -1,6 +1,12 @@
+
 'use client';
 import React from 'react';
-import { cn } from '../../lib/utils.ts';
+import { cn } from '../../lib/utils';
+
+type MenuToggleProps = React.ComponentProps<'svg'> & {
+	open: boolean;
+	duration?: number;
+};
 
 export function MenuToggleIcon({
 	open,
@@ -12,7 +18,7 @@ export function MenuToggleIcon({
 	strokeLinejoin = 'round',
 	duration = 500,
 	...props
-}) {
+}: MenuToggleProps) {
 	return (
 		<svg
 			strokeWidth={strokeWidth}

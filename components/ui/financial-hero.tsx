@@ -1,8 +1,19 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
-import { cn } from '../../lib/utils.ts';
-import { Button } from './button.tsx';
+import { cn } from '../../lib/utils';
+import { Button } from './button';
+
+interface FinancialHeroProps {
+  title: React.ReactNode;
+  description: string;
+  buttonText: string;
+  buttonLink: string;
+  imageUrl1: string;
+  imageUrl2: string;
+  bgImageUrl?: string;
+  className?: string;
+}
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -52,7 +63,7 @@ export const FinancialHero = ({
   imageUrl2,
   bgImageUrl,
   className,
-}) => {
+}: FinancialHeroProps) => {
   const gridBackgroundStyle = {
     backgroundImage:
       'linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px)',

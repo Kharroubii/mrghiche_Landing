@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Header } from './components/ui/header-2.tsx';
-import { DemoHeroGeometric } from './components/DemoHero.tsx';
-import { Logos3 } from './components/ui/logos3.tsx';
-import { TestimonialCarousel } from './components/ui/testimonial-carousel.tsx';
-import { Button } from './components/ui/button.tsx';
+import { Header } from './components/ui/header-2';
+import { DemoHeroGeometric } from './components/DemoHero';
+import { Logos3 } from './components/ui/logos3';
+import { TestimonialCarousel } from './components/ui/testimonial-carousel';
+import { Button } from './components/ui/button';
 import { 
   Mail, 
   MapPin, 
@@ -25,18 +25,18 @@ import {
   CheckCircle2,
   FileDown
 } from 'lucide-react';
-import Footer4Col from './components/ui/footer-4-col.tsx';
-import { VideoPlayer } from './components/ui/video-player.tsx';
-import TeamSection from './components/ui/team-section.tsx';
-import { MasonryGrid } from './components/ui/masonry-grid.tsx';
-import { FinancialHero } from './components/ui/financial-hero.tsx';
-import { ExpandableCard } from './components/ui/expandable-card.tsx';
-import { LocationCard } from './components/ui/location-card.tsx';
-import { ShareholderReports } from './components/ui/shareholder-reports.tsx';
-import { AnimatedCounter } from './components/ui/animated-counter.tsx';
-import { Carousel, CarouselContent, CarouselItem } from './components/ui/carousel.tsx';
-import { Feature1 } from './components/ui/feature-1.tsx';
-import { cn } from './lib/utils.ts';
+import Footer4Col from './components/ui/footer-4-col';
+import { VideoPlayer } from './components/ui/video-player';
+import TeamSection from './components/ui/team-section';
+import { MasonryGrid } from './components/ui/masonry-grid';
+import { FinancialHero } from './components/ui/financial-hero';
+import { ExpandableCard } from './components/ui/expandable-card';
+import { LocationCard } from './components/ui/location-card';
+import { ShareholderReports, Report } from './components/ui/shareholder-reports';
+import { AnimatedCounter } from './components/ui/animated-counter';
+import { Carousel, CarouselContent, CarouselItem } from './components/ui/carousel';
+import { Feature1 } from './components/ui/feature-1';
+import { cn } from './lib/utils';
 
 // --- Shared Data ---
 
@@ -47,7 +47,7 @@ const SERVICES_DATA = [
     description: "Growth Capital",
     teaser: "We identify companies at inflection points where our operational toolkit can unlock significant value. Our strategy is built on principles of partnership and active management.",
     src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
-    content: (onNavigate) => (
+    content: (onNavigate: (p: string) => void) => (
       <>
         <article className="space-y-4 text-white/70">
           <p className="font-semibold text-white text-xl">The Pursuit of Operational Alpha</p>
@@ -78,7 +78,7 @@ const SERVICES_DATA = [
     description: "Core-Plus Assets",
     teaser: "Active management of prime commercial, industrial, and logistics assets in major global gateway cities. We focus on acquisition and value creation in high-barrier markets.",
     src: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80",
-    content: (onNavigate) => (
+    content: (onNavigate: (p: string) => void) => (
       <>
         <article className="space-y-4 text-white/70">
           <p className="font-semibold text-white text-xl">Redefining Urban Value</p>
@@ -106,7 +106,7 @@ const SERVICES_DATA = [
     description: "Alpha Strategies",
     teaser: "Sophisticated quant-driven strategies across global equities, fixed income, and cross-asset liquidity pools. We leverage proprietary engines and alternative data for precision.",
     src: "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=800&q=80",
-    content: (onNavigate) => (
+    content: (onNavigate: (p: string) => void) => (
       <>
         <article className="space-y-4 text-white/70">
           <p className="font-semibold text-white text-xl">Precision in Performance</p>
@@ -131,7 +131,7 @@ const SERVICES_DATA = [
     description: "Legacy Preservation",
     teaser: "Strategic portfolio construction for family offices and institutional endowments. We focus on multi-generational capital preservation through disciplined allocation models.",
     src: "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&w=800&q=80",
-    content: (onNavigate) => (
+    content: (onNavigate: (p: string) => void) => (
       <>
         <article className="space-y-4 text-white/70">
           <p className="font-semibold text-white text-xl">Beyond Wealth Management</p>
@@ -156,7 +156,7 @@ const SERVICES_DATA = [
     description: "Web3 Infrastructure",
     teaser: "Navigating the institutional frontier of the decentralized economy through strategic investments. We focus on foundational blockchain protocols and secure infrastructure.",
     src: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=800&q=80",
-    content: (onNavigate) => (
+    content: (onNavigate: (p: string) => void) => (
       <>
         <article className="space-y-4 text-white/70">
           <p className="font-semibold text-white text-xl">The Institutional Frontier</p>
@@ -182,7 +182,7 @@ const SERVICES_DATA = [
     description: "Global Strategy",
     teaser: "Independent, high-conviction advice on capital structure and international market expansion. We specialize in complex cross-border transactions and strategic advisory.",
     src: "https://images.unsplash.com/photo-1454165833767-13a6ad0a7a58?auto=format&fit=crop&w=800&q=80",
-    content: (onNavigate) => (
+    content: (onNavigate: (p: string) => void) => (
       <>
         <article className="space-y-4 text-white/70">
           <p className="font-semibold text-white text-xl">Navigating Complexity</p>
@@ -199,7 +199,7 @@ const SERVICES_DATA = [
   }
 ];
 
-const shareholderReportsData = [
+const shareholderReportsData: Report[] = [
   {
     id: "q3-2024",
     quarter: "Q3 2024 Results",
@@ -235,7 +235,7 @@ const shareholderReportsData = [
 
 // --- View Components ---
 
-const HomeView = ({ onNavigate, onSelectReport }) => (
+const HomeView = ({ onNavigate, onSelectReport }: { onNavigate: (page: string) => void, onSelectReport: (report: Report) => void }) => (
   <motion.div
     initial={{ opacity: 0, x: 20 }}
     animate={{ opacity: 1, x: 0 }}
@@ -502,7 +502,7 @@ const HomeView = ({ onNavigate, onSelectReport }) => (
   </motion.div>
 );
 
-const ReportDetailView = ({ report, onBack }) => {
+const ReportDetailView = ({ report, onBack }: { report: Report | null, onBack: () => void }) => {
   if (!report) return null;
 
   return (
@@ -858,7 +858,7 @@ const PortfolioView = () => {
   );
 };
 
-const ServicesView = ({ onNavigate }) => (
+const ServicesView = ({ onNavigate }: { onNavigate: (page: string) => void }) => (
   <motion.div
     initial={{ opacity: 0, x: 20 }}
     animate={{ opacity: 1, x: 0 }}
@@ -935,7 +935,7 @@ const NewsView = () => (
 );
 
 const CareersView = () => {
-  const [selectedJob, setSelectedJob] = useState(null);
+  const [selectedJob, setSelectedJob] = useState<null | {role: string, loc: string, type: string}>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
@@ -946,7 +946,7 @@ const CareersView = () => {
     { role: "Alternative Data Scientist", loc: "London", type: "Tech" }
   ];
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setTimeout(() => {
@@ -1163,9 +1163,9 @@ const ContactView = () => (
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
-  const [selectedReport, setSelectedReport] = useState(null);
+  const [selectedReport, setSelectedReport] = useState<Report | null>(null);
 
-  const handleReportSelection = (report) => {
+  const handleReportSelection = (report: Report) => {
     setSelectedReport(report);
     setCurrentPage('report-detail');
     window.scrollTo({ top: 0, behavior: 'smooth' });

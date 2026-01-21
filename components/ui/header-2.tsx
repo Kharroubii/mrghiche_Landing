@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Button, buttonVariants } from './button.tsx';
-import { cn } from '../../lib/utils.ts';
-import { MenuToggleIcon } from './menu-toggle-icon.tsx';
-import { useScroll } from './use-scroll.tsx';
+import { Button, buttonVariants } from './button';
+import { cn } from '../../lib/utils';
+import { MenuToggleIcon } from './menu-toggle-icon';
+import { useScroll } from './use-scroll';
 
-export function Header({ activePage = 'home', onNavigate }) {
+interface HeaderProps {
+	activePage?: string;
+	onNavigate?: (page: string) => void;
+}
+
+export function Header({ activePage = 'home', onNavigate }: HeaderProps) {
 	const [open, setOpen] = useState(false);
 	const scrolled = useScroll(10);
 
@@ -28,7 +33,7 @@ export function Header({ activePage = 'home', onNavigate }) {
 		};
 	}, [open]);
 
-	const handleNav = (id) => {
+	const handleNav = (id: string) => {
 		onNavigate?.(id);
 		setOpen(false);
 	};
@@ -133,7 +138,7 @@ export function Header({ activePage = 'home', onNavigate }) {
 	);
 }
 
-export const WordmarkIcon = (props) => (
+export const WordmarkIcon = (props: React.ComponentProps<"svg">) => (
   <svg 
     width="50" 
     height="50" 

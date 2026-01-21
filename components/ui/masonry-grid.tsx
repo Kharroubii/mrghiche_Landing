@@ -1,8 +1,21 @@
 import * as React from 'react';
 import { motion } from 'framer-motion';
-import { cn } from '../../lib/utils.ts';
+import { cn } from '../../lib/utils';
 
-const MasonryGrid = React.forwardRef(
+interface MasonryGridProps extends React.HTMLAttributes<HTMLDivElement> {
+  /**
+   * The number of columns to display.
+   * @default 3
+   */
+  columns?: number;
+  /**
+   * The gap between items in the grid, corresponding to Tailwind's spacing scale.
+   * @default 4
+   */
+  gap?: number;
+}
+
+const MasonryGrid = React.forwardRef<HTMLDivElement, MasonryGridProps>(
   ({ className, columns = 3, gap = 4, children, ...props }, ref) => {
     // Dynamically create the style object for column layout
     const style = {

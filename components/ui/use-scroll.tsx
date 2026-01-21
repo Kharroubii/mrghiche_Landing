@@ -1,7 +1,8 @@
+
 'use client';
 import React from 'react';
 
-export function useScroll(threshold) {
+export function useScroll(threshold: number) {
 	const [scrolled, setScrolled] = React.useState(false);
 
 	const onScroll = React.useCallback(() => {
