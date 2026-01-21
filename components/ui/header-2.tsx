@@ -1,25 +1,37 @@
+"use client";
+
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Button, buttonVariants } from './button';
-import { cn } from '../../lib/utils';
+import { cn } from '@/lib/utils';
 import { MenuToggleIcon } from './menu-toggle-icon';
 import { useScroll } from './use-scroll';
 
 interface HeaderProps {
-	activePage?: string;
-	onNavigate?: (page: string) => void;
+  activePage?: string;
+  onNavigate?: (page: string) => void;
 }
 
-export function Header({ activePage = 'home', onNavigate }: HeaderProps) {
+export function Header({ activePage, onNavigate }: HeaderProps) {
 	const [open, setOpen] = useState(false);
 	const scrolled = useScroll(10);
+	
+  // Safely attempt to get pathname from Next.js, fallback to prop-based path
+  let pathname = '/';
+  try {
+    pathname = usePathname() || '/';
+  } catch (e) {
+    pathname = activePage ? (activePage === 'home' ? '/' : `/${activePage}`) : '/';
+  }
 
 	const links = [
-		{ label: 'Who we are', id: 'who-we-are' },
-		{ label: 'Portfolio', id: 'portfolio' },
-		{ label: 'Services', id: 'services' },
-		{ label: 'News', id: 'news' },
-		{ label: 'Careers', id: 'careers' },
-		{ label: 'Contact Us', id: 'contact' },
+		{ label: 'Who we are', id: 'who-we-are', href: '/about' },
+		{ label: 'Portfolio', id: 'portfolio', href: '/portfolio' },
+		{ label: 'Services', id: 'services', href: '/services' },
+		{ label: 'News', id: 'news', href: '/news' },
+		{ label: 'Careers', id: 'careers', href: '/careers' },
+		{ label: 'Contact Us', id: 'contact', href: '/contact' },
 	];
 
 	useEffect(() => {
@@ -33,10 +45,15 @@ export function Header({ activePage = 'home', onNavigate }: HeaderProps) {
 		};
 	}, [open]);
 
-	const handleNav = (id: string) => {
-		onNavigate?.(id);
-		setOpen(false);
-	};
+	const closeMenu = () => setOpen(false);
+
+  const handleLinkClick = (e: React.MouseEvent, id: string) => {
+    if (onNavigate) {
+      e.preventDefault();
+      onNavigate(id);
+      closeMenu();
+    }
+  };
 
 	return (
 		<header
@@ -55,38 +72,40 @@ export function Header({ activePage = 'home', onNavigate }: HeaderProps) {
 					{ 'px-4': scrolled }
 				)}
 			>
-				<div className="flex items-center gap-2 cursor-pointer" onClick={() => handleNav('home')}>
+				<Link href="/" className="flex items-center gap-2 cursor-pointer" onClick={(e) => handleLinkClick(e, 'home')}>
 					<WordmarkIcon className="h-8 w-auto" />
-				</div>
+				</Link>
 				
 				<div className="hidden items-center gap-1 md:flex">
 					<div className="flex items-center gap-1 mr-4">
 						{links.map((link, i) => (
-							<button 
+							<Link 
 								key={i} 
-								onClick={() => handleNav(link.id)}
+								href={link.href}
+								onClick={(e) => handleLinkClick(e, link.id)}
 								className={buttonVariants({ 
 									variant: 'ghost', 
 									className: cn(
 										'text-white/70 hover:text-white hover:bg-white/5 transition-all text-xs lg:text-sm px-3',
-										activePage === link.id && 'text-white bg-white/10'
+										(pathname === link.href || activePage === link.id) && 'text-white bg-white/10'
 									) 
 								})} 
 							>
 								{link.label}
-							</button>
+							</Link>
 						))}
 					</div>
 					<div className="flex items-center gap-4 border-l border-white/10 pl-4">
 						<Button variant="ghost" className="text-white/70 hover:text-white text-xs lg:text-sm">
 							Sign In
 						</Button>
-						<Button 
-							onClick={() => handleNav('contact')}
-							className="bg-white text-black hover:bg-white/90 shadow-lg text-xs lg:text-sm px-5 rounded-full font-semibold"
+						<Link 
+							href="/contact"
+              onClick={(e) => handleLinkClick(e, 'contact')}
+							className="bg-white text-black hover:bg-white/90 shadow-lg text-xs lg:text-sm px-5 rounded-full font-semibold flex items-center justify-center h-10"
 						>
 							Get Started
-						</Button>
+						</Link>
 					</div>
 				</div>
 
@@ -109,28 +128,30 @@ export function Header({ activePage = 'home', onNavigate }: HeaderProps) {
 				<div className="flex h-full w-full flex-col justify-between gap-y-8 p-8 overflow-y-auto">
 					<div className="grid gap-y-4 pt-4">
 						{links.map((link) => (
-							<button
-								key={link.id}
-								onClick={() => handleNav(link.id)}
+							<Link
+								key={link.href}
+								href={link.href}
+								onClick={(e) => handleLinkClick(e, link.id)}
 								className={cn(
 									"text-3xl font-bold text-left text-white/90 hover:text-white transition-colors tracking-tight",
-									activePage === link.id && "text-indigo-400"
+									(pathname === link.href || activePage === link.id) && "text-indigo-400"
 								)}
 							>
 								{link.label}
-							</button>
+							</Link>
 						))}
 					</div>
 					<div className="flex flex-col gap-4 mb-20">
 						<Button variant="outline" className="w-full text-lg py-7 border-white/20 text-white rounded-xl">
 							Sign In
 						</Button>
-						<Button 
-							onClick={() => handleNav('contact')}
-							className="w-full text-lg py-7 bg-white text-black rounded-xl font-bold"
+						<Link 
+							href="/contact"
+              onClick={(e) => handleLinkClick(e, 'contact')}
+							className="w-full text-lg py-7 bg-white text-black rounded-xl font-bold flex items-center justify-center"
 						>
 							Get Started
-						</Button>
+						</Link>
 					</div>
 				</div>
 			</div>

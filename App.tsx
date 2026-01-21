@@ -434,7 +434,7 @@ const HomeView = ({ onNavigate, onSelectReport }: { onNavigate: (page: string) =
         }
         description="Partner with a management team focused on structured processes, rigorous risk control, and consistent execution across market conditions."
         buttonText="Join Us !"
-        buttonLink="#"
+        buttonLink="/contact"
         imageUrl1="https://images.unsplash.com/photo-1611974714024-4639454e4f8a?q=80&w=800&auto=format&fit=crop"
         imageUrl2="https://images.unsplash.com/photo-1551288049-bbbda536339a?q=80&w=800&auto=format&fit=crop"
         bgImageUrl="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?q=80&w=2000&auto=format&fit=crop"
@@ -495,8 +495,8 @@ const HomeView = ({ onNavigate, onSelectReport }: { onNavigate: (page: string) =
 
     <Feature1 
       title="Prioritizing talent and career growth"
-      buttonPrimary={{ label: "Join Us !", href: "#", onClick: () => onNavigate('contact') }}
-      buttonSecondary={{ label: "Explore careers", href: "#", onClick: () => onNavigate('careers') }}
+      buttonPrimary={{ label: "Join Us !", href: "/contact", onClick: () => onNavigate('contact') }}
+      buttonSecondary={{ label: "Explore careers", href: "/careers", onClick: () => onNavigate('careers') }}
       className="border-t border-white/5"
     />
   </motion.div>

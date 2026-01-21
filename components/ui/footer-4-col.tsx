@@ -1,4 +1,7 @@
+"use client";
+
 import React from 'react';
+import Link from 'next/link';
 import {
   Facebook,
   Instagram,
@@ -80,17 +83,17 @@ const socialLinks = [
 ];
 
 const aboutLinks = [
-  { text: 'Company History', href: '#', id: 'who-we-are' },
-  { text: 'Meet the Team', href: '#', id: 'who-we-are' },
+  { text: 'Company History', href: '/about' },
+  { text: 'Meet the Team', href: '/about' },
   { text: 'Employee Handbook', href: '#' },
-  { text: 'Careers', href: '#', id: 'careers' },
+  { text: 'Careers', href: '/careers' },
 ];
 
 const serviceLinks = [
-  { text: 'Private Equity', href: '#' },
-  { text: 'Real Estate', href: '#' },
-  { text: 'Liquid Markets', href: '#' },
-  { text: 'Advisory', href: '#' },
+  { text: 'Private Equity', href: '/services' },
+  { text: 'Real Estate', href: '/services' },
+  { text: 'Liquid Markets', href: '/services' },
+  { text: 'Advisory', href: '/services' },
 ];
 
 const helpfulLinks = [
@@ -105,18 +108,18 @@ const contactInfo = [
   { icon: MapPin, text: data.contact.address, isAddress: true },
 ];
 
-export default function Footer4Col({ onNavigate }: { onNavigate?: (id: string) => void }) {
+export default function Footer4Col() {
   return (
     <footer className="bg-white/[0.02] border-t border-white/5 mt-16 w-full rounded-t-[2.5rem] relative z-20">
       <div className="mx-auto max-w-screen-xl px-4 pt-16 pb-6 sm:px-6 lg:px-8 lg:pt-24">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div>
-            <div 
+            <Link 
+              href="/"
               className="flex justify-center gap-2 sm:justify-start cursor-pointer group"
-              onClick={() => onNavigate?.('home')}
             >
               <FooterLogo className="h-10 w-auto text-white group-hover:text-indigo-400 transition-colors" />
-            </div>
+            </Link>
 
             <p className="text-white/40 mt-6 max-w-md text-center leading-relaxed sm:max-w-xs sm:text-left text-sm">
               {data.company.description}
@@ -143,20 +146,14 @@ export default function Footer4Col({ onNavigate }: { onNavigate?: (id: string) =
             <div className="text-center sm:text-left">
               <p className="text-sm font-bold text-white uppercase tracking-widest">About Us</p>
               <ul className="mt-8 space-y-4 text-sm">
-                {aboutLinks.map(({ text, href, id }) => (
+                {aboutLinks.map(({ text, href }) => (
                   <li key={text}>
-                    <a
+                    <Link
                       className="text-white/40 hover:text-white transition-colors cursor-pointer"
                       href={href}
-                      onClick={(e) => {
-                        if (id) {
-                          e.preventDefault();
-                          onNavigate?.(id);
-                        }
-                      }}
                     >
                       {text}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -167,12 +164,12 @@ export default function Footer4Col({ onNavigate }: { onNavigate?: (id: string) =
               <ul className="mt-8 space-y-4 text-sm">
                 {serviceLinks.map(({ text, href }) => (
                   <li key={text}>
-                    <a
+                    <Link
                       className="text-white/40 hover:text-white transition-colors"
                       href={href}
                     >
                       {text}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
