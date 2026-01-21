@@ -17,10 +17,15 @@ export function Header({ activePage, onNavigate }: HeaderProps) {
 	const [open, setOpen] = useState(false);
 	const scrolled = useScroll(10);
 	
-  // Safely attempt to get pathname from Next.js, fallback to prop-based path
+  // Safely attempt to get pathname from Next.js, fallback to prop-based path if context is null
   let pathname = '/';
   try {
-    pathname = usePathname() || '/';
+    const nextPathname = usePathname();
+    if (nextPathname) {
+      pathname = nextPathname;
+    } else {
+      pathname = activePage ? (activePage === 'home' ? '/' : `/${activePage}`) : '/';
+    }
   } catch (e) {
     pathname = activePage ? (activePage === 'home' ? '/' : `/${activePage}`) : '/';
   }
