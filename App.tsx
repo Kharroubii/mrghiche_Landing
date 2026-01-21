@@ -245,13 +245,13 @@ const HomeView = ({ onNavigate, onSelectReport }: { onNavigate: (page: string) =
     <DemoHeroGeometric />
     <Logos3 />
 
-    <section className="bg-[#030303] py-16 md:py-32 px-6 relative z-10 overflow-hidden">
-      <div className="mx-auto max-w-5xl border-t border-white/10 px-6 relative mb-16">
+    <section className="bg-[#030303] py-12 md:py-20 px-6 relative z-10 overflow-hidden">
+      <div className="mx-auto max-w-5xl border-t border-white/10 px-6 relative mb-12">
         <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-indigo-400 -ml-6 -mt-3.5 block w-max bg-[#030303] px-6">
           The Strategies
         </span>
         
-        <div className="mt-12 gap-8 sm:grid sm:grid-cols-2 md:mt-24 mb-16 items-center">
+        <div className="mt-8 gap-8 sm:grid sm:grid-cols-2 md:mt-16 mb-12 items-center">
           <div className="sm:w-full">
             <h2 className="text-4xl font-bold sm:text-5xl text-white tracking-tighter">Our Services</h2>
           </div>
@@ -285,13 +285,13 @@ const HomeView = ({ onNavigate, onSelectReport }: { onNavigate: (page: string) =
       </div>
     </section>
 
-    <section className="bg-[#030303] py-16 md:py-32 px-6 relative z-10">
+    <section className="bg-[#030303] py-12 md:py-20 px-6 relative z-10">
       <div className="mx-auto max-w-5xl border-t border-white/10 px-6 relative">
         <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-indigo-400 -ml-6 -mt-3.5 block w-max bg-[#030303] px-6">
           The Journey
         </span>
         
-        <div className="mt-12 gap-8 sm:grid sm:grid-cols-2 md:mt-24 mb-16">
+        <div className="mt-8 gap-8 sm:grid sm:grid-cols-2 md:mt-16 mb-12">
           <div className="sm:w-full">
             <h2 className="text-4xl font-bold sm:text-5xl text-white tracking-tighter">Our Story</h2>
           </div>
@@ -314,13 +314,13 @@ const HomeView = ({ onNavigate, onSelectReport }: { onNavigate: (page: string) =
 
     <TeamSection />
     
-    <section className="bg-[#030303] py-16 md:py-32 px-6 relative z-10">
+    <section className="bg-[#030303] py-12 md:py-20 px-6 relative z-10">
       <div className="mx-auto max-w-5xl border-t border-white/10 px-6 relative">
         <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-indigo-400 -ml-6 -mt-3.5 block w-max bg-[#030303] px-6">
           The Insights
         </span>
 
-        <div className="mt-12 gap-8 sm:grid sm:grid-cols-2 md:mt-24 mb-16 text-left">
+        <div className="mt-8 gap-8 sm:grid sm:grid-cols-2 md:mt-16 mb-12 text-left">
           <div className="sm:w-full">
             <h2 className="text-4xl font-bold sm:text-5xl text-white tracking-tighter">Expert Insights</h2>
           </div>
@@ -331,90 +331,90 @@ const HomeView = ({ onNavigate, onSelectReport }: { onNavigate: (page: string) =
           </div>
         </div>
 
-        <TestimonialCarousel className="mt-16" />
+        <TestimonialCarousel className="mt-12" />
       </div>
     </section>
 
-    <section className="bg-[#030303] pb-32 px-6 relative z-10">
+    <section className="bg-[#030303] pb-24 px-6 relative z-10">
       <div className="max-w-7xl mx-auto">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="p-10 md:p-14 rounded-[3rem] bg-gradient-to-br from-indigo-500/10 via-white/[0.02] to-rose-500/10 border border-white/10 text-center shadow-2xl relative overflow-hidden group"
+          className="p-8 md:p-12 rounded-[2.5rem] bg-gradient-to-br from-indigo-500/10 via-white/[0.02] to-rose-500/10 border border-white/10 text-center shadow-2xl relative overflow-hidden group"
         >
           <div className="absolute inset-0 bg-white/[0.01] pointer-events-none" />
-          <h2 className="text-4xl font-bold text-white mb-6 tracking-tight relative z-10">Established Excellence</h2>
-          <p className="text-white/50 mb-16 max-w-2xl mx-auto relative z-10 leading-relaxed text-lg">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-tight relative z-10">Established Excellence</h2>
+          <p className="text-white/50 mb-12 max-w-2xl mx-auto relative z-10 leading-relaxed text-base md:text-lg">
             Since our founding in 2019, Mrghiche Capital has maintained a steadfast commitment to institutional-grade execution and rigorous performance standards.
           </p>
           
-          <div className="flex flex-wrap lg:flex-nowrap justify-center lg:justify-between items-start gap-y-12 gap-x-4 md:gap-x-8 relative z-10">
-            <div className="flex flex-col items-center min-w-[120px] flex-1">
-              <div className="text-4xl md:text-5xl font-bold text-white tracking-tighter mb-2 transition-colors">
+          <div className="flex flex-wrap lg:flex-nowrap justify-center lg:justify-between items-start gap-y-10 gap-x-4 md:gap-x-8 relative z-10">
+            <div className="flex flex-col items-center min-w-[100px] flex-1">
+              <div className="text-3xl md:text-4xl font-bold text-white tracking-tighter mb-1 transition-colors">
                 <AnimatedCounter value={1} prefix="$" suffix="M+" />
               </div>
-              <div className="text-white/30 text-[9px] font-bold uppercase tracking-[0.3em] text-center">AUM</div>
+              <div className="text-white/30 text-[8px] font-bold uppercase tracking-[0.3em] text-center">AUM</div>
             </div>
 
-            <div className="flex flex-col items-center min-w-[120px] flex-1">
-              <div className="text-4xl md:text-5xl font-bold text-white tracking-tighter mb-2 transition-colors">
+            <div className="flex flex-col items-center min-w-[100px] flex-1">
+              <div className="text-3xl md:text-4xl font-bold text-white tracking-tighter mb-1 transition-colors">
                 <AnimatedCounter value={35} suffix="%" />
               </div>
-              <div className="text-white/30 text-[9px] font-bold uppercase tracking-[0.3em] text-center">Annual Target</div>
+              <div className="text-white/30 text-[8px] font-bold uppercase tracking-[0.3em] text-center">Annual Target</div>
             </div>
 
-            <div className="flex flex-col items-center min-w-[120px] flex-1">
-              <div className="text-4xl md:text-5xl font-bold text-white tracking-tighter mb-2 transition-colors">
+            <div className="flex flex-col items-center min-w-[100px] flex-1">
+              <div className="text-3xl md:text-4xl font-bold text-white tracking-tighter mb-1 transition-colors">
                 <AnimatedCounter value={20} suffix="+" />
               </div>
-              <div className="text-white/30 text-[9px] font-bold uppercase tracking-[0.3em] text-center">Investors</div>
+              <div className="text-white/30 text-[8px] font-bold uppercase tracking-[0.3em] text-center">Investors</div>
             </div>
 
-            <div className="flex flex-col items-center min-w-[120px] flex-1">
-              <div className="text-4xl md:text-5xl font-bold text-white tracking-tighter mb-2 transition-colors">
+            <div className="flex flex-col items-center min-w-[100px] flex-1">
+              <div className="text-3xl md:text-4xl font-bold text-white tracking-tighter mb-1 transition-colors">
                 <AnimatedCounter value={30} suffix="+" />
               </div>
-              <div className="text-white/30 text-[9px] font-bold uppercase tracking-[0.3em] text-center">Employees</div>
+              <div className="text-white/30 text-[8px] font-bold uppercase tracking-[0.3em] text-center">Employees</div>
             </div>
 
-            <div className="flex flex-col items-center min-w-[120px] flex-1">
-              <div className="text-4xl md:text-5xl font-bold text-white tracking-tighter mb-2 transition-colors">
+            <div className="flex flex-col items-center min-w-[100px] flex-1">
+              <div className="text-3xl md:text-4xl font-bold text-white tracking-tighter mb-1 transition-colors">
                 <AnimatedCounter value={4} />
               </div>
-              <div className="text-white/30 text-[9px] font-bold uppercase tracking-[0.3em] text-center">Strategic Hubs</div>
+              <div className="text-white/30 text-[8px] font-bold uppercase tracking-[0.3em] text-center">Strategic Hubs</div>
             </div>
 
-            <div className="flex flex-col items-center min-w-[120px] flex-1">
-              <div className="text-4xl md:text-5xl font-bold text-white tracking-tighter mb-2 transition-colors">
+            <div className="flex flex-col items-center min-w-[100px] flex-1">
+              <div className="text-3xl md:text-4xl font-bold text-white tracking-tighter mb-1 transition-colors">
                 <AnimatedCounter value={2019} duration={1} />
               </div>
-              <div className="text-white/30 text-[9px] font-bold uppercase tracking-[0.3em] text-center">Founded</div>
+              <div className="text-white/30 text-[8px] font-bold uppercase tracking-[0.3em] text-center">Founded</div>
             </div>
           </div>
         </motion.div>
       </div>
     </section>
 
-    <section className="bg-[#030303] py-24 px-6 relative z-10 border-t border-white/5 overflow-hidden">
+    <section className="bg-[#030303] py-16 md:py-24 px-6 relative z-10 border-t border-white/5 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-indigo-500/[0.02] to-transparent pointer-events-none" />
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="p-8 rounded-[2rem] bg-white/[0.02] border border-white/5 flex flex-col justify-center text-center hover:bg-white/[0.04] transition-all">
             <div className="text-white/30 mb-4 flex justify-center"><ShieldCheck className="size-6" /></div>
-            <div className="text-3xl font-bold text-white tracking-tighter uppercase mb-2">Institutional Grade</div>
+            <div className="text-2xl md:text-3xl font-bold text-white tracking-tighter uppercase mb-2">Institutional Grade</div>
             <div className="text-white/40 text-sm leading-relaxed">Built on a framework of rigorous compliance, risk control, and operational excellence.</div>
           </div>
 
           <div className="p-8 rounded-[2rem] bg-white/[0.02] border border-white/5 flex flex-col justify-center text-center hover:bg-white/[0.04] transition-all">
             <div className="text-white/30 mb-4 flex justify-center"><BarChart3 className="size-6" /></div>
-            <div className="text-3xl font-bold text-white tracking-tighter uppercase mb-2">Alpha Generation</div>
+            <div className="text-2xl md:text-3xl font-bold text-white tracking-tighter uppercase mb-2">Alpha Generation</div>
             <div className="text-white/40 text-sm leading-relaxed">Proprietary strategies designed to deliver consistent, non-correlated market returns.</div>
           </div>
 
           <div className="p-8 rounded-[2rem] bg-white/[0.02] border border-white/5 flex flex-col justify-center text-center hover:bg-white/[0.04] transition-all">
             <div className="text-white/30 mb-4 flex justify-center"><Globe className="size-6" /></div>
-            <div className="text-3xl font-bold text-white tracking-tighter uppercase mb-2">Global Network</div>
+            <div className="text-2xl md:text-3xl font-bold text-white tracking-tighter uppercase mb-2">Global Network</div>
             <div className="text-white/40 text-sm leading-relaxed">Strategically positioned in Dubai, London, USA, and Morocco to capture global alpha.</div>
           </div>
         </div>
@@ -447,13 +447,13 @@ const HomeView = ({ onNavigate, onSelectReport }: { onNavigate: (page: string) =
       onReportClick={onSelectReport}
     />
 
-    <section className="bg-[#030303] py-16 md:py-32 px-6 relative z-10">
+    <section className="bg-[#030303] py-12 md:py-20 px-6 relative z-10">
       <div className="mx-auto max-w-5xl border-t border-white/10 px-6 relative">
         <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-indigo-400 -ml-6 -mt-3.5 block w-max bg-[#030303] px-6">
           The Locations
         </span>
 
-        <div className="mt-12 gap-8 sm:grid sm:grid-cols-2 md:mt-24 mb-16 text-left">
+        <div className="mt-8 gap-8 sm:grid sm:grid-cols-2 md:mt-16 mb-12 text-left">
           <div className="sm:w-full">
             <h2 className="text-4xl font-bold sm:text-5xl text-white tracking-tighter">Our Strategic Hubs</h2>
           </div>
@@ -511,33 +511,33 @@ const ReportDetailView = ({ report, onBack }: { report: Report | null, onBack: (
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -20 }}
       transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-      className="pt-32 pb-32 px-6"
+      className="pt-24 pb-24 px-6"
     >
       <div className="max-w-3xl mx-auto">
         <button 
           onClick={onBack}
-          className="flex items-center gap-2 text-white/40 hover:text-white mb-16 transition-colors uppercase tracking-widest text-[10px] font-bold group"
+          className="flex items-center gap-2 text-white/40 hover:text-white mb-12 transition-colors uppercase tracking-widest text-[10px] font-bold group"
         >
           <ArrowLeft className="size-3 group-hover:-translate-x-1 transition-transform" /> Back
         </button>
 
-        <header className="mb-16 border-b border-white/10 pb-12">
+        <header className="mb-12 border-b border-white/10 pb-10">
           <div className="space-y-4">
             <p className="text-indigo-400 font-bold uppercase tracking-[0.25em] text-xs">
               {report.period}
             </p>
-            <h1 className="text-5xl md:text-7xl font-bold text-white tracking-tighter leading-tight">
+            <h1 className="text-4xl md:text-6xl font-bold text-white tracking-tighter leading-tight">
               {report.quarter}
             </h1>
-            <p className="text-white/40 font-medium italic text-xl">
+            <p className="text-white/40 font-medium italic text-lg md:text-xl">
               Institutional performance analysis and strategic market outcomes.
             </p>
           </div>
         </header>
 
-        <article className="prose prose-invert max-w-none space-y-12">
-          <div className="space-y-8 text-white/70 leading-[1.7] font-light text-xl">
-            <h2 className="text-2xl font-bold text-white mb-6">Letter to Shareholders</h2>
+        <article className="prose prose-invert max-w-none space-y-10">
+          <div className="space-y-6 text-white/70 leading-[1.7] font-light text-lg">
+            <h2 className="text-xl md:text-2xl font-bold text-white mb-4">Letter to Shareholders</h2>
             <p className="italic font-medium text-white/90">Dear Institutional Partners and Shareholders,</p>
             <p>
               In the performance period ending {report.period}, Mrghiche Capital has demonstrated continued resilience and strategic clarity amidst shifting global macro-economic cycles. Our focus remains steadfast on the institutionalization of our processes and the consistent generation of alpha through data-driven precision.
@@ -552,28 +552,28 @@ const ReportDetailView = ({ report, onBack }: { report: Report | null, onBack: (
               As we move into the next phase of our growth, we remain committed to transparency, discipline, and the pursuit of non-correlated returns for our stakeholders.
             </p>
 
-            <div className="pt-12 border-t border-white/5 mt-12">
-              <p className="text-white font-bold text-lg">Mohammed Kharroubi</p>
+            <div className="pt-10 border-t border-white/5 mt-10">
+              <p className="text-white font-bold text-base md:text-lg">Mohammed Kharroubi</p>
               <p className="text-white/40 text-sm">Founder & CEO, Mrghiche Capital</p>
             </div>
           </div>
 
-          <div className="mt-24 p-12 rounded-[2.5rem] bg-white/[0.03] border border-white/10 text-center relative overflow-hidden group">
+          <div className="mt-20 p-10 md:p-12 rounded-[2.5rem] bg-white/[0.03] border border-white/10 text-center relative overflow-hidden group">
             <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
-            <h3 className="text-2xl font-bold text-white mb-4 relative z-10">Institutional Disclosure Packet</h3>
-            <p className="text-white/40 mb-10 max-w-sm mx-auto relative z-10">
+            <h3 className="text-xl md:text-2xl font-bold text-white mb-4 relative z-10">Institutional Disclosure Packet</h3>
+            <p className="text-white/40 mb-8 max-w-sm mx-auto relative z-10 text-sm md:text-base">
               Download the complete financial disclosure, including full audit reports and regulatory statements.
             </p>
             <Button 
-              className="rounded-full px-10 py-8 bg-white text-black font-bold text-lg hover:scale-[1.05] transition-transform flex items-center gap-3 mx-auto relative z-10"
+              className="rounded-full px-8 py-6 bg-white text-black font-bold text-base hover:scale-[1.05] transition-transform flex items-center gap-3 mx-auto relative z-10"
             >
-              <FileDown className="size-6" /> Download PDF Version
+              <FileDown className="size-5" /> Download PDF Version
             </Button>
           </div>
         </article>
 
-        <div className="mt-32 pt-10 border-t border-white/10 text-center">
-          <p className="text-white/20 text-[10px] uppercase tracking-[0.4em] mb-4">Confidential Disclosure</p>
+        <div className="mt-24 pt-8 border-t border-white/10 text-center">
+          <p className="text-white/20 text-[9px] uppercase tracking-[0.4em] mb-3">Confidential Disclosure</p>
           <p className="text-white/30 text-xs max-w-xl mx-auto leading-relaxed italic">
             This letter is provided for institutional informational purposes only. Past performance is not indicative of future results. Detailed financial data available in the secure portal.
           </p>
@@ -592,15 +592,15 @@ const WhoWeAreView = () => {
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -20 }}
       transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-      className="pt-40 pb-32 px-6"
+      className="pt-24 pb-24 px-6"
     >
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 tracking-tighter">
+        <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tighter">
           Institutional Discipline. <br/><span className="text-white/40">Market Agility.</span>
         </h1>
         
         <div className="relative">
-          <p className="text-xl text-white/70 leading-relaxed mb-6">
+          <p className="text-lg md:text-xl text-white/70 leading-relaxed mb-6">
             Mrghiche Capital is an independent investment management firm founded in 2019 by Mohammed Kharroubi, with a clear mission: to deliver disciplined, performance-driven asset management through innovation, expertise, and institutional standards.
           </p>
 
@@ -624,14 +624,14 @@ const WhoWeAreView = () => {
                 transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
                 className="overflow-hidden"
               >
-                <div className="space-y-8 py-8 border-t border-white/10 mt-8">
-                  <p className="text-white/60 leading-relaxed">
+                <div className="space-y-6 py-6 border-t border-white/10 mt-6">
+                  <p className="text-white/60 leading-relaxed text-base">
                     Built on deep market experience and a strong foundation in perpetual futures trading, Mrghiche Capital has evolved from a founder-led trading operation into a fully structured investment firm. Today, the firm manages over USD 1 million in assets under management, serving investors who seek professional oversight, robust risk management, and consistent execution across market conditions.
                   </p>
 
                   <section>
-                    <h3 className="text-2xl font-bold text-white mb-4">Our Founder</h3>
-                    <p className="text-white/60 leading-relaxed">
+                    <h3 className="text-xl md:text-2xl font-bold text-white mb-4">Our Founder</h3>
+                    <p className="text-white/60 leading-relaxed text-base">
                       Mohammed Kharroubi is a seasoned perpetual futures trading expert with years of hands-on experience navigating complex and volatile markets. His disciplined approach to risk, data-driven decision-making, and active market engagement form the core philosophy of Mrghiche Capital.
                       <br /><br />
                       What began as a proprietary trading journey grew into a broader vision: building an institution capable of managing capital at scale while maintaining agility, transparency, and performance accountability.
@@ -639,44 +639,19 @@ const WhoWeAreView = () => {
                   </section>
 
                   <section>
-                    <h3 className="text-2xl font-bold text-white mb-4">Our Firm</h3>
-                    <p className="text-white/60 leading-relaxed mb-6">
+                    <h3 className="text-xl md:text-2xl font-bold text-white mb-4">Our Firm</h3>
+                    <p className="text-white/60 leading-relaxed mb-6 text-base">
                       Mrghiche Capital operates as a multi-location, professionally structured investment firm, supported by specialized teams across key functions, including:
                     </p>
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
                       {['Portfolio Management', 'Risk Management', 'Research & Strategy', 'Operations & Compliance', 'Investor Relations'].map(item => (
-                        <div key={item} className="p-4 rounded-xl bg-white/5 border border-white/10 text-xs text-white/40 uppercase tracking-widest font-bold">
+                        <div key={item} className="p-3 rounded-xl bg-white/5 border border-white/10 text-[9px] text-white/40 uppercase tracking-widest font-bold">
                           {item}
                         </div>
                       ))}
                     </div>
-                    <p className="text-white/60 leading-relaxed">
+                    <p className="text-white/60 leading-relaxed text-base">
                       We currently operate across four strategic locations: <strong>Dubai, London, United States, and Morocco</strong>. This global footprint allows us to remain closely connected to international markets, talent, and capital flows while maintaining operational resilience.
-                    </p>
-                  </section>
-
-                  <section className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div>
-                      <h3 className="text-2xl font-bold text-white mb-4">Our Approach</h3>
-                      <ul className="space-y-3 text-white/50 text-sm italic leading-relaxed">
-                        <li>• Active portfolio management</li>
-                        <li>• Structured risk control frameworks</li>
-                        <li>• Continuous market research</li>
-                        <li>• Adaptive strategies designed for evolving markets</li>
-                      </ul>
-                    </div>
-                    <div>
-                      <h3 className="text-2xl font-bold text-white mb-4">Our Vision</h3>
-                      <p className="text-white/50 text-sm leading-relaxed">
-                        We are committed to revitalizing the asset and wealth management industry by challenging traditional models and introducing more dynamic, transparent, and performance-oriented approaches.
-                      </p>
-                    </div>
-                  </section>
-
-                  <section className="pt-8 border-t border-white/10">
-                    <h3 className="text-2xl font-bold text-white mb-4">Our Commitment</h3>
-                    <p className="text-white/60 leading-relaxed">
-                      Mrghiche Capital is guided by integrity, discipline, and accountability. We view ourselves as long-term partners to our investors, aligned by shared objectives and measured by results. Our goal is simple: to manage capital responsibly, strategically, and professionally in an increasingly complex global market.
                     </p>
                   </section>
                 </div>
@@ -685,15 +660,15 @@ const WhoWeAreView = () => {
           </AnimatePresence>
         </div>
 
-        <div className="flex flex-col sm:flex-row items-center gap-4 mt-8">
+        <div className="flex flex-col sm:flex-row items-center gap-4 mt-6">
           <button 
             onClick={() => setIsExpanded(!isExpanded)}
-            className="flex items-center gap-2 text-indigo-400 hover:text-indigo-300 transition-colors font-bold uppercase tracking-widest text-xs py-3 px-6 rounded-full bg-white/5 border border-white/10"
+            className="flex items-center gap-2 text-indigo-400 hover:text-indigo-300 transition-colors font-bold uppercase tracking-widest text-[10px] py-2.5 px-6 rounded-full bg-white/5 border border-white/10"
           >
             {isExpanded ? (
-              <>Show Less <ChevronUp className="size-4" /></>
+              <>Show Less <ChevronUp className="size-3" /></>
             ) : (
-              <>See More <ChevronDown className="size-4" /></>
+              <>See More <ChevronDown className="size-3" /></>
             )}
           </button>
           
@@ -702,47 +677,22 @@ const WhoWeAreView = () => {
             href="https://instagram.com/mrghiche" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="flex items-center gap-2 text-white/60 hover:text-white transition-colors font-bold uppercase tracking-widest text-xs py-3 px-6 rounded-full bg-indigo-500/10 border border-indigo-500/20 cursor-pointer"
+            className="flex items-center gap-2 text-white/60 hover:text-white transition-colors font-bold uppercase tracking-widest text-[10px] py-2.5 px-6 rounded-full bg-indigo-500/10 border border-indigo-500/20 cursor-pointer"
           >
-            <Instagram className="size-4" /> Connect @mrghiche
+            <Instagram className="size-3" /> Connect @mrghiche
           </a>
         </div>
 
-        <div className="mt-20 mb-32 rounded-[2.5rem] overflow-hidden border border-white/10 h-[500px] shadow-2xl relative group">
+        <div className="mt-16 mb-24 rounded-[2.5rem] overflow-hidden border border-white/10 h-[400px] shadow-2xl relative group">
           <img 
             src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop" 
             className="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-1000" 
             alt="Institutional Office Presence"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-          <div className="absolute bottom-10 left-10">
-            <p className="text-white/40 uppercase tracking-[0.3em] text-xs font-bold mb-2">Global Presence</p>
-            <p className="text-white text-xl font-light">Dubai • London • USA • Morocco</p>
-          </div>
-        </div>
-
-        <div className="mt-32 p-12 rounded-[2rem] bg-gradient-to-br from-indigo-500/10 to-rose-500/10 border border-white/10 text-center">
-          <h2 className="text-3xl font-bold text-white mb-6">Established Excellence</h2>
-          <p className="text-white/60 mb-8 max-w-xl mx-auto">Founded in 2019, our firm combines institutional standards with the agility of a modern trading operation.</p>
-          <div className="flex justify-center gap-12">
-            <div>
-              <div className="text-4xl font-bold text-white">
-                <AnimatedCounter value={1} prefix="$" suffix="M+" />
-              </div>
-              <div className="text-white/30 text-sm uppercase tracking-widest mt-2">AUM</div>
-            </div>
-            <div>
-              <div className="text-4xl font-bold text-white">
-                <AnimatedCounter value={4} />
-              </div>
-              <div className="text-white/30 text-sm uppercase tracking-widest mt-2">Strategic Hubs</div>
-            </div>
-            <div>
-              <div className="text-4xl font-bold text-white">
-                <AnimatedCounter value={2019} duration={1} />
-              </div>
-              <div className="text-white/30 text-sm uppercase tracking-widest mt-2">Founded</div>
-            </div>
+          <div className="absolute bottom-8 left-8">
+            <p className="text-white/40 uppercase tracking-[0.3em] text-[10px] font-bold mb-1">Global Presence</p>
+            <p className="text-white text-lg font-light">Dubai • London • USA • Morocco</p>
           </div>
         </div>
       </div>
@@ -871,36 +821,36 @@ const PortfolioView = () => {
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -20 }}
       transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-      className="pt-40 pb-32 px-6"
+      className="pt-24 pb-24 px-6"
     >
-      <div className="max-w-6xl mx-auto text-center mb-24">
-        <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 tracking-tighter">Strategic Portfolio</h1>
-        <p className="text-xl text-white/50 max-w-2xl mx-auto">A selection of high-impact investments across key institutional asset classes, meticulously managed for long-term growth.</p>
+      <div className="max-w-6xl mx-auto text-center mb-16">
+        <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tighter">Strategic Portfolio</h1>
+        <p className="text-lg text-white/50 max-w-2xl mx-auto">A selection of high-impact investments across key institutional asset classes, meticulously managed for long-term growth.</p>
       </div>
 
       <MasonryGrid columns={cols} gap={8} className="max-w-7xl mx-auto">
         {items.map((item, idx) => (
-          <div key={idx} className="group relative overflow-hidden rounded-[2.5rem] bg-white/[0.03] border border-white/10 p-6 hover:bg-white/[0.05] transition-all duration-500">
-            <div className="h-auto w-full rounded-3xl overflow-hidden mb-6 grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700">
+          <div key={idx} className="group relative overflow-hidden rounded-[2rem] bg-white/[0.03] border border-white/10 p-5 hover:bg-white/[0.05] transition-all duration-500">
+            <div className="h-auto w-full rounded-2xl overflow-hidden mb-5 grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700">
               <img src={item.image} className="w-full h-full object-cover" alt={item.title} />
             </div>
-            <div className="flex items-center justify-between mb-4">
-              <span className="text-[10px] uppercase tracking-widest text-indigo-400 font-bold border border-indigo-500/30 px-2 py-1 rounded-md">{item.tag}</span>
+            <div className="flex items-center justify-between mb-3">
+              <span className="text-[9px] uppercase tracking-widest text-indigo-400 font-bold border border-indigo-500/30 px-2 py-1 rounded-md">{item.tag}</span>
               
               <div className="flex items-center gap-1.5">
                 <MapPin size={10} className="text-white/40" />
-                <span className="text-lg inline-block normal-case tracking-normal leading-none select-none">
+                <span className="text-base inline-block normal-case tracking-normal leading-none select-none">
                    {item.flag}
                 </span>
-                <span className="text-[10px] text-white/30 uppercase tracking-widest">
+                <span className="text-[9px] text-white/30 uppercase tracking-widest">
                   {item.location}
                 </span>
               </div>
             </div>
-            <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-indigo-400 transition-colors tracking-tight flex items-center justify-between">
-              {item.title} <ArrowUpRight className="size-5 opacity-0 group-hover:opacity-100 transition-all" />
+            <h3 className="text-xl font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors tracking-tight flex items-center justify-between">
+              {item.title} <ArrowUpRight className="size-4 opacity-0 group-hover:opacity-100 transition-all" />
             </h3>
-            <p className="text-white/50 text-sm leading-relaxed">{item.desc}</p>
+            <p className="text-white/50 text-xs leading-relaxed">{item.desc}</p>
           </div>
         ))}
       </MasonryGrid>
@@ -914,14 +864,14 @@ const ServicesView = ({ onNavigate }: { onNavigate: (page: string) => void }) =>
     animate={{ opacity: 1, x: 0 }}
     exit={{ opacity: 0, x: -20 }}
     transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-    className="pt-40 pb-32 px-6"
+    className="pt-24 pb-24 px-6"
   >
-    <div className="max-w-6xl mx-auto text-center mb-24">
-      <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 tracking-tighter">Our Services</h1>
-      <p className="text-xl text-white/50 max-w-2xl mx-auto">Diverse investment avenues tailored for resilient growth and risk-adjusted returns.</p>
+    <div className="max-w-6xl mx-auto text-center mb-16">
+      <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tighter">Our Services</h1>
+      <p className="text-lg text-white/50 max-w-2xl mx-auto">Diverse investment avenues tailored for resilient growth and risk-adjusted returns.</p>
     </div>
 
-    <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+    <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {SERVICES_DATA.map((service, idx) => (
         <ExpandableCard 
           key={idx}
@@ -943,17 +893,17 @@ const NewsView = () => (
     animate={{ opacity: 1, x: 0 }}
     exit={{ opacity: 0, x: -20 }}
     transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-    className="pt-40 pb-32 px-6"
+    className="pt-24 pb-24 px-6"
   >
     <div className="max-w-6xl mx-auto">
-      <div className="flex justify-between items-end mb-16 border-b border-white/10 pb-8">
+      <div className="flex justify-between items-end mb-12 border-b border-white/10 pb-6">
         <div>
-          <h1 className="text-5xl font-bold text-white tracking-tight">Firm Insights</h1>
-          <p className="text-white/40 mt-2 italic">The latest from Mrghiche Capital</p>
+          <h1 className="text-4xl font-bold text-white tracking-tight">Firm Insights</h1>
+          <p className="text-white/40 mt-1 italic text-sm">The latest from Mrghiche Capital</p>
         </div>
       </div>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         {[
           { 
             date: "Jan 24, 2025", 
@@ -969,14 +919,14 @@ const NewsView = () => (
           }
         ].map((item, idx) => (
           <div key={idx} className="group cursor-pointer">
-            <div className="h-80 w-full overflow-hidden rounded-3xl mb-6 bg-white/5">
+            <div className="h-64 w-full overflow-hidden rounded-2xl mb-5 bg-white/5">
               <img src={item.img} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt={item.title} />
             </div>
-            <div className="flex gap-4 items-center mb-4">
-              <span className="text-xs uppercase tracking-widest px-3 py-1 rounded-full bg-white/10 text-white/60">{item.tag}</span>
-              <span className="text-xs text-white/30">{item.date}</span>
+            <div className="flex gap-4 items-center mb-3">
+              <span className="text-[10px] uppercase tracking-widest px-3 py-1 rounded-full bg-white/10 text-white/60">{item.tag}</span>
+              <span className="text-[10px] text-white/30">{item.date}</span>
             </div>
-            <h2 className="text-2xl font-bold text-white group-hover:text-indigo-400 transition-colors">{item.title}</h2>
+            <h2 className="text-xl font-bold text-white group-hover:text-indigo-400 transition-colors">{item.title}</h2>
           </div>
         ))}
       </div>
@@ -1010,13 +960,13 @@ const CareersView = () => {
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="pt-40 pb-32 px-6 flex flex-col items-center justify-center text-center min-h-[70vh]"
+        className="pt-24 pb-24 px-6 flex flex-col items-center justify-center text-center min-h-[60vh]"
       >
-        <div className="size-24 rounded-full bg-indigo-500/20 flex items-center justify-center mb-8 border border-indigo-500/30">
-          <CheckCircle2 className="size-12 text-indigo-400" />
+        <div className="size-20 rounded-full bg-indigo-500/20 flex items-center justify-center mb-6 border border-indigo-500/30">
+          <CheckCircle2 className="size-10 text-indigo-400" />
         </div>
-        <h1 className="text-5xl font-bold text-white mb-6 tracking-tighter">Application Received</h1>
-        <p className="text-xl text-white/40 max-w-md mx-auto mb-10 leading-relaxed">
+        <h1 className="text-4xl font-bold text-white mb-4 tracking-tighter">Application Received</h1>
+        <p className="text-lg text-white/40 max-w-md mx-auto mb-10 leading-relaxed">
           Thank you for applying for the <strong>{selectedJob?.role}</strong> position. Our talent acquisition team will review your credentials and contact you shortly.
         </p>
         <Button 
@@ -1025,7 +975,7 @@ const CareersView = () => {
             setSelectedJob(null);
           }}
           variant="outline"
-          className="rounded-full px-10 py-6"
+          className="rounded-full px-8 py-5"
         >
           Return to Careers
         </Button>
@@ -1040,62 +990,57 @@ const CareersView = () => {
         animate={{ opacity: 1, x: 0 }}
         exit={{ opacity: 0, x: -20 }}
         transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-        className="pt-40 pb-32 px-6"
+        className="pt-24 pb-24 px-6"
       >
         <div className="max-w-2xl mx-auto">
           <button 
             onClick={() => setSelectedJob(null)}
-            className="flex items-center gap-2 text-white/40 hover:text-white mb-10 transition-colors uppercase tracking-widest text-[10px] font-bold"
+            className="flex items-center gap-2 text-white/40 hover:text-white mb-8 transition-colors uppercase tracking-widest text-[9px] font-bold"
           >
             <ArrowLeft className="size-3" /> Back to listings
           </button>
           
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-2 tracking-tighter">{selectedJob.role}</h1>
-          <div className="flex gap-4 text-sm text-indigo-400/80 mb-12 uppercase tracking-widest font-bold">
+          <h1 className="text-3xl md:text-4xl font-bold text-white mb-2 tracking-tighter">{selectedJob.role}</h1>
+          <div className="flex gap-4 text-xs text-indigo-400/80 mb-10 uppercase tracking-widest font-bold">
             <span>{selectedJob.loc}</span>
             <span>•</span>
             <span>{selectedJob.type}</span>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-8 bg-white/[0.02] border border-white/5 p-8 md:p-12 rounded-[2.5rem]">
-            <div className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <form onSubmit={handleSubmit} className="space-y-6 bg-white/[0.02] border border-white/5 p-6 md:p-10 rounded-[2rem]">
+            <div className="space-y-5">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div className="space-y-2">
-                  <label className="text-[10px] uppercase tracking-widest text-white/40 font-bold ml-1">Full Name</label>
-                  <input required placeholder="E.g. Alexander Sterling" className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white focus:outline-none focus:border-indigo-500 transition-colors" />
+                  <label className="text-[9px] uppercase tracking-widest text-white/40 font-bold ml-1">Full Name</label>
+                  <input required placeholder="E.g. Alexander Sterling" className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-3.5 text-white text-sm focus:outline-none focus:border-indigo-500 transition-colors" />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[10px] uppercase tracking-widest text-white/40 font-bold ml-1">Email Address</label>
-                  <input required type="email" placeholder="E.g. alex@institutional.com" className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white focus:outline-none focus:border-indigo-500 transition-colors" />
+                  <label className="text-[9px] uppercase tracking-widest text-white/40 font-bold ml-1">Email Address</label>
+                  <input required type="email" placeholder="E.g. alex@institutional.com" className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-3.5 text-white text-sm focus:outline-none focus:border-indigo-500 transition-colors" />
                 </div>
               </div>
 
               <div className="space-y-2">
-                <label className="text-[10px] uppercase tracking-widest text-white/40 font-bold ml-1">LinkedIn Profile or Portfolio</label>
-                <input required placeholder="https://linkedin.com/in/yourprofile" className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white focus:outline-none focus:border-indigo-500 transition-colors" />
+                <label className="text-[9px] uppercase tracking-widest text-white/40 font-bold ml-1">LinkedIn Profile</label>
+                <input required placeholder="https://linkedin.com/in/yourprofile" className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-3.5 text-white text-sm focus:outline-none focus:border-indigo-500 transition-colors" />
               </div>
 
               <div className="space-y-2">
-                <label className="text-[10px] uppercase tracking-widest text-white/40 font-bold ml-1">Resume / CV Attachment</label>
+                <label className="text-[9px] uppercase tracking-widest text-white/40 font-bold ml-1">CV Attachment</label>
                 <div className="relative group/file">
                   <input required type="file" className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" />
-                  <div className="w-full bg-white/5 border border-dashed border-white/20 rounded-xl px-6 py-8 text-center group-hover/file:border-indigo-500/50 group-hover/file:bg-indigo-500/5 transition-all">
-                    <FileUp className="size-8 text-white/20 mx-auto mb-3 group-hover/file:text-indigo-400 group-hover/file:scale-110 transition-all" />
-                    <p className="text-white/40 text-sm">Click or drag your CV here</p>
-                    <p className="text-[10px] text-white/20 mt-1 uppercase tracking-wider">PDF, DOCX up to 5MB</p>
+                  <div className="w-full bg-white/5 border border-dashed border-white/20 rounded-xl px-5 py-6 text-center group-hover/file:border-indigo-500/50 group-hover/file:bg-indigo-500/5 transition-all">
+                    <FileUp className="size-6 text-white/20 mx-auto mb-2 group-hover/file:text-indigo-400 group-hover/file:scale-110 transition-all" />
+                    <p className="text-white/40 text-xs">Click or drag your CV here</p>
+                    <p className="text-[9px] text-white/20 mt-1 uppercase tracking-wider">PDF, DOCX up to 5MB</p>
                   </div>
                 </div>
-              </div>
-
-              <div className="space-y-2">
-                <label className="text-[10px] uppercase tracking-widest text-white/40 font-bold ml-1">Brief Pitch (Optional)</label>
-                <textarea rows={4} placeholder="Tell us why you're a fit for Mrghiche Capital..." className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white focus:outline-none focus:border-indigo-500 transition-colors" />
               </div>
             </div>
 
             <Button 
               disabled={isSubmitting}
-              className="w-full py-8 rounded-2xl bg-white text-black font-bold text-lg hover:scale-[1.01] transition-transform shadow-2xl flex items-center justify-center gap-3"
+              className="w-full py-6 rounded-xl bg-white text-black font-bold text-base hover:scale-[1.01] transition-transform shadow-xl flex items-center justify-center gap-3"
             >
               {isSubmitting ? (
                 <>
@@ -1103,10 +1048,10 @@ const CareersView = () => {
                   Processing...
                 </>
               ) : (
-                <>Apply for Position <ArrowRight className="size-5" /></>
+                <>Apply for Position <ArrowRight className="size-4" /></>
               )}
             </Button>
-            <p className="text-center text-[10px] text-white/20 uppercase tracking-widest">
+            <p className="text-center text-[8px] text-white/20 uppercase tracking-widest">
               By submitting, you agree to our data handling and recruitment policy.
             </p>
           </form>
@@ -1121,40 +1066,40 @@ const CareersView = () => {
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -20 }}
       transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-      className="pt-40 pb-32 px-6"
+      className="pt-24 pb-24 px-6"
     >
       <div className="max-w-5xl mx-auto">
-        <h1 className="text-6xl font-bold text-white mb-8 tracking-tighter">Join the Elite.</h1>
-        <p className="text-xl text-white/50 mb-20 max-w-2xl">We are always looking for exceptional talent to join our institutional investment teams across London, Dubai, and New York.</p>
+        <h1 className="text-5xl font-bold text-white mb-6 tracking-tighter">Join the Elite.</h1>
+        <p className="text-lg text-white/50 mb-16 max-w-2xl">We are always looking for exceptional talent to join our institutional investment teams across London, Dubai, and New York.</p>
         
         <div className="space-y-4">
-          {jobs.map((job, idx) => (
+          {jobs.map((job) => (
             <div 
               key={job.role} 
               onClick={() => setSelectedJob(job)}
-              className="group flex justify-between items-center p-8 rounded-2xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.06] hover:border-white/10 transition-all cursor-pointer"
+              className="group flex justify-between items-center p-6 rounded-2xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.06] hover:border-white/10 transition-all cursor-pointer"
             >
               <div>
-                <div className="text-2xl font-bold text-white group-hover:text-indigo-400 transition-colors">{job.role}</div>
-                <div className="flex gap-4 text-sm text-white/30 mt-2 uppercase tracking-widest">
+                <div className="text-xl font-bold text-white group-hover:text-indigo-400 transition-colors">{job.role}</div>
+                <div className="flex gap-4 text-[10px] text-white/30 mt-1 uppercase tracking-widest">
                   <span>{job.loc}</span>
                   <span>•</span>
                   <span>{job.type}</span>
                 </div>
               </div>
-              <Button variant="ghost" className="size-12 rounded-full border border-white/10 flex items-center justify-center p-0 group-hover:bg-indigo-500 group-hover:text-white group-hover:border-indigo-500 transition-all">
-                <ArrowUpRight className="size-6" />
+              <Button variant="ghost" className="size-10 rounded-full border border-white/10 flex items-center justify-center p-0 group-hover:bg-indigo-500 group-hover:text-white group-hover:border-indigo-500 transition-all">
+                <ArrowUpRight className="size-5" />
               </Button>
             </div>
           ))}
         </div>
 
-        <div className="mt-24 p-12 rounded-[2.5rem] bg-indigo-500/5 border border-indigo-500/10 text-center">
-          <h2 className="text-2xl font-bold text-white mb-4">Can't find a fit?</h2>
-          <p className="text-white/40 mb-8 max-w-lg mx-auto leading-relaxed italic">
+        <div className="mt-20 p-10 rounded-[2.5rem] bg-indigo-500/5 border border-indigo-500/10 text-center">
+          <h2 className="text-xl font-bold text-white mb-3">Can't find a fit?</h2>
+          <p className="text-white/40 mb-8 max-w-lg mx-auto leading-relaxed italic text-sm">
             "If your profile doesn't match current openings but you possess exceptional market insight or technical skill, we still want to hear from you."
           </p>
-          <Button variant="outline" className="rounded-full px-8 py-6">General Application</Button>
+          <Button variant="outline" className="rounded-full px-6 py-4 text-xs font-bold uppercase tracking-widest">General Application</Button>
         </div>
       </div>
     </motion.div>
@@ -1167,47 +1112,47 @@ const ContactView = () => (
     animate={{ opacity: 1, x: 0 }}
     exit={{ opacity: 0, x: -20 }}
     transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-    className="pt-40 pb-32 px-6"
+    className="pt-24 pb-24 px-6"
   >
-    <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20">
+    <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
       <div>
-        <h1 className="text-5xl md:text-6xl font-bold text-white mb-8 tracking-tighter">Get in Touch</h1>
-        <p className="text-lg text-white/50 mb-12">Speak with our institutional relationship managers to discuss how we can support your investment objectives.</p>
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tighter">Get in Touch</h1>
+        <p className="text-base md:text-lg text-white/50 mb-10">Speak with our institutional relationship managers to discuss how we can support your investment objectives.</p>
         
-        <div className="space-y-8">
+        <div className="space-y-6">
           <div className="flex items-start gap-4">
-            <div className="size-12 rounded-xl bg-white/5 flex items-center justify-center text-indigo-400"><Mail /></div>
+            <div className="size-10 rounded-xl bg-white/5 flex items-center justify-center text-indigo-400 shrink-0"><Mail size={18} /></div>
             <div>
-              <div className="text-white font-bold">Email us</div>
-              <div className="text-white/40">inquiries@mrghichecapital.com</div>
+              <div className="text-white font-bold text-sm">Email us</div>
+              <div className="text-white/40 text-xs">inquiries@mrghichecapital.com</div>
             </div>
           </div>
           <div className="flex items-start gap-4">
-            <div className="size-12 rounded-xl bg-white/5 flex items-center justify-center text-rose-400"><Phone /></div>
+            <div className="size-10 rounded-xl bg-white/5 flex items-center justify-center text-rose-400 shrink-0"><Phone size={18} /></div>
             <div>
-              <div className="text-white font-bold">Phone</div>
-              <div className="text-white/40">+44 (0) 20 7946 0000</div>
+              <div className="text-white font-bold text-sm">Phone</div>
+              <div className="text-white/40 text-xs">+44 (0) 20 7946 0000</div>
             </div>
           </div>
           <div className="flex items-start gap-4">
-            <div className="size-12 rounded-xl bg-white/5 flex items-center justify-center text-violet-400"><MapPin /></div>
+            <div className="size-10 rounded-xl bg-white/5 flex items-center justify-center text-violet-400 shrink-0"><MapPin size={18} /></div>
             <div>
-              <div className="text-white font-bold">Headquarters</div>
-              <div className="text-white/40">15 Berkeley Square, Mayfair, London W1J 6BQ</div>
+              <div className="text-white font-bold text-sm">Headquarters</div>
+              <div className="text-white/40 text-xs">15 Berkeley Square, Mayfair, London W1J 6BQ</div>
             </div>
           </div>
         </div>
       </div>
       
-      <div className="p-10 rounded-[2.5rem] bg-white/[0.03] border border-white/10 backdrop-blur-md">
-        <form className="space-y-6">
+      <div className="p-8 rounded-[2rem] bg-white/[0.03] border border-white/10 backdrop-blur-md">
+        <form className="space-y-5">
           <div className="grid grid-cols-2 gap-4">
-            <input placeholder="First Name" className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white focus:outline-none focus:border-indigo-500 transition-colors" />
-            <input placeholder="Last Name" className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white focus:outline-none focus:border-indigo-500 transition-colors" />
+            <input placeholder="First Name" className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-3 text-white text-sm focus:outline-none focus:border-indigo-500 transition-colors" />
+            <input placeholder="Last Name" className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-3 text-white text-sm focus:outline-none focus:border-indigo-500 transition-colors" />
           </div>
-          <input placeholder="Work Email" className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white focus:outline-none focus:border-indigo-500 transition-colors" />
-          <textarea rows={4} placeholder="How can we help?" className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white focus:outline-none focus:border-indigo-500 transition-colors" />
-          <Button className="w-full py-6 rounded-xl bg-white text-black font-bold text-lg hover:scale-[1.02] transition-transform">Send Inquiry</Button>
+          <input placeholder="Work Email" className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-3 text-white text-sm focus:outline-none focus:border-indigo-500 transition-colors" />
+          <textarea rows={4} placeholder="How can we help?" className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-3 text-white text-sm focus:outline-none focus:border-indigo-500 transition-colors" />
+          <Button className="w-full py-5 rounded-xl bg-white text-black font-bold text-base hover:scale-[1.02] transition-transform">Send Inquiry</Button>
         </form>
       </div>
     </div>
