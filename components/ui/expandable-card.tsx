@@ -2,18 +2,7 @@
 
 import React, { useState, useEffect, useRef, useId } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { cn } from "../../lib/utils";
-
-interface ExpandableCardProps {
-  title: string;
-  src: string;
-  description: string;
-  teaser?: string;
-  children?: React.ReactNode;
-  className?: string;
-  classNameExpanded?: string;
-  [key: string]: any;
-}
+import { cn } from "../../lib/utils.ts";
 
 export function ExpandableCard({
   title,
@@ -24,20 +13,20 @@ export function ExpandableCard({
   className,
   classNameExpanded,
   ...props
-}: ExpandableCardProps) {
+}) {
   const [active, setActive] = useState(false);
-  const cardRef = useRef<HTMLDivElement>(null);
+  const cardRef = useRef(null);
   const id = useId();
 
   useEffect(() => {
-    const onKeyDown = (event: KeyboardEvent) => {
+    const onKeyDown = (event) => {
       if (event.key === "Escape") {
         setActive(false);
       }
     };
 
-    const handleClickOutside = (event: MouseEvent | TouchEvent) => {
-      if (cardRef.current && !cardRef.current.contains(event.target as Node)) {
+    const handleClickOutside = (event) => {
+      if (cardRef.current && !cardRef.current.contains(event.target)) {
         setActive(false);
       }
     };

@@ -1,16 +1,7 @@
-import React, { MouseEvent } from "react";
+import React from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { Button } from "./button";
-import { cn } from "../../lib/utils";
-
-// Define the props for the LocationCard component
-interface LocationCardProps {
-  city: string;
-  address: string;
-  imageUrl: string;
-  directionsUrl: string;
-  className?: string;
-}
+import { Button } from "./button.tsx";
+import { cn } from "../../lib/utils.ts";
 
 // The main LocationCard component
 export const LocationCard = ({
@@ -19,7 +10,7 @@ export const LocationCard = ({
   imageUrl,
   directionsUrl,
   className,
-}: LocationCardProps) => {
+}) => {
   // Framer Motion hooks for creating the 3D tilt effect
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -40,7 +31,7 @@ export const LocationCard = ({
   );
 
   // Handle mouse movement over the card
-  const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
+  const handleMouseMove = (e) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const width = rect.width;
     const height = rect.height;

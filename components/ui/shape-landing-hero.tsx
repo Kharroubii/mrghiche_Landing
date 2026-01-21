@@ -1,19 +1,9 @@
-
 "use client";
 
 import React from 'react';
 import { motion } from "framer-motion";
 import { Circle } from "lucide-react";
-import { cn } from "../../lib/utils";
-
-interface ElegantShapeProps {
-    className?: string;
-    delay?: number;
-    width?: number;
-    height?: number;
-    rotate?: number;
-    gradient?: string;
-}
+import { cn } from "../../lib/utils.ts";
 
 function ElegantShape({
     className,
@@ -22,7 +12,7 @@ function ElegantShape({
     height = 100,
     rotate = 0,
     gradient = "from-white/[0.08]",
-}: ElegantShapeProps) {
+}) {
     return (
         <motion.div
             initial={{
@@ -74,22 +64,15 @@ function ElegantShape({
     );
 }
 
-interface HeroGeometricProps {
-    badge?: string;
-    title1?: string;
-    title2?: string;
-    description?: string;
-}
-
 export function HeroGeometric({
     badge = "Investment Partners",
     title1 = "Strategic",
     title2 = "Investment Management",
     description = "We apply institutional discipline, active risk management, and data-driven decision-making to protect capital and generate sustainable long-term returns.",
-}: HeroGeometricProps) {
+}) {
     const fadeUpVariants = {
         hidden: { opacity: 0, y: 30 },
-        visible: (i: number) => ({
+        visible: (i) => ({
             opacity: 1,
             y: 0,
             transition: {

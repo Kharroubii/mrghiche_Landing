@@ -1,24 +1,6 @@
 import React from "react";
-import { Button } from "./button";
-import { cn } from "../../lib/utils";
-
-interface Feature1Props {
-  title?: string;
-  description?: string;
-  imageSrc?: string;
-  imageAlt?: string;
-  buttonPrimary?: {
-    label: string;
-    href: string;
-    onClick?: () => void;
-  };
-  buttonSecondary?: {
-    label: string;
-    href: string;
-    onClick?: () => void;
-  };
-  className?: string;
-}
+import { Button } from "./button.tsx";
+import { cn } from "../../lib/utils.ts";
 
 export const Feature1 = ({
   title = "Prioritizing talent and career growth",
@@ -34,7 +16,7 @@ export const Feature1 = ({
     href: "#",
   },
   className,
-}: Feature1Props) => {
+}) => {
   return (
     <section className={cn("py-24 md:py-32 px-6 bg-[#030303] overflow-hidden", className)}>
       <div className="mx-auto max-w-5xl">

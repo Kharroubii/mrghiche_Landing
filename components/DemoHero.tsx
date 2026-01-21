@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { HeroGeometric } from "./ui/shape-landing-hero";
+import { HeroGeometric } from "./ui/shape-landing-hero.tsx";
 
 export function DemoHeroGeometric() {
     return (

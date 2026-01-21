@@ -1,19 +1,10 @@
 "use client";
 
 import React, { forwardRef, useState, useEffect } from "react";
-import { cn } from "../../lib/utils";
+import { cn } from "../../lib/utils.ts";
 import { Play, X } from "lucide-react";
 
-// Interface for component props
-interface VideoPlayerProps extends React.HTMLAttributes<HTMLDivElement> {
-  thumbnailUrl: string;
-  videoUrl: string;
-  title: string;
-  description?: string;
-  aspectRatio?: "16/9" | "4/3" | "1/1";
-}
-
-const VideoPlayer = forwardRef<HTMLDivElement, VideoPlayerProps>(
+const VideoPlayer = forwardRef(
   (
     {
       className,
@@ -31,7 +22,7 @@ const VideoPlayer = forwardRef<HTMLDivElement, VideoPlayerProps>(
 
     // Effect to handle the 'Escape' key press for closing the modal
     useEffect(() => {
-      const handleEsc = (event: KeyboardEvent) => {
+      const handleEsc = (event) => {
         if (event.key === "Escape") {
           setIsModalOpen(false);
         }

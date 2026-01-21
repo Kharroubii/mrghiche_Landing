@@ -9,9 +9,9 @@ import {
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
-import { cn } from "../../lib/utils";
+import { cn } from "../../lib/utils.ts";
 
-const Tiktok = (props: React.SVGProps<SVGSVGElement>) => (
+const Tiktok = (props) => (
   <svg
     viewBox="0 0 24 24"
     fill="none"
@@ -25,18 +25,7 @@ const Tiktok = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-interface Testimonial {
-  name: string;
-  title: string;
-  description: string;
-  imageUrl: string;
-  tiktokUrl?: string;
-  twitterUrl?: string;
-  youtubeUrl?: string;
-  linkedinUrl?: string;
-}
-
-const testimonials: Testimonial[] = [
+const testimonials = [
   {
     name: "Michael Chen",
     title: "Senior Portfolio Strategist",
@@ -75,11 +64,7 @@ const testimonials: Testimonial[] = [
   },
 ];
 
-export interface TestimonialCarouselProps {
-  className?: string;
-}
-
-export function TestimonialCarousel({ className }: TestimonialCarouselProps) {
+export function TestimonialCarousel({ className }) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleNext = () =>

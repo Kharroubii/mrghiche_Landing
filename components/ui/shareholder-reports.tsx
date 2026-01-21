@@ -1,30 +1,10 @@
 import React, { forwardRef, useRef, useState, useCallback, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { cn } from "../../lib/utils";
+import { cn } from "../../lib/utils.ts";
 
-// Define the type for a single report item
-export interface Report {
-  id: string;
-  quarter: string;
-  period: string;
-  imageSrc: string;
-  isNew?: boolean;
-}
-
-// Define the props for the main component
-interface ShareholderReportsProps {
-  reports: Report[];
-  onReportClick?: (report: Report) => void;
-  title?: string;
-  subtitle?: string;
-  className?: string;
-}
-
-export const ShareholderReports = forwardRef<
-  HTMLDivElement,
-  ShareholderReportsProps
->(({ reports, onReportClick, title = "Shareholders' Letter and Results", subtitle = "Insights into our strategic growth", className, ...props }, ref) => {
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
+export const ShareholderReports = forwardRef(
+  ({ reports, onReportClick, title = "Shareholders' Letter and Results", subtitle = "Insights into our strategic growth", className, ...props }, ref) => {
+  const scrollContainerRef = useRef(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
 
@@ -52,7 +32,7 @@ export const ShareholderReports = forwardRef<
   }, [reports, checkScrollability]);
 
   // Scroll handler for navigation buttons
-  const scroll = (direction: "left" | "right") => {
+  const scroll = (direction) => {
     const container = scrollContainerRef.current;
     if (container) {
       const scrollAmount = container.clientWidth * 0.8; // Scroll by 80% of the visible width

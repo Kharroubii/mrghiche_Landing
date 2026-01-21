@@ -1,15 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useInView, animate } from 'framer-motion';
 
-interface AnimatedCounterProps {
-  value: number;
-  duration?: number;
-  decimals?: number;
-  className?: string;
-  prefix?: string;
-  suffix?: string;
-}
-
 export const AnimatedCounter = ({
   value,
   duration = 2,
@@ -17,7 +8,7 @@ export const AnimatedCounter = ({
   className,
   prefix = "",
   suffix = "",
-}: AnimatedCounterProps) => {
+}) => {
   const [count, setCount] = useState(0);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
