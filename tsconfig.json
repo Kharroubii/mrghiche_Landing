@@ -33,6 +33,8 @@
     "node_modules",
     "vite.config.ts",
     "vite.config.js",
+    "vite.config.mts",
+    "vite.config.cts",
     "vite-env.d.ts",
     "src/vite-env.d.ts",
     "dist",
