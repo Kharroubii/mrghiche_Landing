@@ -9,20 +9,21 @@ import {
   Mail, 
   MapPin, 
   Phone, 
+  Globe, 
   ArrowUpRight, 
   ArrowRight, 
   ShieldCheck, 
   TrendingUp, 
   Coins, 
+  ChevronRight, 
+  ChevronDown, 
   ChevronUp, 
-  ChevronDown,
   BarChart3, 
   Instagram,
   ArrowLeft,
   FileUp,
   CheckCircle2,
-  FileDown,
-  Globe
+  FileDown
 } from 'lucide-react';
 import Footer4Col from './components/ui/footer-4-col';
 import { VideoPlayer } from './components/ui/video-player';
@@ -217,6 +218,18 @@ const shareholderReportsData: Report[] = [
     quarter: "Q1 2024 Results",
     period: "Apr - Jun 2024",
     imageSrc: "https://images.unsplash.com/photo-1551288049-bbbda536339a?q=80&w=800&auto=format&fit=crop",
+  },
+  {
+    id: "fy-2023",
+    quarter: "FY 2023 Annual Report",
+    period: "Full Year 2023",
+    imageSrc: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop",
+  },
+  {
+    id: "q3-2023",
+    quarter: "Q3 2023 Growth Letter",
+    period: "Oct - Dec 2023",
+    imageSrc: "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?q=80&w=800&auto=format&fit=crop",
   }
 ];
 
@@ -421,7 +434,7 @@ const HomeView = ({ onNavigate, onSelectReport }: { onNavigate: (page: string) =
         }
         description="Partner with a management team focused on structured processes, rigorous risk control, and consistent execution across market conditions."
         buttonText="Join Us !"
-        buttonLink="/contact"
+        buttonLink="#"
         imageUrl1="https://images.unsplash.com/photo-1611974714024-4639454e4f8a?q=80&w=800&auto=format&fit=crop"
         imageUrl2="https://images.unsplash.com/photo-1551288049-bbbda536339a?q=80&w=800&auto=format&fit=crop"
         bgImageUrl="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?q=80&w=2000&auto=format&fit=crop"
@@ -482,8 +495,8 @@ const HomeView = ({ onNavigate, onSelectReport }: { onNavigate: (page: string) =
 
     <Feature1 
       title="Prioritizing talent and career growth"
-      buttonPrimary={{ label: "Join Us !", href: "/contact", onClick: () => onNavigate('contact') }}
-      buttonSecondary={{ label: "Explore careers", href: "/careers", onClick: () => onNavigate('careers') }}
+      buttonPrimary={{ label: "Join Us !", href: "#", onClick: () => onNavigate('contact') }}
+      buttonSecondary={{ label: "Explore careers", href: "#", onClick: () => onNavigate('careers') }}
       className="border-t border-white/5"
     />
   </motion.div>
@@ -558,6 +571,13 @@ const ReportDetailView = ({ report, onBack }: { report: Report | null, onBack: (
             </Button>
           </div>
         </article>
+
+        <div className="mt-24 pt-8 border-t border-white/10 text-center">
+          <p className="text-white/20 text-[9px] uppercase tracking-[0.4em] mb-3">Confidential Disclosure</p>
+          <p className="text-white/30 text-xs max-w-xl mx-auto leading-relaxed italic">
+            This letter is provided for institutional informational purposes only. Past performance is not indicative of future results. Detailed financial data available in the secure portal.
+          </p>
+        </div>
       </div>
     </motion.div>
   );
@@ -653,6 +673,7 @@ const WhoWeAreView = () => {
           </button>
           
           <a 
+            onClick={(e) => { e.preventDefault(); window.open('https://instagram.com/mrghiche', '_blank'); }}
             href="https://instagram.com/mrghiche" 
             target="_blank" 
             rel="noopener noreferrer"
@@ -681,7 +702,7 @@ const WhoWeAreView = () => {
   );
 };
 
-const ProjectsView = () => {
+const PortfolioView = () => {
   const [cols, setCols] = useState(3);
   
   useEffect(() => {
@@ -803,7 +824,7 @@ const ProjectsView = () => {
       className="pt-24 pb-24 px-6"
     >
       <div className="max-w-6xl mx-auto text-center mb-16">
-        <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tighter">Strategic Projects</h1>
+        <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tighter">Strategic Portfolio</h1>
         <p className="text-lg text-white/50 max-w-2xl mx-auto">A selection of high-impact investments across key institutional asset classes, meticulously managed for long-term growth.</p>
       </div>
 
@@ -1153,7 +1174,7 @@ function App() {
   const renderView = () => {
     switch(currentPage) {
       case 'who-we-are': return <WhoWeAreView />;
-      case 'projects': return <ProjectsView />;
+      case 'portfolio': return <PortfolioView />;
       case 'services': return <ServicesView onNavigate={setCurrentPage} />;
       case 'news': return <NewsView />;
       case 'careers': return <CareersView />;

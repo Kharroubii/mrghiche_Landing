@@ -1,45 +1,25 @@
-"use client";
-
 import React, { useState, useEffect } from 'react';
 import { Button, buttonVariants } from './button';
-import { cn } from '@/lib/utils';
+import { cn } from '../../lib/utils';
 import { MenuToggleIcon } from './menu-toggle-icon';
 import { useScroll } from './use-scroll';
-import { usePathname as useNextPathname } from 'next/navigation';
-
-// Fix for "Cannot find name 'require'" by using standard import and a safe wrapper
-/**
- * Safe wrapper for usePathname that provides a fallback in case it's used outside a Next.js context.
- */
-function usePathname() {
-  try {
-    return useNextPathname() || '';
-  } catch (e) {
-    return '';
-  }
-}
 
 interface HeaderProps {
-  activePage?: string;
-  onNavigate?: (page: string) => void;
+	activePage?: string;
+	onNavigate?: (page: string) => void;
 }
 
-export function Header({ activePage, onNavigate }: HeaderProps) {
+export function Header({ activePage = 'home', onNavigate }: HeaderProps) {
 	const [open, setOpen] = useState(false);
 	const scrolled = useScroll(10);
-	
-  let pathname = '';
-  try {
-    pathname = usePathname() || '';
-  } catch (e) {}
 
 	const links = [
-		{ label: 'Who we are', href: '/about', id: 'who-we-are' },
-		{ label: 'Projects', href: '/projects', id: 'projects' },
-		{ label: 'Services', href: '/services', id: 'services' },
-		{ label: 'News', href: '/news', id: 'news' },
-		{ label: 'Careers', href: '/careers', id: 'careers' },
-		{ label: 'Contact Us', href: '/contact', id: 'contact' },
+		{ label: 'Who we are', id: 'who-we-are' },
+		{ label: 'Portfolio', id: 'portfolio' },
+		{ label: 'Services', id: 'services' },
+		{ label: 'News', id: 'news' },
+		{ label: 'Careers', id: 'careers' },
+		{ label: 'Contact Us', id: 'contact' },
 	];
 
 	useEffect(() => {
@@ -53,15 +33,9 @@ export function Header({ activePage, onNavigate }: HeaderProps) {
 		};
 	}, [open]);
 
-	const closeMenu = () => setOpen(false);
-
-	const handleLinkClick = (e: React.MouseEvent, href: string, id: string) => {
-		if (onNavigate) {
-			e.preventDefault();
-			onNavigate(id);
-			window.scrollTo({ top: 0, behavior: 'smooth' });
-		}
-		closeMenu();
+	const handleNav = (id: string) => {
+		onNavigate?.(id);
+		setOpen(false);
 	};
 
 	return (
@@ -81,45 +55,38 @@ export function Header({ activePage, onNavigate }: HeaderProps) {
 					{ 'px-4': scrolled }
 				)}
 			>
-				<a 
-					href="/" 
-					className="flex items-center gap-2 cursor-pointer" 
-					onClick={(e) => handleLinkClick(e, '/', 'home')}
-				>
+				<div className="flex items-center gap-2 cursor-pointer" onClick={() => handleNav('home')}>
 					<WordmarkIcon className="h-8 w-auto" />
-				</a>
+				</div>
 				
 				<div className="hidden items-center gap-1 md:flex">
 					<div className="flex items-center gap-1 mr-4">
-						{links.map((link, i) => {
-							const isActive = pathname === link.href || activePage === link.id;
-							return (
-								<a 
-									key={i} 
-									href={link.href}
-									onClick={(e) => handleLinkClick(e, link.href, link.id)}
-									className={cn(
-                    buttonVariants({ variant: 'ghost' }),
-                    'text-white/70 hover:text-white hover:bg-white/5 transition-all text-xs lg:text-sm px-3 cursor-pointer',
-                    isActive && 'text-white bg-white/10'
-                  )}
-								>
-									{link.label}
-								</a>
-							);
-						})}
+						{links.map((link, i) => (
+							<button 
+								key={i} 
+								onClick={() => handleNav(link.id)}
+								className={buttonVariants({ 
+									variant: 'ghost', 
+									className: cn(
+										'text-white/70 hover:text-white hover:bg-white/5 transition-all text-xs lg:text-sm px-3',
+										activePage === link.id && 'text-white bg-white/10'
+									) 
+								})} 
+							>
+								{link.label}
+							</button>
+						))}
 					</div>
 					<div className="flex items-center gap-4 border-l border-white/10 pl-4">
 						<Button variant="ghost" className="text-white/70 hover:text-white text-xs lg:text-sm">
 							Sign In
 						</Button>
-						<a 
-							href="/contact"
-							onClick={(e) => handleLinkClick(e, '/contact', 'contact')}
-							className="bg-white text-black hover:bg-white/90 shadow-lg text-xs lg:text-sm px-5 rounded-full font-semibold flex items-center justify-center h-10 cursor-pointer"
+						<Button 
+							onClick={() => handleNav('contact')}
+							className="bg-white text-black hover:bg-white/90 shadow-lg text-xs lg:text-sm px-5 rounded-full font-semibold"
 						>
 							Get Started
-						</a>
+						</Button>
 					</div>
 				</div>
 
@@ -141,34 +108,29 @@ export function Header({ activePage, onNavigate }: HeaderProps) {
 			>
 				<div className="flex h-full w-full flex-col justify-between gap-y-8 p-8 overflow-y-auto">
 					<div className="grid gap-y-4 pt-4">
-						{links.map((link) => {
-							const isActive = pathname === link.href || activePage === link.id;
-							return (
-								<a
-									key={link.id}
-									href={link.href}
-									onClick={(e) => handleLinkClick(e, link.href, link.id)}
-									className={cn(
-										"text-3xl font-bold text-left text-white/90 hover:text-white transition-colors tracking-tight cursor-pointer",
-										isActive && "text-indigo-400"
-									)}
-								>
-									{link.label}
-								</a>
-							);
-						})}
+						{links.map((link) => (
+							<button
+								key={link.id}
+								onClick={() => handleNav(link.id)}
+								className={cn(
+									"text-3xl font-bold text-left text-white/90 hover:text-white transition-colors tracking-tight",
+									activePage === link.id && "text-indigo-400"
+								)}
+							>
+								{link.label}
+							</button>
+						))}
 					</div>
 					<div className="flex flex-col gap-4 mb-20">
 						<Button variant="outline" className="w-full text-lg py-7 border-white/20 text-white rounded-xl">
 							Sign In
 						</Button>
-						<a 
-							href="/contact"
-							onClick={(e) => handleLinkClick(e, '/contact', 'contact')}
-							className="w-full text-lg py-7 bg-white text-black rounded-xl font-bold flex items-center justify-center cursor-pointer"
+						<Button 
+							onClick={() => handleNav('contact')}
+							className="w-full text-lg py-7 bg-white text-black rounded-xl font-bold"
 						>
 							Get Started
-						</a>
+						</Button>
 					</div>
 				</div>
 			</div>
