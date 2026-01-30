@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Header } from './components/ui/header-2';
@@ -858,81 +859,128 @@ const PortfolioView = () => {
   );
 };
 
-const ServicesView = ({ onNavigate }: { onNavigate: (page: string) => void }) => (
-  <motion.div
-    initial={{ opacity: 0, x: 20 }}
-    animate={{ opacity: 1, x: 0 }}
-    exit={{ opacity: 0, x: -20 }}
-    transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-    className="pt-24 pb-24 px-6"
-  >
-    <div className="max-w-6xl mx-auto text-center mb-16">
-      <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tighter">Our Services</h1>
-      <p className="text-lg text-white/50 max-w-2xl mx-auto">Diverse investment avenues tailored for resilient growth and risk-adjusted returns.</p>
-    </div>
-
-    <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {SERVICES_DATA.map((service, idx) => (
-        <ExpandableCard 
-          key={idx}
-          title={service.title}
-          description={service.description}
-          teaser={service.teaser}
-          src={service.src}
-        >
-          {service.content(onNavigate)}
-        </ExpandableCard>
-      ))}
-    </div>
-  </motion.div>
-);
-
-const NewsView = () => (
-  <motion.div
-    initial={{ opacity: 0, x: 20 }}
-    animate={{ opacity: 1, x: 0 }}
-    exit={{ opacity: 0, x: -20 }}
-    transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-    className="pt-24 pb-24 px-6"
-  >
-    <div className="max-w-6xl mx-auto">
-      <div className="flex justify-between items-end mb-12 border-b border-white/10 pb-6">
-        <div>
-          <h1 className="text-4xl font-bold text-white tracking-tight">Firm Insights</h1>
-          <p className="text-white/40 mt-1 italic text-sm">The latest from Mrghiche Capital</p>
-        </div>
+const ServicesView = ({ onNavigate }: { onNavigate: (page: string) => void }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: 20 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: -20 }}
+      transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
+      className="pt-24 pb-24 px-6"
+    >
+      <div className="max-w-6xl mx-auto mb-16">
+        <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tighter">Our Expertise</h1>
+        <p className="text-lg text-white/50 max-w-2xl">
+          Comprehensive investment strategies tailored for institutional growth and capital preservation.
+        </p>
       </div>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-        {[
-          { 
-            date: "Jan 24, 2025", 
-            tag: "Market Outlook", 
-            title: "Navigating Volatility in the 2025 Global Economy",
-            img: "https://images.unsplash.com/photo-1551288049-bbbda536339a?auto=format&fit=crop&w=800&q=80"
-          },
-          { 
-            date: "Jan 12, 2025", 
-            tag: "Announcement", 
-            title: "Mrghiche Capital Expands Alternative Assets Division",
-            img: "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800&q=80"
-          }
-        ].map((item, idx) => (
-          <div key={idx} className="group cursor-pointer">
-            <div className="h-64 w-full overflow-hidden rounded-2xl mb-5 bg-white/5">
-              <img src={item.img} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt={item.title} />
-            </div>
-            <div className="flex gap-4 items-center mb-3">
-              <span className="text-[10px] uppercase tracking-widest px-3 py-1 rounded-full bg-white/10 text-white/60">{item.tag}</span>
-              <span className="text-[10px] text-white/30">{item.date}</span>
-            </div>
-            <h2 className="text-xl font-bold text-white group-hover:text-indigo-400 transition-colors">{item.title}</h2>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+        {SERVICES_DATA.map((service, idx) => (
+          <div key={idx} className="h-[420px]">
+            <ExpandableCard 
+              title={service.title}
+              description={service.description}
+              teaser={service.teaser}
+              src={service.src}
+              className="h-full"
+            >
+              {service.content(onNavigate)}
+            </ExpandableCard>
           </div>
         ))}
       </div>
-    </div>
-  </motion.div>
-);
+    </motion.div>
+  );
+};
+
+const NewsView = () => {
+  const newsItems = [
+    {
+      category: "MARKET COMMENTARY",
+      date: "OCTOBER 12, 2023",
+      title: "Q3 2023 Global Market Outlook: Navigating the Pivot",
+      description: "As central banks near the end of their tightening cycles, we analyze the implications for asset allocation and the potential for a soft landing.",
+      image: "https://images.unsplash.com/photo-1437719417032-8595fd9e9dc6?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+      category: "FIRM NEWS",
+      date: "SEPTEMBER 05, 2023",
+      title: "Mrghiche Capital Appoints Sarah Chen as Chief Risk Officer",
+      description: "We are pleased to welcome Sarah Chen, formerly of Citadel, to lead our independent risk management function.",
+      image: "https://images.unsplash.com/photo-1510511459019-5dda7724fd87?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+      category: "RESEARCH",
+      date: "AUGUST 22, 2023",
+      title: "The Impact of Generative AI on Algorithmic Trading",
+      description: "A deep dive into how Large Language Models are transforming sentiment analysis and high-frequency strategies.",
+      image: "https://images.unsplash.com/photo-1476610182048-b716b8518aae?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+      category: "REPORTS",
+      date: "JULY 15, 2023",
+      title: "2023 ESG Integration Report",
+      description: "Our annual review of environmental, social, and governance factor integration across our investment process.",
+      image: "https://images.unsplash.com/photo-1515238152791-8216bfdf89a7?q=80&w=800&auto=format&fit=crop"
+    }
+  ];
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: 20 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: -20 }}
+      transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
+      className="pt-24 pb-24 px-6"
+    >
+      <div className="max-w-6xl mx-auto">
+        <div className="mb-16 border-b border-white/10 pb-8">
+           <h1 className="text-4xl md:text-5xl font-bold text-white mb-2 tracking-tighter">Firm Insights</h1>
+           <p className="text-white/40 italic">Latest updates, market analysis, and reports.</p>
+        </div>
+
+        <div className="space-y-10">
+          {newsItems.map((item, idx) => (
+            <div key={idx} className="group cursor-pointer border-b border-white/10 pb-10 last:border-0">
+              <div className="flex flex-col md:flex-row gap-6 items-start">
+                <div className="w-full md:w-[320px] aspect-[16/10] shrink-0 rounded-lg overflow-hidden bg-white/5 relative">
+                   <div className="absolute inset-0 bg-indigo-500/0 group-hover:bg-indigo-500/10 transition-colors duration-500" />
+                   <img 
+                      src={item.image} 
+                      alt={item.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                   />
+                </div>
+                
+                <div className="flex-1 space-y-3">
+                   <div className="flex items-center gap-3 text-[10px] font-bold tracking-widest uppercase text-amber-500">
+                      <span>{item.category}</span>
+                      <span className="text-white/20">|</span>
+                      <span className="text-white/50">{item.date}</span>
+                   </div>
+                   
+                   <h2 className="text-2xl font-bold text-white leading-tight group-hover:text-indigo-400 transition-colors">
+                      {item.title}
+                   </h2>
+                   
+                   <p className="text-white/60 leading-relaxed text-sm md:text-base max-w-2xl">
+                      {item.description}
+                   </p>
+                   
+                   <div className="pt-2 flex items-center gap-2 text-white font-bold text-xs uppercase tracking-widest group/btn">
+                      Read Article 
+                      <ArrowRight className="size-4 transition-transform group-hover/btn:translate-x-1" />
+                   </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </motion.div>
+  );
+};
 
 const CareersView = () => {
   const [selectedJob, setSelectedJob] = useState<null | {role: string, loc: string, type: string}>(null);
