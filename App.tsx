@@ -512,7 +512,7 @@ const ReportDetailView = ({ report, onBack }: { report: Report | null, onBack: (
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -20 }}
       transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-      className="pt-24 pb-24 px-6"
+      className="pt-32 md:pt-40 pb-24 px-6"
     >
       <div className="max-w-3xl mx-auto">
         <button 
@@ -593,12 +593,21 @@ const WhoWeAreView = () => {
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -20 }}
       transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-      className="pt-24 pb-24 px-6"
+      className="pt-32 md:pt-40 pb-24 px-6"
     >
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tighter">
-          Institutional Discipline. <br/><span className="text-white/40">Market Agility.</span>
+      <div className="max-w-6xl mx-auto mb-16">
+        <h1 className="text-5xl font-bold text-white mb-6 tracking-tighter">
+          Our Firm.
         </h1>
+        <p className="text-lg text-white/50 max-w-2xl">
+          Institutional investment management built on a foundation of discipline, market agility, and performance accountability.
+        </p>
+      </div>
+
+      <div className="max-w-4xl mx-auto">
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tighter">
+          Institutional Discipline. <br/><span className="text-white/40">Market Agility.</span>
+        </h2>
         
         <div className="relative">
           <p className="text-lg md:text-xl text-white/70 leading-relaxed mb-6">
@@ -822,11 +831,11 @@ const PortfolioView = () => {
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -20 }}
       transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-      className="pt-24 pb-24 px-6"
+      className="pt-32 md:pt-40 pb-24 px-6"
     >
-      <div className="max-w-6xl mx-auto text-center mb-16">
-        <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tighter">Strategic Portfolio</h1>
-        <p className="text-lg text-white/50 max-w-2xl mx-auto">A selection of high-impact investments across key institutional asset classes, meticulously managed for long-term growth.</p>
+      <div className="max-w-6xl mx-auto mb-16">
+        <h1 className="text-5xl font-bold text-white mb-6 tracking-tighter">Strategic Portfolio.</h1>
+        <p className="text-lg text-white/50 max-w-2xl">A selection of high-impact investments across key institutional asset classes, meticulously managed for long-term growth.</p>
       </div>
 
       <MasonryGrid columns={cols} gap={8} className="max-w-7xl mx-auto">
@@ -866,10 +875,10 @@ const ServicesView = ({ onNavigate }: { onNavigate: (page: string) => void }) =>
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -20 }}
       transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-      className="pt-24 pb-24 px-6"
+      className="pt-32 md:pt-40 pb-24 px-6"
     >
       <div className="max-w-6xl mx-auto mb-16">
-        <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tighter">Our Expertise</h1>
+        <h1 className="text-5xl font-bold text-white mb-6 tracking-tighter">Our Expertise.</h1>
         <p className="text-lg text-white/50 max-w-2xl">
           Comprehensive investment strategies tailored for institutional growth and capital preservation.
         </p>
@@ -932,14 +941,14 @@ const NewsView = () => {
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -20 }}
       transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-      className="pt-24 pb-24 px-6"
+      className="pt-32 md:pt-40 pb-24 px-6"
     >
-      <div className="max-w-6xl mx-auto">
-        <div className="mb-16 border-b border-white/10 pb-8">
-           <h1 className="text-4xl md:text-5xl font-bold text-white mb-2 tracking-tighter">Firm Insights</h1>
-           <p className="text-white/40 italic">Latest updates, market analysis, and reports.</p>
-        </div>
+      <div className="max-w-6xl mx-auto mb-16">
+        <h1 className="text-5xl font-bold text-white mb-6 tracking-tighter">Firm Insights.</h1>
+        <p className="text-lg text-white/50 max-w-2xl">Latest market analysis, corporate updates, and strategic institutional reports.</p>
+      </div>
 
+      <div className="max-w-6xl mx-auto">
         <div className="space-y-10">
           {newsItems.map((item, idx) => (
             <div key={idx} className="group cursor-pointer border-b border-white/10 pb-10 last:border-0">
@@ -1008,7 +1017,7 @@ const CareersView = () => {
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="pt-24 pb-24 px-6 flex flex-col items-center justify-center text-center min-h-[60vh]"
+        className="pt-32 md:pt-40 pb-24 px-6 flex flex-col items-center justify-center text-center min-h-[60vh]"
       >
         <div className="size-20 rounded-full bg-indigo-500/20 flex items-center justify-center mb-6 border border-indigo-500/30">
           <CheckCircle2 className="size-10 text-indigo-400" />
@@ -1038,7 +1047,7 @@ const CareersView = () => {
         animate={{ opacity: 1, x: 0 }}
         exit={{ opacity: 0, x: -20 }}
         transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-        className="pt-24 pb-24 px-6"
+        className="pt-32 md:pt-40 pb-24 px-6"
       >
         <div className="max-w-2xl mx-auto">
           <button 
@@ -1114,7 +1123,7 @@ const CareersView = () => {
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -20 }}
       transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-      className="pt-24 pb-24 px-6"
+      className="pt-32 md:pt-40 pb-24 px-6"
     >
       <div className="max-w-5xl mx-auto">
         <h1 className="text-5xl font-bold text-white mb-6 tracking-tighter">Join the Elite.</h1>
@@ -1160,12 +1169,17 @@ const ContactView = () => (
     animate={{ opacity: 1, x: 0 }}
     exit={{ opacity: 0, x: -20 }}
     transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-    className="pt-24 pb-24 px-6"
+    className="pt-32 md:pt-40 pb-24 px-6"
   >
+    <div className="max-w-6xl mx-auto mb-16">
+      <h1 className="text-5xl font-bold text-white mb-6 tracking-tighter">Connect with Us.</h1>
+      <p className="text-lg text-white/50 max-w-2xl">Speak with our institutional relationship managers to discuss how we can support your investment objectives and explore strategic partnerships.</p>
+    </div>
+
     <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
       <div>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tighter">Get in Touch</h1>
-        <p className="text-base md:text-lg text-white/50 mb-10">Speak with our institutional relationship managers to discuss how we can support your investment objectives.</p>
+        <h2 className="text-3xl font-bold text-white mb-6 tracking-tighter">Get in Touch</h2>
+        <p className="text-base md:text-lg text-white/50 mb-10">We are dedicated to providing clear, institutional-grade communication for our global partners.</p>
         
         <div className="space-y-6">
           <div className="flex items-start gap-4">
