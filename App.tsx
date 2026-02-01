@@ -512,7 +512,7 @@ const ReportDetailView = ({ report, onBack }: { report: Report | null, onBack: (
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -20 }}
       transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-      className="pt-32 md:pt-40 pb-24 px-6"
+      className="pt-48 md:pt-64 pb-24 px-6"
     >
       <div className="max-w-3xl mx-auto">
         <button 
@@ -593,7 +593,7 @@ const WhoWeAreView = () => {
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -20 }}
       transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-      className="pt-32 md:pt-40 pb-24 px-6"
+      className="pt-48 md:pt-64 pb-24 px-6"
     >
       <div className="max-w-6xl mx-auto mb-16">
         <h1 className="text-5xl font-bold text-white mb-6 tracking-tighter">
@@ -831,7 +831,7 @@ const PortfolioView = () => {
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -20 }}
       transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-      className="pt-32 md:pt-40 pb-24 px-6"
+      className="pt-48 md:pt-64 pb-24 px-6"
     >
       <div className="max-w-6xl mx-auto mb-16">
         <h1 className="text-5xl font-bold text-white mb-6 tracking-tighter">Strategic Portfolio.</h1>
@@ -875,7 +875,7 @@ const ServicesView = ({ onNavigate }: { onNavigate: (page: string) => void }) =>
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -20 }}
       transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-      className="pt-32 md:pt-40 pb-24 px-6"
+      className="pt-48 md:pt-64 pb-24 px-6"
     >
       <div className="max-w-6xl mx-auto mb-16">
         <h1 className="text-5xl font-bold text-white mb-6 tracking-tighter">Our Expertise.</h1>
@@ -941,7 +941,7 @@ const NewsView = () => {
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -20 }}
       transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-      className="pt-32 md:pt-40 pb-24 px-6"
+      className="pt-48 md:pt-64 pb-24 px-6"
     >
       <div className="max-w-6xl mx-auto mb-16">
         <h1 className="text-5xl font-bold text-white mb-6 tracking-tighter">Firm Insights.</h1>
@@ -1017,7 +1017,7 @@ const CareersView = () => {
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="pt-32 md:pt-40 pb-24 px-6 flex flex-col items-center justify-center text-center min-h-[60vh]"
+        className="pt-48 md:pt-64 pb-24 px-6 flex flex-col items-center justify-center text-center min-h-[60vh]"
       >
         <div className="size-20 rounded-full bg-indigo-500/20 flex items-center justify-center mb-6 border border-indigo-500/30">
           <CheckCircle2 className="size-10 text-indigo-400" />
@@ -1047,7 +1047,7 @@ const CareersView = () => {
         animate={{ opacity: 1, x: 0 }}
         exit={{ opacity: 0, x: -20 }}
         transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-        className="pt-32 md:pt-40 pb-24 px-6"
+        className="pt-48 md:pt-64 pb-24 px-6"
       >
         <div className="max-w-2xl mx-auto">
           <button 
@@ -1123,7 +1123,7 @@ const CareersView = () => {
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -20 }}
       transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-      className="pt-32 md:pt-40 pb-24 px-6"
+      className="pt-48 md:pt-64 pb-24 px-6"
     >
       <div className="max-w-5xl mx-auto">
         <h1 className="text-5xl font-bold text-white mb-6 tracking-tighter">Join the Elite.</h1>
@@ -1169,7 +1169,7 @@ const ContactView = () => (
     animate={{ opacity: 1, x: 0 }}
     exit={{ opacity: 0, x: -20 }}
     transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-    className="pt-32 md:pt-40 pb-24 px-6"
+    className="pt-48 md:pt-64 pb-24 px-6"
   >
     <div className="max-w-6xl mx-auto mb-16">
       <h1 className="text-5xl font-bold text-white mb-6 tracking-tighter">Connect with Us.</h1>
