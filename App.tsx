@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Header } from './components/ui/header-2';
@@ -935,6 +934,8 @@ const NewsView = () => {
     }
   ];
 
+  const featuredArticle = newsItems[1]; // Featured Sarah Chen article
+
   return (
     <motion.div
       initial={{ opacity: 0, x: 20 }}
@@ -943,9 +944,54 @@ const NewsView = () => {
       transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
       className="pt-48 md:pt-64 pb-24 px-6"
     >
-      <div className="max-w-6xl mx-auto mb-16">
-        <h1 className="text-5xl font-bold text-white mb-6 tracking-tighter">Firm Insights.</h1>
-        <p className="text-lg text-white/50 max-w-2xl">Latest market analysis, corporate updates, and strategic institutional reports.</p>
+      {/* Article Preview exactly as requested */}
+      <div className="max-w-4xl mx-auto mb-32 border-b border-white/10 pb-24 text-left">
+        <header className="mb-16">
+          <div className="flex items-center gap-3 text-[10px] font-bold tracking-[0.3em] uppercase mb-10">
+            <span className="text-amber-500">{featuredArticle.category}</span>
+            <span className="text-white/20">|</span>
+            <span className="text-white/60">{featuredArticle.date}</span>
+          </div>
+          <h1 className="text-4xl md:text-6xl font-bold text-white tracking-tighter leading-[1.1] max-w-4xl">
+            {featuredArticle.title}
+          </h1>
+        </header>
+
+        <div className="max-w-3xl space-y-12">
+          <p className="text-lg md:text-xl text-white/90 leading-relaxed font-light">
+            We are pleased to welcome Sarah Chen, formerly of Citadel, to lead our independent risk management function.
+          </p>
+
+          <p className="text-white/60 leading-relaxed">
+            Mrghiche Capital is proud to announce... (Full article content simulated)
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          </p>
+          
+          <h3 className="text-xl font-bold text-white mt-12 mb-4 tracking-tight uppercase text-[10px] tracking-[0.2em]">Strategic Implications</h3>
+          <p className="text-white/60 leading-relaxed">
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+
+          <div className="my-12 p-8 border-l-4 border-amber-500 bg-white/[0.03] rounded-r-2xl">
+            <p className="text-xl md:text-2xl text-white/80 italic leading-relaxed font-light">
+              "Markets are currently pricing in a perfection scenario that leaves little room for error in policy execution."
+            </p>
+          </div>
+
+          <p className="text-white/60 leading-relaxed">
+            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+          </p>
+
+          <div className="pt-16 border-t border-white/10 mt-20">
+            <button className="flex items-center gap-2 text-white/40 hover:text-white transition-colors uppercase tracking-widest text-[10px] font-bold group">
+              <ArrowLeft className="size-3 group-hover:-translate-x-1 transition-transform" /> Back to Insights
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div className="max-w-6xl mx-auto mb-16 text-left">
+        <h1 className="text-3xl font-bold text-white mb-6 tracking-tighter uppercase text-[10px] tracking-[0.3em] text-white/40">Latest Insights.</h1>
       </div>
 
       <div className="max-w-6xl mx-auto">
@@ -962,7 +1008,7 @@ const NewsView = () => {
                    />
                 </div>
                 
-                <div className="flex-1 space-y-3">
+                <div className="flex-1 space-y-3 text-left">
                    <div className="flex items-center gap-3 text-[10px] font-bold tracking-widest uppercase text-amber-500">
                       <span>{item.category}</span>
                       <span className="text-white/20">|</span>
@@ -1127,7 +1173,7 @@ const CareersView = () => {
     >
       <div className="max-w-5xl mx-auto">
         <h1 className="text-5xl font-bold text-white mb-6 tracking-tighter">Join the Elite.</h1>
-        <p className="text-lg text-white/50 mb-16 max-w-2xl">We are always looking for exceptional talent to join our institutional investment teams across London, Dubai, and New York.</p>
+        <p className="text-lg text-white/50 mb-16 max-w-2xl text-left">We are always looking for exceptional talent to join our institutional investment teams across London, Dubai, and New York.</p>
         
         <div className="space-y-4">
           {jobs.map((job) => (
@@ -1136,7 +1182,7 @@ const CareersView = () => {
               onClick={() => setSelectedJob(job)}
               className="group flex justify-between items-center p-6 rounded-2xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.06] hover:border-white/10 transition-all cursor-pointer"
             >
-              <div>
+              <div className="text-left">
                 <div className="text-xl font-bold text-white group-hover:text-indigo-400 transition-colors">{job.role}</div>
                 <div className="flex gap-4 text-[10px] text-white/30 mt-1 uppercase tracking-widest">
                   <span>{job.loc}</span>
@@ -1169,7 +1215,7 @@ const ContactView = () => (
     animate={{ opacity: 1, x: 0 }}
     exit={{ opacity: 0, x: -20 }}
     transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-    className="pt-48 md:pt-64 pb-24 px-6"
+    className="pt-48 md:pt-64 pb-24 px-6 text-left"
   >
     <div className="max-w-6xl mx-auto mb-16">
       <h1 className="text-5xl font-bold text-white mb-6 tracking-tighter">Connect with Us.</h1>
