@@ -1,16 +1,17 @@
 {
-  "name": "mrghiche-capital",
-  "version": "1.0.0",
+  "name": "mrghiche-landing",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "next": "16.1.6",
-    "react": "19.2.4",
-    "react-dom": "19.2.4",
-    "framer-motion": "12.4.2",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "framer-motion": "11.18.2",
     "lucide-react": "0.475.0",
     "clsx": "2.1.1",
     "tailwind-merge": "3.0.1",
@@ -20,19 +21,9 @@
     "embla-carousel-auto-scroll": "8.5.2"
   },
   "devDependencies": {
-    "typescript": "5.7.3",
-    "@types/react": "19.0.8",
-    "@types/react-dom": "19.0.3",
-    "@types/node": "22.13.1",
-    "autoprefixer": "10.4.20",
-    "postcss": "8.5.1",
-    "tailwindcss": "3.4.17"
-  },
-  "overrides": {
-    "react": "19.2.4",
-    "react-dom": "19.2.4",
-    "react-is": "19.2.4",
-    "@types/react": "19.0.8",
-    "@types/react-dom": "19.0.3"
+    "@types/node": "^22.14.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "typescript": "~5.8.2",
+    "vite": "^6.2.0"
   }
 }

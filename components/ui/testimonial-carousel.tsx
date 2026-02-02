@@ -130,7 +130,7 @@ export function TestimonialCarousel({ className }: TestimonialCarouselProps) {
               exit={{ opacity: 0, x: -20 }}
               transition={{ duration: 0.4, ease: "easeInOut" }}
             >
-              <div className='mb-6 text-left'>
+              <div className='mb-6'>
                 <h2 className='text-2xl font-bold text-white mb-2'>
                   {currentTestimonial.name}
                 </h2>
@@ -140,7 +140,7 @@ export function TestimonialCarousel({ className }: TestimonialCarouselProps) {
                 </p>
               </div>
 
-              <p className='text-white/70 text-base leading-relaxed mb-8 italic text-left'>
+              <p className='text-white/70 text-base leading-relaxed mb-8 italic'>
                 "{currentTestimonial.description}"
               </p>
 

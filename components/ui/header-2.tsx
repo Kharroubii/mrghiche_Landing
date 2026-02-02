@@ -1,8 +1,4 @@
-"use client";
-
 import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { Button, buttonVariants } from './button';
 import { cn } from '../../lib/utils';
 import { MenuToggleIcon } from './menu-toggle-icon';
@@ -13,18 +9,17 @@ interface HeaderProps {
 	onNavigate?: (page: string) => void;
 }
 
-export function Header({ onNavigate }: HeaderProps) {
+export function Header({ activePage = 'home', onNavigate }: HeaderProps) {
 	const [open, setOpen] = useState(false);
 	const scrolled = useScroll(10);
-  const pathname = usePathname();
 
 	const links = [
-		{ label: 'Who we are', href: '/who-we-are' },
-		{ label: 'Portfolio', href: '/portfolio' },
-		{ label: 'Services', href: '/services' },
-		{ label: 'News', href: '/news' },
-		{ label: 'Careers', href: '/careers' },
-		{ label: 'Contact Us', href: '/contact' },
+		{ label: 'Who we are', id: 'who-we-are' },
+		{ label: 'Portfolio', id: 'portfolio' },
+		{ label: 'Services', id: 'services' },
+		{ label: 'News', id: 'news' },
+		{ label: 'Careers', id: 'careers' },
+		{ label: 'Contact Us', id: 'contact' },
 	];
 
 	useEffect(() => {
@@ -37,6 +32,11 @@ export function Header({ onNavigate }: HeaderProps) {
 			document.body.style.overflow = '';
 		};
 	}, [open]);
+
+	const handleNav = (id: string) => {
+		onNavigate?.(id);
+		setOpen(false);
+	};
 
 	return (
 		<header
@@ -55,38 +55,38 @@ export function Header({ onNavigate }: HeaderProps) {
 					{ 'px-4': scrolled }
 				)}
 			>
-				<Link href="/" className="flex items-center gap-2 cursor-pointer">
+				<div className="flex items-center gap-2 cursor-pointer" onClick={() => handleNav('home')}>
 					<WordmarkIcon className="h-8 w-auto" />
-				</Link>
+				</div>
 				
 				<div className="hidden items-center gap-1 md:flex">
 					<div className="flex items-center gap-1 mr-4">
 						{links.map((link, i) => (
-							<Link 
+							<button 
 								key={i} 
-								href={link.href}
+								onClick={() => handleNav(link.id)}
 								className={buttonVariants({ 
 									variant: 'ghost', 
 									className: cn(
 										'text-white/70 hover:text-white hover:bg-white/5 transition-all text-xs lg:text-sm px-3',
-										pathname === link.href && 'text-white bg-white/10'
+										activePage === link.id && 'text-white bg-white/10'
 									) 
 								})} 
 							>
 								{link.label}
-							</Link>
+							</button>
 						))}
 					</div>
 					<div className="flex items-center gap-4 border-l border-white/10 pl-4">
-						<Link href="/signin" className={buttonVariants({ variant: 'ghost', className: "text-white/70 hover:text-white text-xs lg:text-sm" })}>
+						<Button variant="ghost" className="text-white/70 hover:text-white text-xs lg:text-sm">
 							Sign In
-						</Link>
-						<Link 
-							href="/get-started"
-							className={buttonVariants({ className: "bg-white text-black hover:bg-white/90 shadow-lg text-xs lg:text-sm px-5 rounded-full font-semibold" })}
+						</Button>
+						<Button 
+							onClick={() => handleNav('contact')}
+							className="bg-white text-black hover:bg-white/90 shadow-lg text-xs lg:text-sm px-5 rounded-full font-semibold"
 						>
 							Get Started
-						</Link>
+						</Button>
 					</div>
 				</div>
 
@@ -109,30 +109,28 @@ export function Header({ onNavigate }: HeaderProps) {
 				<div className="flex h-full w-full flex-col justify-between gap-y-8 p-8 overflow-y-auto">
 					<div className="grid gap-y-4 pt-4">
 						{links.map((link) => (
-							<Link
-								key={link.href}
-								href={link.href}
-								onClick={() => setOpen(false)}
+							<button
+								key={link.id}
+								onClick={() => handleNav(link.id)}
 								className={cn(
 									"text-3xl font-bold text-left text-white/90 hover:text-white transition-colors tracking-tight",
-									pathname === link.href && "text-indigo-400"
+									activePage === link.id && "text-indigo-400"
 								)}
 							>
 								{link.label}
-							</Link>
+							</button>
 						))}
 					</div>
 					<div className="flex flex-col gap-4 mb-20">
-						<Link href="/signin" onClick={() => setOpen(false)} className={buttonVariants({ variant: "outline", className: "w-full text-lg py-7 border-white/20 text-white rounded-xl" })}>
+						<Button variant="outline" className="w-full text-lg py-7 border-white/20 text-white rounded-xl">
 							Sign In
-						</Link>
-						<Link 
-							href="/get-started"
-              onClick={() => setOpen(false)}
-							className={buttonVariants({ className: "w-full text-lg py-7 bg-white text-black rounded-xl font-bold" })}
+						</Button>
+						<Button 
+							onClick={() => handleNav('contact')}
+							className="w-full text-lg py-7 bg-white text-black rounded-xl font-bold"
 						>
 							Get Started
-						</Link>
+						</Button>
 					</div>
 				</div>
 			</div>

@@ -1,8 +1,5 @@
-"use client";
-
 import React from 'react';
 import AutoScroll from "embla-carousel-auto-scroll";
-import { cn } from "../../lib/utils";
 
 import {
   Carousel,
@@ -75,7 +72,7 @@ const BybitLogo = ({ className }: { className?: string }) => (
 const BinanceLogo = ({ className }: { className?: string }) => (
   <svg width="249" height="50" viewBox="0 0 249 50" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
     <g clipPath="url(#clip0_binance)">
-      <path d="M11.3 25L5.7 30.6L0 25L5.7 19.3L11.3 25ZM25 11.3L34.7 21L40.4 15.3L25 0L9.7 15.3L15.4 21L25 11.3ZM44.3 19.3L38.7 25L44.4 30.7L50 25L44.3 19.3ZM25 38.7L15.3 29L9.6 34.7L25 50L40.3 34.7L34.7 29L25 38.7ZM25 30.6L30.7 24.9L25 19.3L19.3 25L25 30.6ZM84.6 31.2C84.6 27.4 82.6 25.6 79.5 24.4C81.5 23.3 83.1 21.6 83.1 18.5V18.4C83.1 14.1 79.6 11.3 74.1 11.3H61.3V38.7H74.3C80.5 38.7 84.6 36.2 84.6 31.2ZM77 19.5C77 21.6 75.3 22.4 72.7 22.4H67.1V16.6H73.1C75.6 16.6 77 17.6 77 19.5ZM78.6 30.4C78.6 32.4 77 33.4 74.4 33.4H67.2V27.4H74.2C77.2 27.4 78.6 28.5 78.6 30.4ZM97.2 38.7V11.3H91.1V38.7H97.2ZM129.6 38.7V11.3H123.6V28.2L110.8 11.3H105.2V38.7H111.2V21.3L124.5 38.7H129.6ZM163 38.7L151.2 11.1H145.6L133.8 38.7H140L142.5 32.5H154.1L154.1 32.5H154.1L156.6 38.7H163ZM152 27.2H144.7L148.4 18.3L152 27.2ZM191.8 38.7V11.3H185.8V28.2L173 11.3H167.4V38.7H173.4V21.3L186.7 38.7H191.8ZM222.9 34.3L219 30.4C216.8 32.4 214.9 33.6 211.8 33.6C207.1 33.6 203.8 29.7 203.8 25V24.9C203.8 20.2 207.1 16.4 211.8 16.4C214.5 16.4 216.7 17.6 218.8 19.5L222.7 15.1C220.2 12.6 217.1 10.9 211.9 10.9C203.5 10.9 197.6 17.3 197.6 25.1V25C197.6 32.9 203.6 39.1 211.7 39.1C216.9 39.2 220.1 37.3 222.9 34.3ZM248.6 38.7V33.3H233.7V27.5H246.6V22.1H233.7V16.5H248.4V11.1H227.7V38.5L248.6 38.7Z" fill="white"/>
+      <path d="M11.3 25L5.7 30.6L0 25L5.7 19.3L11.3 25ZM25 11.3L34.7 21L40.4 15.3L25 0L9.7 15.3L15.4 21L25 11.3ZM44.3 19.3L38.7 25L44.4 30.7L50 25L44.3 19.3ZM25 38.7L15.3 29L9.6 34.7L25 50L40.3 34.7L34.7 29L25 38.7ZM25 30.6L30.7 24.9L25 19.3L19.3 25L25 30.6ZM84.6 31.2C84.6 27.4 82.6 25.6 79.5 24.4C81.5 23.3 83.1 21.6 83.1 18.5V18.4C83.1 14.1 79.6 11.3 74.1 11.3H61.3V38.7H74.3C80.5 38.7 84.6 36.2 84.6 31.2ZM77 19.5C77 21.6 75.3 22.4 72.7 22.4H67.1V16.6H73.1C75.6 16.6 77 17.6 77 19.5ZM78.6 30.4C78.6 32.4 77 33.4 74.4 33.4H67.2V27.4H74.2C77.2 27.4 78.6 28.5 78.6 30.4ZM97.2 38.7V11.3H91.1V38.7H97.2ZM129.6 38.7V11.3H123.6V28.2L110.8 11.3H105.2V38.7H111.2V21.3L124.5 38.7H129.6ZM163 38.7L151.2 11.1H145.6L133.8 38.7H140L142.5 32.5H154.1L156.6 38.7H163ZM152 27.2H144.7L148.4 18.3L152 27.2ZM191.8 38.7V11.3H185.8V28.2L173 11.3H167.4V38.7H173.4V21.3L186.7 38.7H191.8ZM222.9 34.3L219 30.4C216.8 32.4 214.9 33.6 211.8 33.6C207.1 33.6 203.8 29.7 203.8 25V24.9C203.8 20.2 207.1 16.4 211.8 16.4C214.5 16.4 216.7 17.6 218.8 19.5L222.7 15.1C220.2 12.6 217.1 10.9 211.9 10.9C203.5 10.9 197.6 17.3 197.6 25.1V25C197.6 32.9 203.6 39.1 211.7 39.1C216.9 39.2 220.1 37.3 222.9 34.3ZM248.6 38.7V33.3H233.7V27.5H246.6V22.1H233.7V16.5H248.4V11.1H227.7V38.5L248.6 38.7Z" fill="white"/>
     </g>
     <defs>
       <clipPath id="clip0_binance">
@@ -143,57 +140,82 @@ const BookmapLogo = ({ className }: { className?: string }) => (
   </svg>
 );
 
-/**
- * Logos3 component displays a scrolling carousel of partner/client logos.
- */
-export function Logos3({ logos }: Logos3Props) {
-  const defaultLogos: Logo[] = [
-    { id: "1", description: "TradingView", component: <TradingViewLogo className="h-6 w-auto opacity-30 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-500" /> },
-    { id: "2", description: "Binance", component: <BinanceLogo className="h-6 w-auto opacity-30 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-500" /> },
-    { id: "3", description: "Bybit", component: <BybitLogo className="h-10 w-auto opacity-30 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-500" /> },
-    { id: "4", description: "OKX", component: <OKXLogo className="h-8 w-auto opacity-30 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-500" /> },
-    { id: "5", description: "Google", component: <GoogleLogo className="h-8 w-auto opacity-30 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-500" /> },
-    { id: "6", description: "AWS", component: <AWSLogo className="h-8 w-auto opacity-30 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-500" /> },
-    { id: "7", description: "Bookmap", component: <BookmapLogo className="h-5 w-auto opacity-30 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-500" /> },
-  ];
-
-  const displayLogos = logos || defaultLogos;
-
+const Logos3 = ({
+  logos = [
+    {
+      id: "tradingview",
+      description: "TradingView",
+      component: <TradingViewLogo className="h-6 w-auto opacity-40 hover:opacity-100 transition-opacity" />,
+    },
+    {
+      id: "binance",
+      description: "Binance",
+      component: <BinanceLogo className="h-8 w-auto opacity-40 hover:opacity-100 transition-opacity" />,
+    },
+    {
+      id: "okx",
+      description: "OKX",
+      component: <OKXLogo className="h-8 w-auto opacity-40 hover:opacity-100 transition-opacity" />,
+    },
+    {
+      id: "bybit",
+      description: "Bybit",
+      component: <BybitLogo className="h-8 w-auto opacity-40 hover:opacity-100 transition-opacity" />,
+    },
+    {
+      id: "aws",
+      description: "Amazon AWS",
+      component: <AWSLogo className="h-10 w-auto opacity-40 hover:opacity-100 transition-opacity" />,
+    },
+    {
+      id: "bookmap",
+      description: "Bookmap",
+      component: <BookmapLogo className="h-6 w-auto opacity-40 hover:opacity-100 transition-opacity" />,
+    },
+    {
+      id: "google",
+      description: "Google",
+      component: <GoogleLogo className="h-8 w-auto opacity-40 hover:opacity-100 transition-opacity" />,
+    },
+  ],
+}: Logos3Props) => {
   return (
-    <div className="w-full bg-transparent py-12 border-y border-white/5 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 md:px-6">
-        <Carousel
-          opts={{
-            align: "start",
-            loop: true,
-          }}
-          plugins={[
-            AutoScroll({
-              playOnInit: true,
-              speed: 1,
-              stopOnInteraction: false,
-              stopOnMouseEnter: true,
-            })
-          ]}
-          className="w-full"
-        >
-          <CarouselContent className="flex items-center -ml-4">
-            {displayLogos.map((logo) => (
-              <CarouselItem key={logo.id} className="pl-4 basis-1/2 md:basis-1/4 lg:basis-1/6">
-                <div className="flex items-center justify-center p-4">
-                  {logo.component || (
-                    <img
-                      src={logo.image}
-                      alt={logo.description}
-                      className="h-8 w-auto opacity-30 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-500"
-                    />
-                  )}
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-        </Carousel>
+    <section className="py-24 border-t border-white/5 bg-[#030303] overflow-hidden">
+      <div className="relative w-full">
+        <div className="relative mx-auto flex items-center justify-center w-full">
+          <Carousel
+            opts={{ loop: true, dragFree: true }}
+            plugins={[AutoScroll({ playOnInit: true, speed: 1.2, stopOnInteraction: false, stopOnMouseEnter: false })]}
+            className="w-full"
+          >
+            <CarouselContent className="ml-0 flex items-center">
+              {[...logos, ...logos].map((logo, index) => (
+                <CarouselItem
+                  key={`${logo.id}-${index}`}
+                  className="flex basis-1/2 justify-center pl-0 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/6"
+                >
+                  <div className="mx-12 flex shrink-0 items-center justify-center">
+                    {logo.component ? (
+                      logo.component
+                    ) : (
+                      <img
+                        src={logo.image}
+                        alt={logo.description}
+                        className={logo.className}
+                      />
+                    )}
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
+          
+          <div className="absolute inset-y-0 left-0 w-48 bg-gradient-to-r from-[#030303] via-[#030303]/80 to-transparent z-10 pointer-events-none"></div>
+          <div className="absolute inset-y-0 right-0 w-48 bg-gradient-to-l from-[#030303] via-[#030303]/80 to-transparent z-10 pointer-events-none"></div>
+        </div>
       </div>
-    </div>
+    </section>
   );
-}
+};
+
+export { Logos3 };
