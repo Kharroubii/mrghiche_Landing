@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import React from "react";
-import Script from "next/script";
 import "./globals.css";
 import { Header } from "@/components/ui/header-2";
 import Footer4Col from "@/components/ui/footer-4-col";
@@ -45,25 +44,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        <Script
-          src="https://cdn.tailwindcss.com"
-          strategy="beforeInteractive"
-        />
-        <Script id="tailwind-config" strategy="beforeInteractive">
-          {`
-            tailwind.config = {
-              theme: {
-                extend: {
-                  fontFamily: {
-                    sans: ['Ubuntu', 'sans-serif'],
-                  },
-                },
-              },
-            }
-          `}
-        </Script>
-      </head>
       <body className="antialiased min-h-screen bg-[#030303]">
         <Header />
         {children}
