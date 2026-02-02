@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     siteName: "Mrghiche Capital",
     images: [
       {
-        url: "/og-image.jpg", // Placeholder for actual OG image
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Mrghiche Capital Investment",
@@ -64,7 +64,7 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body>
+      <body className="antialiased min-h-screen bg-[#030303]">
         <Header />
         {children}
         <Footer4Col />

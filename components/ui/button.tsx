@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from "react"
@@ -35,11 +36,11 @@ const buttonVariants = cva(
   },
 )
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
-  asChild?: boolean
-}
+// Fixed: Changed ButtonProps from interface to type to resolve property recognition issues for variant and size.
+export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
+  VariantProps<typeof buttonVariants> & {
+    asChild?: boolean
+  }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, asChild = false, ...props }, ref) => {
