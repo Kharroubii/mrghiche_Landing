@@ -1,3 +1,5 @@
+"use client";
+
 import React, { MouseEvent } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { Button } from "./button";

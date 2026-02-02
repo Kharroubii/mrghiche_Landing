@@ -1,21 +1,3 @@
-import React, { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
-import { HelmetProvider } from 'react-helmet-async';
-import App from './App';
-
-const rootElement = document.getElementById('root');
-if (!rootElement) {
-  throw new Error("Could not find root element to mount to");
-}
-
-const root = createRoot(rootElement);
-root.render(
-  <StrictMode>
-    <HelmetProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </HelmetProvider>
-  </StrictMode>
-);
+// This file is legacy from the Vite migration and is not used in Next.js App Router.
+// It has been cleared to prevent runtime conflicts with the Next.js bundle.
+export {};

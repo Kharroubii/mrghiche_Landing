@@ -81,7 +81,7 @@ const VideoPlayer = forwardRef<HTMLDivElement, VideoPlayerProps>(
             </div>
           </div>
 
-          <div className="absolute bottom-0 left-0 p-8 w-full">
+          <div className="absolute bottom-0 left-0 p-8 w-full text-left">
             <h3 className="text-3xl font-bold text-white tracking-tight">{title}</h3>
             {description && (
               <p className="mt-2 text-base text-white/60 font-light max-w-md">{description}</p>

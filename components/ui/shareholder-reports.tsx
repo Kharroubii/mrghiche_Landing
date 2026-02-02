@@ -1,3 +1,5 @@
+"use client";
+
 import React, { forwardRef, useRef, useState, useCallback, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "../../lib/utils";
@@ -70,7 +72,7 @@ export const ShareholderReports = forwardRef<
       aria-labelledby="reports-heading"
       {...props}
     >
-      <div className="flex items-center justify-between px-4 sm:px-6 mb-8">
+      <div className="flex items-center justify-between px-4 sm:px-6 mb-8 text-left">
         <div>
           <h2 id="reports-heading" className="text-3xl font-bold tracking-tight text-white mb-2">
             {title}
@@ -118,7 +120,7 @@ export const ShareholderReports = forwardRef<
                   alt={`Report for ${report.quarter}`}
                   className="w-full h-[360px] sm:h-[440px] object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-6 flex flex-col justify-between text-white">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-6 flex flex-col justify-between text-white text-left">
                   <div>
                     <h3 className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/60 mb-1">Financial Report</h3>
                     <p className="text-xs text-indigo-400 font-medium">{report.period}</p>

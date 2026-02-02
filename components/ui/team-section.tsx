@@ -1,3 +1,4 @@
+"use client";
 
 import React from 'react';
 import AutoScroll from "embla-carousel-auto-scroll";
@@ -51,7 +52,7 @@ const members = [
 export default function TeamSection() {
     return (
         <section className="bg-transparent py-16 md:py-32">
-            <div className="mx-auto max-w-6xl border-t border-white/10 px-6 relative">
+            <div className="mx-auto max-w-6xl border-t border-white/10 px-6 relative text-left">
                 <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-indigo-400 -ml-6 -mt-3.5 block w-max bg-[#030303] px-6">
                     The Team
                 </span>
