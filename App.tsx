@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { Header } from './components/ui/header-2';
 import { DemoHeroGeometric } from './components/DemoHero';
 import { Logos3 } from './components/ui/logos3';
@@ -23,10 +25,12 @@ import {
   ArrowLeft,
   FileUp,
   CheckCircle2,
-  FileDown
+  FileDown,
+  Lock
 } from 'lucide-react';
 import Footer4Col from './components/ui/footer-4-col';
 import { VideoPlayer } from './components/ui/video-player';
+import { TestimonialCarousel as TestimonialCarouselUI } from './components/ui/testimonial-carousel';
 import TeamSection from './components/ui/team-section';
 import { MasonryGrid } from './components/ui/masonry-grid';
 import { FinancialHero } from './components/ui/financial-hero';
@@ -233,6 +237,32 @@ const shareholderReportsData: Report[] = [
   }
 ];
 
+// --- Mapping Routing Helpers ---
+
+const routeMap: Record<string, string> = {
+  home: '/',
+  'who-we-are': '/who-we-are',
+  portfolio: '/portfolio',
+  services: '/services',
+  news: '/news',
+  careers: '/careers',
+  contact: '/contact',
+  signin: '/signin',
+  'get-started': '/get-started',
+  'report-detail': '/news' // Reports stay in context of news/results
+};
+
+const pageFromPath = (path: string): string => {
+  const normalized = path === '/' ? 'home' : path.substring(1);
+  // Special handling for nested or goal URLs
+  if (normalized === 'signin') return 'signin';
+  if (normalized === 'get-started') return 'get-started';
+  
+  // Find matching ID from routeMap values
+  const found = Object.entries(routeMap).find(([id, p]) => p === path);
+  return found ? found[0] : 'home';
+};
+
 // --- View Components ---
 
 const HomeView = ({ onNavigate, onSelectReport }: { onNavigate: (page: string) => void, onSelectReport: (report: Report) => void }) => (
@@ -331,7 +361,7 @@ const HomeView = ({ onNavigate, onSelectReport }: { onNavigate: (page: string) =
           </div>
         </div>
 
-        <TestimonialCarousel className="mt-12" />
+        <TestimonialCarouselUI className="mt-12" />
       </div>
     </section>
 
@@ -934,8 +964,6 @@ const NewsView = () => {
     }
   ];
 
-  const featuredArticle = newsItems[1]; // Featured Sarah Chen article
-
   return (
     <motion.div
       initial={{ opacity: 0, x: 20 }}
@@ -944,54 +972,9 @@ const NewsView = () => {
       transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
       className="pt-48 md:pt-64 pb-24 px-6"
     >
-      {/* Article Preview exactly as requested */}
-      <div className="max-w-4xl mx-auto mb-32 border-b border-white/10 pb-24 text-left">
-        <header className="mb-16">
-          <div className="flex items-center gap-3 text-[10px] font-bold tracking-[0.3em] uppercase mb-10">
-            <span className="text-amber-500">{featuredArticle.category}</span>
-            <span className="text-white/20">|</span>
-            <span className="text-white/60">{featuredArticle.date}</span>
-          </div>
-          <h1 className="text-4xl md:text-6xl font-bold text-white tracking-tighter leading-[1.1] max-w-4xl">
-            {featuredArticle.title}
-          </h1>
-        </header>
-
-        <div className="max-w-3xl space-y-12">
-          <p className="text-lg md:text-xl text-white/90 leading-relaxed font-light">
-            We are pleased to welcome Sarah Chen, formerly of Citadel, to lead our independent risk management function.
-          </p>
-
-          <p className="text-white/60 leading-relaxed">
-            Mrghiche Capital is proud to announce... (Full article content simulated)
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          </p>
-          
-          <h3 className="text-xl font-bold text-white mt-12 mb-4 tracking-tight uppercase text-[10px] tracking-[0.2em]">Strategic Implications</h3>
-          <p className="text-white/60 leading-relaxed">
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-
-          <div className="my-12 p-8 border-l-4 border-amber-500 bg-white/[0.03] rounded-r-2xl">
-            <p className="text-xl md:text-2xl text-white/80 italic leading-relaxed font-light">
-              "Markets are currently pricing in a perfection scenario that leaves little room for error in policy execution."
-            </p>
-          </div>
-
-          <p className="text-white/60 leading-relaxed">
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-          </p>
-
-          <div className="pt-16 border-t border-white/10 mt-20">
-            <button className="flex items-center gap-2 text-white/40 hover:text-white transition-colors uppercase tracking-widest text-[10px] font-bold group">
-              <ArrowLeft className="size-3 group-hover:-translate-x-1 transition-transform" /> Back to Insights
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div className="max-w-6xl mx-auto mb-16 text-left">
-        <h1 className="text-3xl font-bold text-white mb-6 tracking-tighter uppercase text-[10px] tracking-[0.3em] text-white/40">Latest Insights.</h1>
+      <div className="max-w-6xl mx-auto mb-16">
+        <h1 className="text-5xl font-bold text-white mb-6 tracking-tighter">Firm Insights.</h1>
+        <p className="text-lg text-white/50 max-w-2xl">Latest market analysis, corporate updates, and strategic institutional reports.</p>
       </div>
 
       <div className="max-w-6xl mx-auto">
@@ -1008,7 +991,7 @@ const NewsView = () => {
                    />
                 </div>
                 
-                <div className="flex-1 space-y-3 text-left">
+                <div className="flex-1 space-y-3">
                    <div className="flex items-center gap-3 text-[10px] font-bold tracking-widest uppercase text-amber-500">
                       <span>{item.category}</span>
                       <span className="text-white/20">|</span>
@@ -1173,7 +1156,7 @@ const CareersView = () => {
     >
       <div className="max-w-5xl mx-auto">
         <h1 className="text-5xl font-bold text-white mb-6 tracking-tighter">Join the Elite.</h1>
-        <p className="text-lg text-white/50 mb-16 max-w-2xl text-left">We are always looking for exceptional talent to join our institutional investment teams across London, Dubai, and New York.</p>
+        <p className="text-lg text-white/50 mb-16 max-w-2xl">We are always looking for exceptional talent to join our institutional investment teams across London, Dubai, and New York.</p>
         
         <div className="space-y-4">
           {jobs.map((job) => (
@@ -1182,7 +1165,7 @@ const CareersView = () => {
               onClick={() => setSelectedJob(job)}
               className="group flex justify-between items-center p-6 rounded-2xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.06] hover:border-white/10 transition-all cursor-pointer"
             >
-              <div className="text-left">
+              <div>
                 <div className="text-xl font-bold text-white group-hover:text-indigo-400 transition-colors">{job.role}</div>
                 <div className="flex gap-4 text-[10px] text-white/30 mt-1 uppercase tracking-widest">
                   <span>{job.loc}</span>
@@ -1215,7 +1198,7 @@ const ContactView = () => (
     animate={{ opacity: 1, x: 0 }}
     exit={{ opacity: 0, x: -20 }}
     transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-    className="pt-48 md:pt-64 pb-24 px-6 text-left"
+    className="pt-48 md:pt-64 pb-24 px-6"
   >
     <div className="max-w-6xl mx-auto mb-16">
       <h1 className="text-5xl font-bold text-white mb-6 tracking-tighter">Connect with Us.</h1>
@@ -1232,7 +1215,7 @@ const ContactView = () => (
             <div className="size-10 rounded-xl bg-white/5 flex items-center justify-center text-indigo-400 shrink-0"><Mail size={18} /></div>
             <div>
               <div className="text-white font-bold text-sm">Email us</div>
-              <div className="text-white/40 text-xs">inquiries@mrghichecapital.com</div>
+              <div className="text-white/40 text-xs">hello@mrghichecapital.com</div>
             </div>
           </div>
           <div className="flex items-start gap-4">
@@ -1267,34 +1250,270 @@ const ContactView = () => (
   </motion.div>
 );
 
+const SignInView = () => (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, y: -20 }}
+    transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
+    className="pt-48 md:pt-64 pb-24 px-6 flex items-center justify-center min-h-[80vh]"
+  >
+    <div className="w-full max-w-md p-8 rounded-[2rem] bg-white/[0.03] border border-white/10 backdrop-blur-md">
+      <div className="text-center mb-10">
+        <div className="inline-flex size-14 items-center justify-center rounded-2xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 mb-6">
+          <Lock size={28} />
+        </div>
+        <h1 className="text-3xl font-bold text-white tracking-tighter">Client Portal</h1>
+        <p className="text-white/40 mt-2 text-sm uppercase tracking-widest font-medium">Secure Access Only</p>
+      </div>
+      <form className="space-y-5">
+        <div className="space-y-2">
+          <label className="text-[10px] font-bold text-white/40 uppercase tracking-widest ml-1">Username / Email</label>
+          <input type="text" placeholder="Institutional identifier" className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-3.5 text-white text-sm focus:outline-none focus:border-indigo-500 transition-colors" />
+        </div>
+        <div className="space-y-2">
+          <div className="flex justify-between items-center ml-1">
+            <label className="text-[10px] font-bold text-white/40 uppercase tracking-widest">Password</label>
+            <button type="button" className="text-[10px] text-indigo-400 hover:text-indigo-300 font-bold uppercase tracking-widest">Reset</button>
+          </div>
+          <input type="password" placeholder="••••••••" className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-3.5 text-white text-sm focus:outline-none focus:border-indigo-500 transition-colors" />
+        </div>
+        <Button className="w-full py-6 rounded-xl bg-white text-black font-bold text-base hover:scale-[1.01] transition-transform shadow-xl mt-4">
+          Authenticate Access
+        </Button>
+      </form>
+      <div className="mt-8 pt-6 border-t border-white/5 text-center">
+        <p className="text-white/20 text-[9px] uppercase tracking-[0.25em] leading-relaxed">
+          Access is restricted to authorized institutional partners. Unauthorized access attempts are monitored and recorded.
+        </p>
+      </div>
+    </div>
+  </motion.div>
+);
+
+const GetStartedView = () => (
+  <motion.div
+    initial={{ opacity: 0, x: 20 }}
+    animate={{ opacity: 1, x: 0 }}
+    exit={{ opacity: 0, x: -20 }}
+    transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
+    className="pt-48 md:pt-64 pb-24 px-6"
+  >
+    <div className="max-w-6xl mx-auto mb-16">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-8">
+        <div>
+          <h1 className="text-5xl font-bold text-white mb-4 tracking-tighter">Initialize Partnership.</h1>
+          <p className="text-lg text-white/50 max-w-xl">Begin your institutional investment journey with a firm committed to discipline, results, and strategic alpha.</p>
+        </div>
+        <div className="px-6 py-4 bg-white/5 border border-white/10 rounded-2xl flex items-center gap-4">
+          <div className="size-10 rounded-full bg-indigo-500/20 flex items-center justify-center text-indigo-400">
+            <CheckCircle2 size={20} />
+          </div>
+          <div>
+            <p className="text-[10px] text-white/40 uppercase tracking-widest font-bold">Registration Phase</p>
+            <p className="text-white font-bold text-sm">Onboarding in progress</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[0.4fr_0.6fr] gap-16">
+      <div className="space-y-12">
+        <section>
+          <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-3">
+            <span className="size-6 rounded-full bg-white/10 flex items-center justify-center text-[10px]">01</span>
+            Initial Review
+          </h2>
+          <p className="text-white/40 text-sm leading-relaxed">
+            Our relationship management team will conduct a preliminary assessment of your institutional requirements and investment objectives.
+          </p>
+        </section>
+        <section>
+          <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-3">
+            <span className="size-6 rounded-full bg-white/10 flex items-center justify-center text-[10px]">02</span>
+            Strategy Alignment
+          </h2>
+          <p className="text-white/40 text-sm leading-relaxed">
+            We align your capital objectives with our specialized investment pods (Private Equity, Liquid Markets, or Real Estate).
+          </p>
+        </section>
+        <section>
+          <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-3">
+            <span className="size-6 rounded-full bg-white/10 flex items-center justify-center text-[10px]">03</span>
+            Execution
+          </h2>
+          <p className="text-white/40 text-sm leading-relaxed">
+            Upon successful due diligence, we formalize the partnership and initiate structured capital allocation.
+          </p>
+        </section>
+      </div>
+      
+      <div className="p-10 rounded-[2.5rem] bg-white/[0.03] border border-white/10 backdrop-blur-md shadow-2xl relative overflow-hidden group">
+        <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
+          <TrendingUp size={120} />
+        </div>
+        <h3 className="text-2xl font-bold text-white mb-8">Institutional Inquiry Form</h3>
+        <form className="space-y-6 relative z-10">
+          <div className="grid grid-cols-2 gap-6">
+            <div className="space-y-2">
+              <label className="text-[9px] font-bold text-white/40 uppercase tracking-widest ml-1">Entity Name</label>
+              <input placeholder="E.g. Sterling Endowment" className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-3.5 text-white text-sm focus:outline-none focus:border-indigo-500 transition-colors" />
+            </div>
+            <div className="space-y-2">
+              <label className="text-[9px] font-bold text-white/40 uppercase tracking-widest ml-1">Jurisdiction</label>
+              <input placeholder="E.g. Luxembourg" className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-3.5 text-white text-sm focus:outline-none focus:border-indigo-500 transition-colors" />
+            </div>
+          </div>
+          <div className="space-y-2">
+            <label className="text-[9px] font-bold text-white/40 uppercase tracking-widest ml-1">Primary Contact Email</label>
+            <input placeholder="corporate@institutional.com" className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-3.5 text-white text-sm focus:outline-none focus:border-indigo-500 transition-colors" />
+          </div>
+          <div className="space-y-2">
+            <label className="text-[9px] font-bold text-white/40 uppercase tracking-widest ml-1">Interest Level</label>
+            <select className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-3.5 text-white/60 text-sm focus:outline-none focus:border-indigo-500 transition-colors appearance-none">
+              <option>Private Equity Pod</option>
+              <option>Liquid Markets Pod</option>
+              <option>Real Estate Allocation</option>
+              <option>Strategic Advisory</option>
+            </select>
+          </div>
+          <Button className="w-full py-6 rounded-xl bg-white text-black font-bold text-base hover:scale-[1.02] transition-transform mt-4">Submit Registration Packet</Button>
+        </form>
+      </div>
+    </div>
+  </motion.div>
+);
+
 // --- Main App ---
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('home');
+  const location = useLocation();
+  const navigate = useNavigate();
+  
+  // Initialize state based on the current URL
+  const initialPage = pageFromPath(location.pathname);
+  const [currentPage, setCurrentPage] = useState(initialPage);
   const [selectedReport, setSelectedReport] = useState<Report | null>(null);
+
+  // Sync state with browser URL when the back button or manual URL change happens
+  useEffect(() => {
+    const pageId = pageFromPath(location.pathname);
+    if (pageId !== currentPage) {
+      setCurrentPage(pageId);
+    }
+  }, [location.pathname]);
+
+  const handleNavigate = (id: string) => {
+    const targetPath = routeMap[id];
+    if (targetPath) {
+      if (location.pathname !== targetPath) {
+        navigate(targetPath);
+      }
+      setCurrentPage(id);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
 
   const handleReportSelection = (report: Report) => {
     setSelectedReport(report);
-    setCurrentPage('report-detail');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    handleNavigate('report-detail');
   };
+
+  const seoData = useMemo(() => {
+    const base = {
+      siteName: "Mrghiche Capital",
+      baseUrl: "https://mrghiche.com",
+    };
+
+    const routes: Record<string, { title: string; description: string }> = {
+      home: {
+        title: "Mrghiche Capital | Institutional Investment Management",
+        description: "We apply institutional discipline, active risk management, and data-driven decision-making to generate sustainable long-term returns.",
+      },
+      'who-we-are': {
+        title: "Who We Are | Mrghiche Capital",
+        description: "Learn about our firm's history, founded by Mohammed Kharroubi, and our commitment to institutional standards and global alpha.",
+      },
+      portfolio: {
+        title: "Investment Portfolio | Mrghiche Capital",
+        description: "A selection of high-impact investments across key institutional asset classes, meticulously managed for long-term growth.",
+      },
+      services: {
+        title: "Our Expertise & Services | Mrghiche Capital",
+        description: "Comprehensive investment strategies tailored for institutional growth including Private Equity, Real Estate, and Liquid Markets.",
+      },
+      news: {
+        title: "Firm Insights & News | Mrghiche Capital",
+        description: "Stay updated with the latest market commentary, research, and corporate news from our institutional investment team.",
+      },
+      careers: {
+        title: "Careers | Mrghiche Capital",
+        description: "Join the elite. We are looking for exceptional talent to join our institutional investment teams across London, Dubai, and New York.",
+      },
+      contact: {
+        title: "Connect with Us | Mrghiche Capital",
+        description: "Speak with our institutional relationship managers to discuss how we can support your investment objectives.",
+      },
+      signin: {
+        title: "Secure Client Portal | Mrghiche Capital",
+        description: "Authorized access only for Mrghiche Capital institutional partners and clients. Authenticate access here.",
+      },
+      'get-started': {
+        title: "Initialize Partnership | Mrghiche Capital",
+        description: "Begin your institutional investment journey with a firm committed to discipline, results, and strategic alpha.",
+      },
+      'report-detail': {
+        title: `${selectedReport?.quarter || 'Financial Report'} | Mrghiche Capital`,
+        description: `Detailed analysis of market performance and institutional strategy updates for ${selectedReport?.period || 'the current period'}.`,
+      }
+    };
+
+    const current = routes[currentPage] || routes.home;
+    const url = `${base.baseUrl}${routeMap[currentPage] || '/'}`;
+
+    return {
+      ...current,
+      url,
+      siteName: base.siteName
+    };
+  }, [currentPage, selectedReport]);
 
   const renderView = () => {
     switch(currentPage) {
       case 'who-we-are': return <WhoWeAreView />;
       case 'portfolio': return <PortfolioView />;
-      case 'services': return <ServicesView onNavigate={setCurrentPage} />;
+      case 'services': return <ServicesView onNavigate={handleNavigate} />;
       case 'news': return <NewsView />;
       case 'careers': return <CareersView />;
       case 'contact': return <ContactView />;
-      case 'report-detail': return <ReportDetailView report={selectedReport} onBack={() => setCurrentPage('home')} />;
-      default: return <HomeView onNavigate={setCurrentPage} onSelectReport={handleReportSelection} />;
+      case 'signin': return <SignInView />;
+      case 'get-started': return <GetStartedView />;
+      case 'report-detail': return <ReportDetailView report={selectedReport} onBack={() => handleNavigate('home')} />;
+      default: return <HomeView onNavigate={handleNavigate} onSelectReport={handleReportSelection} />;
     }
   };
 
   return (
     <main className="min-h-screen bg-[#030303] overflow-x-hidden">
-      <Header activePage={currentPage} onNavigate={setCurrentPage} />
+      <Helmet>
+        <title>{seoData.title}</title>
+        <meta name="description" content={seoData.description} />
+        <link rel="canonical" href={seoData.url} />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={seoData.title} />
+        <meta property="og:description" content={seoData.description} />
+        <meta property="og:url" content={seoData.url} />
+        <meta property="og:site_name" content={seoData.siteName} />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={seoData.title} />
+        <meta name="twitter:description" content={seoData.description} />
+      </Helmet>
+
+      <Header activePage={currentPage} onNavigate={handleNavigate} />
       
       <AnimatePresence mode="wait">
         <motion.div key={currentPage} className="w-full">
@@ -1302,7 +1521,7 @@ function App() {
         </motion.div>
       </AnimatePresence>
 
-      <Footer4Col onNavigate={setCurrentPage} />
+      <Footer4Col onNavigate={handleNavigate} />
     </main>
   );
 }

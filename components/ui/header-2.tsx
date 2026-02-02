@@ -78,11 +78,15 @@ export function Header({ activePage = 'home', onNavigate }: HeaderProps) {
 						))}
 					</div>
 					<div className="flex items-center gap-4 border-l border-white/10 pl-4">
-						<Button variant="ghost" className="text-white/70 hover:text-white text-xs lg:text-sm">
+						<Button 
+							variant="ghost" 
+							className="text-white/70 hover:text-white text-xs lg:text-sm"
+							onClick={() => handleNav('signin')}
+						>
 							Sign In
 						</Button>
 						<Button 
-							onClick={() => handleNav('contact')}
+							onClick={() => handleNav('get-started')}
 							className="bg-white text-black hover:bg-white/90 shadow-lg text-xs lg:text-sm px-5 rounded-full font-semibold"
 						>
 							Get Started
@@ -122,11 +126,15 @@ export function Header({ activePage = 'home', onNavigate }: HeaderProps) {
 						))}
 					</div>
 					<div className="flex flex-col gap-4 mb-20">
-						<Button variant="outline" className="w-full text-lg py-7 border-white/20 text-white rounded-xl">
+						<Button 
+							variant="outline" 
+							className="w-full text-lg py-7 border-white/20 text-white rounded-xl"
+							onClick={() => handleNav('signin')}
+						>
 							Sign In
 						</Button>
 						<Button 
-							onClick={() => handleNav('contact')}
+							onClick={() => handleNav('get-started')}
 							className="w-full text-lg py-7 bg-white text-black rounded-xl font-bold"
 						>
 							Get Started
