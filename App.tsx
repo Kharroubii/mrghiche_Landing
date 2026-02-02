@@ -1,2 +1,2 @@
-// LEGACY VITE ROOT COMPONENT REMOVED
-export default function LegacyApp() { return null; }
+// LEGACY FILE REMOVED
+export default function Removed() { return null; }
