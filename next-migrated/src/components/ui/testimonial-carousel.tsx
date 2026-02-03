@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState } from "react";
@@ -90,7 +89,7 @@ export function TestimonialCarousel({ className }: TestimonialCarouselProps) {
     setCurrentIndex((index) => (index + 1) % testimonials.length);
   const handlePrevious = () =>
     setCurrentIndex(
-      (index) => (index - - 1 + testimonials.length) % testimonials.length
+      (index) => (index - 1 + testimonials.length) % testimonials.length
     );
 
   const currentTestimonial = testimonials[currentIndex];
@@ -223,7 +222,7 @@ export function TestimonialCarousel({ className }: TestimonialCarouselProps) {
                   </a>
                 ))}
               </div>
-            </MotionDiv>
+            </motion.div>
           </AnimatePresence>
         </div>
       </div>

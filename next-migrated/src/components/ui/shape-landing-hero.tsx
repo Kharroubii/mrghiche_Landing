@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -92,12 +91,14 @@ export function HeroGeometric({
     title2 = "Investment Management",
     description = "We apply institutional discipline, active risk management, and data-driven decision-making to protect capital and generate sustainable long-term returns.",
 }: HeroGeometricProps) {
-    const fadeUpVariants = {
+    // Cast fadeUpVariants to any to avoid strict typing errors with custom functions and transitions
+    const fadeUpVariants: any = {
         hidden: { opacity: 0, y: 30 },
         visible: (i: number) => ({
             opacity: 1,
             y: 0,
             transition: {
+                // Fixed truncated code and syntax error on line 100
                 duration: 1,
                 delay: 0.5 + i * 0.2,
                 ease: [0.25, 0.4, 0.25, 1],

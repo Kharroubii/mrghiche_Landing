@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState } from "react";
@@ -11,9 +10,6 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { cn } from "../../lib/utils";
-
-// Create local casted components
-const MotionDiv = motion.div as any;
 
 const Tiktok = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
@@ -90,7 +86,7 @@ export function TestimonialCarousel({ className }: TestimonialCarouselProps) {
     setCurrentIndex((index) => (index + 1) % testimonials.length);
   const handlePrevious = () =>
     setCurrentIndex(
-      (index) => (index - - 1 + testimonials.length) % testimonials.length
+      (index) => (index - 1 + testimonials.length) % testimonials.length
     );
 
   const currentTestimonial = testimonials[currentIndex];
@@ -107,7 +103,7 @@ export function TestimonialCarousel({ className }: TestimonialCarouselProps) {
       <div className='hidden md:flex relative items-center'>
         <div className='w-[470px] h-[470px] rounded-3xl overflow-hidden bg-white/5 flex-shrink-0'>
           <AnimatePresence mode='wait'>
-            <MotionDiv
+            <motion.div
               key={currentTestimonial.imageUrl}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -121,13 +117,13 @@ export function TestimonialCarousel({ className }: TestimonialCarouselProps) {
                 className='w-full h-full object-cover'
                 draggable={false}
               />
-            </MotionDiv>
+            </motion.div>
           </AnimatePresence>
         </div>
 
         <div className='bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-3xl shadow-2xl p-8 ml-[-80px] z-10 max-w-xl flex-1'>
           <AnimatePresence mode='wait'>
-            <MotionDiv
+            <motion.div
               key={currentTestimonial.name}
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -162,7 +158,7 @@ export function TestimonialCarousel({ className }: TestimonialCarouselProps) {
                   </a>
                 ))}
               </div>
-            </MotionDiv>
+            </motion.div>
           </AnimatePresence>
         </div>
       </div>
@@ -170,7 +166,7 @@ export function TestimonialCarousel({ className }: TestimonialCarouselProps) {
       <div className='md:hidden max-sm mx-auto text-center'>
         <div className='w-full aspect-square bg-white/5 rounded-3xl overflow-hidden mb-6'>
           <AnimatePresence mode='wait'>
-            <MotionDiv
+            <motion.div
               key={currentTestimonial.imageUrl}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -184,13 +180,13 @@ export function TestimonialCarousel({ className }: TestimonialCarouselProps) {
                 className='w-full h-full object-cover'
                 draggable={false}
               />
-            </MotionDiv>
+            </motion.div>
           </AnimatePresence>
         </div>
 
         <div className='px-4'>
           <AnimatePresence mode='wait'>
-            <MotionDiv
+            <motion.div
               key={currentTestimonial.name}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -223,7 +219,7 @@ export function TestimonialCarousel({ className }: TestimonialCarouselProps) {
                   </a>
                 ))}
               </div>
-            </MotionDiv>
+            </motion.div>
           </AnimatePresence>
         </div>
       </div>

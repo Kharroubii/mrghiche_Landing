@@ -1,4 +1,6 @@
 
+"use client";
+
 import React, { forwardRef, useRef, useState, useCallback, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "../../lib/utils";
@@ -10,8 +12,8 @@ export interface Report {
   period: string;
   imageSrc: string;
   isNew?: boolean;
-  // Added optional slug property for routing compatibility with Next.js components
-  slug?: string;
+  // Added slug property to support routing in the migrated Next.js application
+  slug: string;
 }
 
 // Define the props for the main component

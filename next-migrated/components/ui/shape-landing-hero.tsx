@@ -1,15 +1,9 @@
-
 "use client";
 
 import React from 'react';
 import { motion } from "framer-motion";
 import { Circle } from "lucide-react";
 import { cn } from "../../lib/utils";
-
-// Create local casted motion components to fix type errors
-const MotionDiv = motion.div as any;
-const MotionH1 = motion.h1 as any;
-const MotionP = motion.p as any;
 
 interface ElegantShapeProps {
     className?: string;
@@ -29,7 +23,7 @@ function ElegantShape({
     gradient = "from-white/[0.08]",
 }: ElegantShapeProps) {
     return (
-        <MotionDiv
+        <motion.div
             initial={{
                 opacity: 0,
                 y: -150,
@@ -48,7 +42,7 @@ function ElegantShape({
             }}
             className={cn("absolute", className)}
         >
-            <MotionDiv
+            <motion.div
                 animate={{
                     y: [0, 15, 0],
                 }}
@@ -74,8 +68,8 @@ function ElegantShape({
                         "after:bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.2),transparent_70%)]"
                     )}
                 />
-            </MotionDiv>
-        </MotionDiv>
+            </motion.div>
+        </motion.div>
     );
 }
 
@@ -92,7 +86,8 @@ export function HeroGeometric({
     title2 = "Investment Management",
     description = "We apply institutional discipline, active risk management, and data-driven decision-making to protect capital and generate sustainable long-term returns.",
 }: HeroGeometricProps) {
-    const fadeUpVariants = {
+    // Cast fadeUpVariants to any to fix type mismatch issues with ease arrays in variants
+    const fadeUpVariants: any = {
         hidden: { opacity: 0, y: 30 },
         visible: (i: number) => ({
             opacity: 1,
@@ -158,7 +153,7 @@ export function HeroGeometric({
 
             <div className="relative z-10 container mx-auto px-4 md:px-6 pt-40 md:pt-56">
                 <div className="max-w-3xl mx-auto text-center">
-                    <MotionDiv
+                    <motion.div
                         custom={0}
                         variants={fadeUpVariants}
                         initial="hidden"
@@ -169,15 +164,15 @@ export function HeroGeometric({
                         <span className="text-sm text-white/60 tracking-wide">
                             {badge}
                         </span>
-                    </MotionDiv>
+                    </motion.div>
 
-                    <MotionDiv
+                    <motion.div
                         custom={1}
                         variants={fadeUpVariants}
                         initial="hidden"
                         animate="visible"
                     >
-                        <MotionH1 className="text-4xl sm:text-6xl md:text-8xl font-bold mb-6 md:mb-8 tracking-tight">
+                        <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold mb-6 md:mb-8 tracking-tight">
                             <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-white/80">
                                 {title1}
                             </span>
@@ -189,19 +184,19 @@ export function HeroGeometric({
                             >
                                 {title2}
                             </span>
-                        </MotionH1>
-                    </MotionDiv>
+                        </h1>
+                    </motion.div>
 
-                    <MotionDiv
+                    <motion.div
                         custom={2}
                         variants={fadeUpVariants}
                         initial="hidden"
                         animate="visible"
                     >
-                        <MotionP className="text-base sm:text-lg md:text-xl text-white/40 mb-8 leading-relaxed font-light tracking-wide max-w-xl mx-auto px-4">
+                        <p className="text-base sm:text-lg md:text-xl text-white/40 mb-8 leading-relaxed font-light tracking-wide max-w-xl mx-auto px-4">
                             {description}
-                        </MotionP>
-                    </MotionDiv>
+                        </p>
+                    </motion.div>
                 </div>
             </div>
 
