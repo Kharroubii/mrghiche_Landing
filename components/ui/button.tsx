@@ -38,9 +38,6 @@ export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean
-  // Manually add variant and size to fix inference issues in some environments
-  variant?: "default" | "destructive" | "outline" | "secondary" | "ghost" | "link" | null
-  size?: "default" | "sm" | "lg" | "icon" | null
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -48,7 +45,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     const Comp = asChild ? Slot : "button"
     return (
       <Comp
-        // @ts-ignore - variant and size are already handled by cva but TS might complain about the destructuring
         className={cn(buttonVariants({ variant, size, className }))}
         ref={ref}
         {...props}

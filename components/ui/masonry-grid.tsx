@@ -1,10 +1,6 @@
-
 import * as React from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '../../lib/utils';
-
-// Local casted components
-const MotionDiv = motion.div as any;
 
 interface MasonryGridProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
@@ -43,7 +39,7 @@ const MasonryGrid = React.forwardRef<HTMLDivElement, MasonryGridProps>(
     return (
       <div ref={ref} style={style} className={cn('w-full', className)} {...props}>
         {React.Children.map(children, (child) => (
-          <MotionDiv
+          <motion.div
             className="mb-6 break-inside-avoid" // Prevents items from breaking across columns
             variants={cardVariants}
             initial="hidden"
@@ -51,7 +47,7 @@ const MasonryGrid = React.forwardRef<HTMLDivElement, MasonryGridProps>(
             viewport={{ once: true, amount: 0.2 }} // Animate when 20% of the item is visible
           >
             {child}
-          </MotionDiv>
+          </motion.div>
         ))}
       </div>
     );

@@ -1,15 +1,8 @@
-
 "use client";
 
 import React, { useState, useEffect, useRef, useId } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "../../lib/utils";
-
-// Local casted components
-const MotionDiv = motion.div as any;
-const MotionButton = motion.button as any;
-const MotionP = motion.p as any;
-const MotionH3 = motion.h3 as any;
 
 interface ExpandableCardProps {
   title: string;
@@ -70,7 +63,7 @@ export function ExpandableCard({
     <>
       <AnimatePresence>
         {active && (
-          <MotionDiv
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -85,7 +78,7 @@ export function ExpandableCard({
               "fixed inset-0 grid place-items-center z-[100] sm:mt-16 before:pointer-events-none px-4 py-10"
             )}
           >
-            <MotionDiv
+            <motion.div
               layoutId={`card-${title}-${id}`}
               ref={cardRef}
               className={cn(
@@ -94,7 +87,7 @@ export function ExpandableCard({
               )}
               {...props}
             >
-              <MotionDiv layoutId={`image-${title}-${id}`}>
+              <motion.div layoutId={`image-${title}-${id}`}>
                 <div className="relative before:absolute before:inset-x-0 before:bottom-[-1px] before:h-[100px] before:z-50 before:bg-gradient-to-t before:from-[#0a0a0a]">
                   <img
                     src={src}
@@ -102,30 +95,30 @@ export function ExpandableCard({
                     className="w-full h-96 object-cover object-center"
                   />
                 </div>
-              </MotionDiv>
+              </motion.div>
               <div className="relative h-full">
                 <div className="flex justify-between items-start p-8 h-auto">
                   <div>
-                    <MotionP
+                    <motion.p
                       layoutId={`description-${description}-${id}`}
                       className="text-indigo-400 text-sm font-bold uppercase tracking-[0.2em] mb-2"
                     >
                       {description}
-                    </MotionP>
-                    <MotionH3
+                    </motion.p>
+                    <motion.h3
                       layoutId={`title-${title}-${id}`}
                       className="font-bold text-white text-4xl sm:text-5xl tracking-tight leading-tight"
                     >
                       {title}
-                    </MotionH3>
+                    </motion.h3>
                   </div>
-                  <MotionButton
+                  <motion.button
                     aria-label="Close card"
                     layoutId={`button-${title}-${id}`}
                     className="h-12 w-12 shrink-0 flex items-center justify-center rounded-full bg-white/5 text-white/70 border border-white/10 hover:bg-white/10 hover:text-white transition-all duration-300 focus:outline-none"
                     onClick={() => setActive(false)}
                   >
-                    <MotionDiv
+                    <motion.div
                       animate={{ rotate: active ? 45 : 0 }}
                       transition={{ duration: 0.4 }}
                     >
@@ -143,11 +136,11 @@ export function ExpandableCard({
                         <path d="M5 12h14" />
                         <path d="M12 5v14" />
                       </svg>
-                    </MotionDiv>
-                  </MotionButton>
+                    </motion.div>
+                  </motion.button>
                 </div>
                 <div className="relative px-8 sm:px-10 pb-16">
-                  <MotionDiv
+                  <motion.div
                     layout
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -155,15 +148,15 @@ export function ExpandableCard({
                     className="text-white/60 text-lg leading-relaxed flex flex-col items-start gap-6"
                   >
                     {children}
-                  </MotionDiv>
+                  </motion.div>
                 </div>
               </div>
-            </MotionDiv>
+            </motion.div>
           </div>
         )}
       </AnimatePresence>
 
-      <MotionDiv
+      <motion.div
         role="dialog"
         aria-labelledby={`card-title-${id}`}
         aria-modal="true"
@@ -175,48 +168,48 @@ export function ExpandableCard({
         )}
       >
         <div className="flex gap-6 flex-col w-full h-full">
-          <MotionDiv layoutId={`image-${title}-${id}`} className="w-full relative overflow-hidden rounded-[2rem]">
+          <motion.div layoutId={`image-${title}-${id}`} className="w-full relative overflow-hidden rounded-[2rem]">
             <img
               src={src}
               alt={title}
               className="w-full h-64 object-cover object-center grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-          </MotionDiv>
+          </motion.div>
           
           <div className="flex flex-col flex-1 px-2 pb-2">
             <div className="flex justify-between items-start">
               <div className="flex flex-col flex-1">
-                <MotionP
+                <motion.p
                   layoutId={`description-${description}-${id}`}
                   className="text-indigo-400/80 md:text-left text-xs font-bold uppercase tracking-widest mb-1"
                 >
                   {description}
-                </MotionP>
-                <MotionH3
+                </motion.p>
+                <motion.h3
                   layoutId={`title-${title}-${id}`}
                   className="text-white md:text-left font-bold text-2xl tracking-tight group-hover:text-white transition-colors"
                 >
                   {title}
-                </MotionH3>
+                </motion.h3>
                 {teaser && (
-                  <MotionP 
+                  <motion.p 
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     className="text-white/40 text-sm mt-3 line-clamp-3 leading-relaxed md:text-left"
                   >
                     {teaser}
-                  </MotionP>
+                  </motion.p>
                 )}
               </div>
-              <MotionButton
+              <motion.button
                 aria-label="Open card"
                 layoutId={`button-${title}-${id}`}
                 className={cn(
                   "h-10 w-10 shrink-0 flex items-center justify-center rounded-full bg-white/5 text-white/50 border border-white/10 group-hover:bg-indigo-500 group-hover:text-white group-hover:border-indigo-500 transition-all duration-500 focus:outline-none"
                 )}
               >
-                <MotionDiv
+                <motion.div
                   animate={{ rotate: active ? 45 : 0 }}
                   transition={{ duration: 0.4 }}
                 >
@@ -234,12 +227,12 @@ export function ExpandableCard({
                     <path d="M5 12h14" />
                     <path d="M12 5v14" />
                   </svg>
-                </MotionDiv>
-              </MotionButton>
+                </motion.div>
+              </motion.button>
             </div>
           </div>
         </div>
-      </MotionDiv>
+      </motion.div>
     </>
   );
 }

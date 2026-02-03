@@ -39,9 +39,6 @@ import { Carousel, CarouselContent, CarouselItem } from './components/ui/carouse
 import { Feature1 } from './components/ui/feature-1';
 import { cn } from './lib/utils';
 
-// Local casted components
-const MotionDiv = motion.div as any;
-
 // --- Shared Data ---
 
 const SERVICES_DATA = [
@@ -240,7 +237,7 @@ const shareholderReportsData: Report[] = [
 // --- View Components ---
 
 const HomeView = ({ onNavigate, onSelectReport }: { onNavigate: (page: string) => void, onSelectReport: (report: Report) => void }) => (
-  <MotionDiv
+  <motion.div
     initial={{ opacity: 0, x: 20 }}
     animate={{ opacity: 1, x: 0 }}
     exit={{ opacity: 0, x: -20 }}
@@ -341,7 +338,7 @@ const HomeView = ({ onNavigate, onSelectReport }: { onNavigate: (page: string) =
 
     <section className="bg-[#030303] pb-24 px-6 relative z-10">
       <div className="max-w-7xl mx-auto">
-        <MotionDiv 
+        <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -396,7 +393,7 @@ const HomeView = ({ onNavigate, onSelectReport }: { onNavigate: (page: string) =
               <div className="text-white/30 text-[8px] font-bold uppercase tracking-[0.3em] text-center">Founded</div>
             </div>
           </div>
-        </MotionDiv>
+        </motion.div>
       </div>
     </section>
 
@@ -503,14 +500,14 @@ const HomeView = ({ onNavigate, onSelectReport }: { onNavigate: (page: string) =
       buttonSecondary={{ label: "Explore careers", href: "#", onClick: () => onNavigate('careers') }}
       className="border-t border-white/5"
     />
-  </MotionDiv>
+  </motion.div>
 );
 
 const ReportDetailView = ({ report, onBack }: { report: Report | null, onBack: () => void }) => {
   if (!report) return null;
 
   return (
-    <MotionDiv
+    <motion.div
       initial={{ opacity: 0, x: 20 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -20 }}
@@ -583,7 +580,7 @@ const ReportDetailView = ({ report, onBack }: { report: Report | null, onBack: (
           </p>
         </div>
       </div>
-    </MotionDiv>
+    </motion.div>
   );
 };
 
@@ -591,7 +588,7 @@ const WhoWeAreView = () => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <MotionDiv
+    <motion.div
       initial={{ opacity: 0, x: 20 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -20 }}
@@ -619,7 +616,7 @@ const WhoWeAreView = () => {
 
           <AnimatePresence>
             {!isExpanded && (
-              <MotionDiv 
+              <motion.div 
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
@@ -630,7 +627,7 @@ const WhoWeAreView = () => {
 
           <AnimatePresence>
             {isExpanded && (
-              <MotionDiv
+              <motion.div
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ height: "auto", opacity: 1 }}
                 exit={{ height: 0, opacity: 0 }}
@@ -668,7 +665,7 @@ const WhoWeAreView = () => {
                     </p>
                   </section>
                 </div>
-              </MotionDiv>
+              </motion.div>
             )}
           </AnimatePresence>
         </div>
@@ -711,7 +708,7 @@ const WhoWeAreView = () => {
       </div>
       
       <TeamSection />
-    </MotionDiv>
+    </motion.div>
   );
 };
 
@@ -829,7 +826,7 @@ const PortfolioView = () => {
   ];
 
   return (
-    <MotionDiv
+    <motion.div
       initial={{ opacity: 0, x: 20 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -20 }}
@@ -867,13 +864,13 @@ const PortfolioView = () => {
           </div>
         ))}
       </MasonryGrid>
-    </MotionDiv>
+    </motion.div>
   );
 };
 
 const ServicesView = ({ onNavigate }: { onNavigate: (page: string) => void }) => {
   return (
-    <MotionDiv
+    <motion.div
       initial={{ opacity: 0, x: 20 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -20 }}
@@ -902,7 +899,7 @@ const ServicesView = ({ onNavigate }: { onNavigate: (page: string) => void }) =>
           </div>
         ))}
       </div>
-    </MotionDiv>
+    </motion.div>
   );
 };
 
@@ -939,7 +936,7 @@ const NewsView = () => {
   ];
 
   return (
-    <MotionDiv
+    <motion.div
       initial={{ opacity: 0, x: 20 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -20 }}
@@ -990,7 +987,7 @@ const NewsView = () => {
           ))}
         </div>
       </div>
-    </MotionDiv>
+    </motion.div>
   );
 };
 
@@ -1017,7 +1014,7 @@ const CareersView = () => {
 
   if (submitted) {
     return (
-      <MotionDiv
+      <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         className="pt-48 md:pt-64 pb-24 px-6 flex flex-col items-center justify-center text-center min-h-[60vh]"
@@ -1039,13 +1036,13 @@ const CareersView = () => {
         >
           Return to Careers
         </Button>
-      </MotionDiv>
+      </motion.div>
     );
   }
 
   if (selectedJob) {
     return (
-      <MotionDiv
+      <motion.div
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
         exit={{ opacity: 0, x: -20 }}
@@ -1116,12 +1113,12 @@ const CareersView = () => {
             </p>
           </form>
         </div>
-      </MotionDiv>
+      </motion.div>
     );
   }
 
   return (
-    <MotionDiv
+    <motion.div
       initial={{ opacity: 0, x: 20 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -20 }}
@@ -1162,12 +1159,12 @@ const CareersView = () => {
           <Button variant="outline" className="rounded-full px-6 py-4 text-xs font-bold uppercase tracking-widest">General Application</Button>
         </div>
       </div>
-    </MotionDiv>
+    </motion.div>
   );
 };
 
 const ContactView = () => (
-  <MotionDiv
+  <motion.div
     initial={{ opacity: 0, x: 20 }}
     animate={{ opacity: 1, x: 0 }}
     exit={{ opacity: 0, x: -20 }}
@@ -1221,7 +1218,7 @@ const ContactView = () => (
         </form>
       </div>
     </div>
-  </MotionDiv>
+  </motion.div>
 );
 
 // --- Main App ---
@@ -1254,9 +1251,9 @@ function App() {
       <Header activePage={currentPage} onNavigate={setCurrentPage} />
       
       <AnimatePresence mode="wait">
-        <MotionDiv key={currentPage} className="w-full">
+        <motion.div key={currentPage} className="w-full">
           {renderView()}
-        </MotionDiv>
+        </motion.div>
       </AnimatePresence>
 
       <Footer4Col onNavigate={setCurrentPage} />

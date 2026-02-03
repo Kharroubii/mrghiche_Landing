@@ -1,16 +1,8 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { Button } from './button';
-
-// Local casted components
-const MotionSection = motion.section as any;
-const MotionDiv = motion.div as any;
-const MotionH2 = motion.h2 as any;
-const MotionP = motion.p as any;
-const MotionImg = motion.img as any;
 
 interface FinancialHeroProps {
   title: React.ReactNode;
@@ -79,7 +71,7 @@ export const FinancialHero = ({
   };
 
   return (
-    <MotionSection
+    <section
       className={cn(
         'relative w-full overflow-hidden bg-[#030303] text-white',
         className
@@ -103,7 +95,7 @@ export const FinancialHero = ({
       />
       <div className="absolute inset-0 bg-gradient-to-b from-[#030303] via-transparent to-[#030303] z-0" />
 
-      <MotionDiv
+      <motion.div
         className="relative max-w-6xl mx-auto flex min-h-[70vh] items-center justify-between px-6 py-20 lg:flex-row flex-col gap-16 z-10"
         initial="hidden"
         whileInView="visible"
@@ -112,19 +104,19 @@ export const FinancialHero = ({
       >
         {/* Left: Text Content */}
         <div className="flex flex-col items-center text-center lg:items-start lg:text-left lg:w-1/2">
-          <MotionH2
+          <motion.h2
             className="text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl max-w-lg leading-tight"
             variants={itemVariants}
           >
             {title}
-          </MotionH2>
-          <MotionP
+          </motion.h2>
+          <motion.p
             className="mt-6 max-w-xl text-lg text-white/50 leading-relaxed"
             variants={itemVariants}
           >
             {description}
-          </MotionP>
-          <MotionDiv variants={itemVariants} className="mt-8">
+          </motion.p>
+          <motion.div variants={itemVariants} className="mt-8">
             <Button 
               size="lg" 
               className="h-14 px-10 text-base rounded-full bg-white text-black hover:scale-105 transition-transform font-bold"
@@ -139,16 +131,16 @@ export const FinancialHero = ({
               {buttonText}
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
-          </MotionDiv>
+          </motion.div>
         </div>
 
         {/* Right: Card Images */}
-        <MotionDiv
+        <motion.div
           className="relative lg:w-1/2 h-80 md:h-[450px] w-full flex items-center justify-center lg:justify-end"
           variants={cardsVariants}
         >
           {/* Back Card */}
-          <MotionImg
+          <motion.img
             src={imageUrl2}
             alt="Investment Card Back"
             variants={cardItemVariants}
@@ -156,15 +148,15 @@ export const FinancialHero = ({
             className="absolute h-48 md:h-72 lg:h-80 w-auto rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/10 object-cover transform -rotate-12 translate-x-12 z-0"
           />
           {/* Front Card */}
-          <MotionImg
+          <motion.img
             src={imageUrl1}
             alt="Investment Card Front"
             variants={cardItemVariants}
             whileHover={{ y: -15, rotate: 12, transition: { duration: 0.4, ease: "easeOut" } }}
             className="absolute h-48 md:h-72 lg:h-80 w-auto rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/10 object-cover transform rotate-12 -translate-x-12 z-10"
           />
-        </MotionDiv>
-      </MotionDiv>
-    </MotionSection>
+        </motion.div>
+      </motion.div>
+    </section>
   );
 };
