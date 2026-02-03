@@ -1,3 +1,4 @@
+import React from "react";
 import type { Metadata } from "next";
 import { Ubuntu } from "next/font/google";
 import "./globals.css";
@@ -43,6 +44,7 @@ export const metadata: any = {
 export default function RootLayout({
   children,
 }: Readonly<{
+  // Added React import above to resolve namespace error
   children: React.ReactNode;
 }>) {
   return (
