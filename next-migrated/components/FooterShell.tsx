@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import Footer4Col from "./ui/footer-4-col";
+import Footer4Col from "@/components/ui/footer-4-col";
 
 export function FooterShell() {
   const router = useRouter();
