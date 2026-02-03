@@ -222,7 +222,7 @@ export function TestimonialCarousel({ className }: TestimonialCarouselProps) {
                   </a>
                 ))}
               </div>
-            </motion.div>
+            </MotionDiv>
           </AnimatePresence>
         </div>
       </div>
