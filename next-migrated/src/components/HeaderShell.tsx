@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname, useRouter } from "next/navigation";
-import { Header } from "./ui/header-2";
+import { Header } from "@/components/ui/header-2";
 
 export function HeaderShell() {
   const pathname = usePathname();
@@ -18,6 +18,9 @@ export function HeaderShell() {
     "/report-detail": "report-detail",
   };
 
+  // Improved logic to handle sub-routes (like news articles)
+  const activePage = pathname.startsWith('/news') ? "news" : (pageMap[pathname] || "home");
+
   const handleNavigate = (id: string) => {
     if (id === "home") {
       router.push("/");
@@ -26,5 +29,5 @@ export function HeaderShell() {
     }
   };
 
-  return <Header activePage={pageMap[pathname] || "home"} onNavigate={handleNavigate} />;
+  return <Header activePage={activePage} onNavigate={handleNavigate} />;
 }
