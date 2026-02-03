@@ -3,7 +3,7 @@
 import React from 'react';
 import { motion } from "framer-motion";
 import { Circle } from "lucide-react";
-import { cn } from "../../lib/utils";
+import { cn } from "@/lib/utils";
 
 interface ElegantShapeProps {
     className?: string;
@@ -86,7 +86,6 @@ export function HeroGeometric({
     title2 = "Investment Management",
     description = "We apply institutional discipline, active risk management, and data-driven decision-making to protect capital and generate sustainable long-term returns.",
 }: HeroGeometricProps) {
-    // Cast fadeUpVariants to any to fix type mismatch issues with ease arrays in variants
     const fadeUpVariants: any = {
         hidden: { opacity: 0, y: 30 },
         visible: (i: number) => ({
