@@ -17,8 +17,8 @@ export async function generateMetadata({ params }: Props): Promise<any> {
     };
   }
 
-  const title = item.quarter || item.title;
-  const description = item.description || "Institutional analysis and strategic market outcomes from Mrghiche Capital.";
+  const title = ('quarter' in item ? item.quarter : item.title) || '';
+  const description = ('description' in item ? item.description : null) || "Institutional analysis and strategic market outcomes from Mrghiche Capital.";
 
   return {
     title,
@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: Props): Promise<any> {
       title,
       description,
       type: 'article',
-      images: [item.image || item.imageSrc],
+      images: [('image' in item ? item.image : item.imageSrc)],
     },
   };
 }

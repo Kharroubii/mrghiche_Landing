@@ -23,9 +23,10 @@ export default function NewsDetailClient({ slug }: { slug: string }) {
     );
   }
 
-  const title = item.quarter || item.title;
-  const dateLabel = item.period || item.date;
-  const category = item.category || "Financial Report";
+  // Type-safe property extraction based on whether the item is a Report or NewsItem
+  const title = 'quarter' in item ? item.quarter : item.title;
+  const dateLabel = 'period' in item ? item.period : item.date;
+  const category = 'category' in item ? item.category : "Financial Report";
 
   return (
     <MotionDiv
