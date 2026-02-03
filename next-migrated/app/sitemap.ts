@@ -1,7 +1,8 @@
 import { MetadataRoute } from 'next';
-import { allNewsAndReports } from './lib/data';
 
-// Fix: Changed return type to any to resolve "Namespace 'next' has no exported member 'Sitemap'" error in this environment
+/**
+ * Sitemap generator using static routes to ensure build stability.
+ */
 export default function sitemap(): any {
   const baseUrl = 'https://example.com';
 
@@ -20,12 +21,5 @@ export default function sitemap(): any {
     priority: route === '' ? 1 : 0.8,
   }));
 
-  const newsRoutes = allNewsAndReports.map((item) => ({
-    url: `${baseUrl}/news/${item.slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'weekly' as const,
-    priority: 0.6,
-  }));
-
-  return [...staticRoutes, ...newsRoutes];
+  return staticRoutes;
 }
