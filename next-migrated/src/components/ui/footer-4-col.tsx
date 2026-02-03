@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -93,13 +94,23 @@ const contactInfo = [
   { icon: MapPin, text: data.contact.address, isAddress: true },
 ];
 
-export default function Footer4Col() {
+// Added type definition for onNavigate prop to fix assignability error in FooterShell
+export default function Footer4Col({ onNavigate }: { onNavigate?: (id: string) => void }) {
   return (
     <footer className="bg-white/[0.02] border-t border-white/5 mt-16 w-full rounded-t-[2.5rem] relative z-20">
       <div className="mx-auto max-w-screen-xl px-4 pt-16 pb-6 sm:px-6 lg:px-8 lg:pt-24">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div>
-            <Link href="/" className="flex justify-center gap-2 sm:justify-start cursor-pointer group">
+            <Link 
+              href="/" 
+              className="flex justify-center gap-2 sm:justify-start cursor-pointer group"
+              onClick={(e) => {
+                if (onNavigate) {
+                  e.preventDefault();
+                  onNavigate('home');
+                }
+              }}
+            >
               <FooterLogo className="h-10 w-auto text-white group-hover:text-indigo-400 transition-colors" />
             </Link>
 
