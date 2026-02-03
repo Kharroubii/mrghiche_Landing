@@ -1,7 +1,7 @@
 "use client";
 
 import React, { forwardRef, useState, useEffect } from "react";
-import { cn } from "../../lib/utils";
+import { cn } from "@/lib/utils";
 import { Play, X } from "lucide-react";
 
 // Interface for component props

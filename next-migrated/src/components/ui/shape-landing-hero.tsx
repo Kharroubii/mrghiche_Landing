@@ -3,7 +3,7 @@
 import React from 'react';
 import { motion } from "framer-motion";
 import { Circle } from "lucide-react";
-import { cn } from "../../lib/utils";
+import { cn } from "@/lib/utils";
 
 // Create local casted motion components to fix type errors
 const MotionDiv = motion.div as any;
@@ -98,7 +98,6 @@ export function HeroGeometric({
             opacity: 1,
             y: 0,
             transition: {
-                // Fixed truncated code and syntax error on line 100
                 duration: 1,
                 delay: 0.5 + i * 0.2,
                 ease: [0.25, 0.4, 0.25, 1],

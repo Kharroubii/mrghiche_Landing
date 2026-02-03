@@ -1,9 +1,8 @@
-
 "use client";
 
 import React, { forwardRef, useRef, useState, useCallback, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { cn } from "../../lib/utils";
+import { cn } from "@/lib/utils";
 
 // Define the type for a single report item
 export interface Report {

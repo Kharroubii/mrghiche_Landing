@@ -3,7 +3,7 @@
 import React, { MouseEvent } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { Button } from "./button";
-import { cn } from "../../lib/utils";
+import { cn } from "@/lib/utils";
 
 // Define the props for the LocationCard component
 interface LocationCardProps {

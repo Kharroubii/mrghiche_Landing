@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef, useId } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { cn } from "../../lib/utils";
+import { cn } from "@/lib/utils";
 
 // Local casted components
 const MotionDiv = motion.div as any;
